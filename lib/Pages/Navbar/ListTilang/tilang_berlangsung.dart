@@ -11,7 +11,7 @@ class _TilangBerlangsungState extends State<TilangBerlangsung> {
   Widget build(BuildContext context) {
     return Container(
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        margin: EdgeInsets.all(24),
         child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: 3,

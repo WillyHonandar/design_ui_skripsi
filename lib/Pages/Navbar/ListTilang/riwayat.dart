@@ -10,7 +10,7 @@ class _RiwayatTilangState extends State<RiwayatTilang> {
   Widget build(BuildContext context) {
     return Container(
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        margin: EdgeInsets.all(24),
         child: ListView.builder(
             scrollDirection: Axis.vertical,
             itemCount: 5,
@@ -35,6 +35,7 @@ class _RiwayatTilangState extends State<RiwayatTilang> {
                             EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: ListTile(
                           // leading: Text("Halo"),
+                          //No referensi di ambil dari db
                           title: Text(
                             "No Referensi: 123456",
                             style: TextStyle(fontSize: 16),
@@ -48,6 +49,7 @@ class _RiwayatTilangState extends State<RiwayatTilang> {
                               margin: EdgeInsets.only(right: 140, top: 10),
                               padding: EdgeInsets.symmetric(vertical: 5),
                               child: Center(
+                                //status di ambil dari db
                                 child: Text(
                                   "Status: Sudah Bayar",
                                 ),

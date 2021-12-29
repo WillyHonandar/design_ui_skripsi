@@ -29,7 +29,11 @@ class Berita1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('News')),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
+          title: Text("Berita Terkini", style: TextStyle(color: Colors.black)),
+          backgroundColor: Color.fromRGBO(245, 245, 245, 1),
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +95,11 @@ class Berita2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('News')),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
+          title: Text("Berita Terkini", style: TextStyle(color: Colors.black)),
+          backgroundColor: Color.fromRGBO(245, 245, 245, 1),
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,7 +164,11 @@ class Berita3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('News')),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
+          title: Text("Berita Terkini", style: TextStyle(color: Colors.black)),
+          backgroundColor: Color.fromRGBO(245, 245, 245, 1),
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -220,7 +232,11 @@ class Berita4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('News')),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
+          title: Text("Berita Terkini", style: TextStyle(color: Colors.black)),
+          backgroundColor: Color.fromRGBO(245, 245, 245, 1),
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

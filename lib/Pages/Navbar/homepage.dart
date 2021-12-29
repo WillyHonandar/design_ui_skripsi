@@ -19,7 +19,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> pages = [
     Home(),
-    List_Tilang(),
+    ListTilang(),
     MapLauncherDemo(),
     Settings(),
   ];
@@ -77,6 +77,7 @@ class _HomeState extends State<Home> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0,
           backgroundColor: Colors.white,
           centerTitle: true,
@@ -88,7 +89,13 @@ class _HomeState extends State<Home> {
             Stack(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            //Nanti dipilih berdasarkan index
+                            builder: (context) => NotificationsList()));
+                  },
                   padding: EdgeInsets.only(top: 8),
                   icon: Icon(Icons.notifications),
                   color: Colors.blue,
@@ -254,11 +261,11 @@ class CekPengetahuan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 20),
+      margin: EdgeInsets.only(top: 24),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 35, bottom: 20),
+            padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
             child: Row(
               children: [
                 Icon(Icons.lightbulb_rounded),
@@ -278,7 +285,7 @@ class CekPengetahuan extends StatelessWidget {
           /// disini tambah nya
           Container(
             color: Colors.yellow,
-            margin: EdgeInsets.symmetric(horizontal: 35),
+            margin: EdgeInsets.symmetric(horizontal: 24),
             height: 150,
             child: Carousel(
               radius: Radius.circular(10),
@@ -432,11 +439,11 @@ class NewsHomepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: EdgeInsets.symmetric(vertical: 24),
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 35, bottom: 20),
+            padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
             child: Row(
               children: [
                 Icon(Icons.notes),
@@ -453,8 +460,8 @@ class NewsHomepage extends StatelessWidget {
             ),
           ),
           Container(
-            height: 250,
-            margin: EdgeInsets.only(left: 30, right: 30),
+            height: 220,
+            margin: EdgeInsets.symmetric(horizontal: 24),
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 itemCount: newsImage.length,
@@ -520,7 +527,7 @@ class NewsHomepage extends StatelessWidget {
 Widget berita({image, title, date}) {
   return Container(
     height: 70,
-    padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 13),
+    padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
     margin: EdgeInsets.only(top: 20, left: 50, right: 35),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(5),

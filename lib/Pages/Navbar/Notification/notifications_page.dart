@@ -10,7 +10,9 @@ class _NotificationsListState extends State<NotificationsList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notifications"),
+        iconTheme: IconThemeData(color: Colors.black),
+        title: Text("Notifications", style: TextStyle(color: Colors.black)),
+        backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       ),
       body: Scrollbar(
         child: ListView.separated(

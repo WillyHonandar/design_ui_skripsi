@@ -1,10 +1,15 @@
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/alasan_bukan.dart';
 import 'package:flutter/material.dart';
 
 class KonfirmasiTilang extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Konfirmasi Tilang')),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        title: Text("Konfirmasi Tilang", style: TextStyle(color: Colors.black)),
+        backgroundColor: Color.fromRGBO(245, 245, 245, 1),
+      ),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(24),
@@ -137,7 +142,7 @@ class KonfirmasiTilang extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 //Nanti dipilih berdasarkan index
-                                builder: (context) => KonfirmasiTilang()));
+                                builder: (context) => AlasanBukan()));
                       },
                       color: Colors.red,
                       elevation: 0,

@@ -405,7 +405,7 @@ class MapLauncherDemo extends StatelessWidget {
           return SafeArea(
             child: Container(
               width: double.infinity,
-              height: 40,
+              height: 60,
               child: Center(
                 child: Text(
                   groupByValue,

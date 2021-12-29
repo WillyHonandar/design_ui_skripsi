@@ -47,7 +47,7 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 40),
+          padding: EdgeInsets.symmetric(horizontal: 36, vertical: 24),
           width: double.infinity,
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,7 +71,7 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 70),
+                      margin: EdgeInsets.only(top: 64),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -110,7 +110,7 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                             },
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: 40),
+                            margin: EdgeInsets.only(top: 24),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,8 +119,7 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                                 Form(
                                   key: formKey,
                                   child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 15.0),
+                                      padding: const EdgeInsets.only(top: 12),
                                       child: PinCodeTextField(
                                         appContext: context,
                                         pastedTextStyle: TextStyle(
@@ -182,7 +181,7 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(top: 24),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -209,7 +208,7 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                   ],
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 100),
+                  margin: EdgeInsets.only(top: 24),
                   padding: EdgeInsets.only(top: 3, left: 3),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),

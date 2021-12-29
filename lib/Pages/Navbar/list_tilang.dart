@@ -4,12 +4,12 @@ import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:flutter/material.dart';
 import 'package:aplikasi_tilang_training/Model/kendaraan.dart';
 
-class List_Tilang extends StatefulWidget {
+class ListTilang extends StatefulWidget {
   @override
-  _List_TilangState createState() => _List_TilangState();
+  _ListTilangState createState() => _ListTilangState();
 }
 
-class _List_TilangState extends State<List_Tilang> {
+class _ListTilangState extends State<ListTilang> {
   final List<Widget> pages = [RiwayatTilang(), TilangBerlangsung()];
   int _selectedIndexForTabBar = 0;
 
@@ -38,9 +38,11 @@ class _List_TilangState extends State<List_Tilang> {
         length: 2,
         child: new Scaffold(
             appBar: AppBar(
-                bottom: tabBar,
-                backgroundColor: Colors.white,
-                title: Text('Tabs Demo')),
+              title: tabBar,
+              // bottom: tabBar,
+              automaticallyImplyLeading: false,
+              backgroundColor: Color.fromRGBO(245, 245, 245, 1),
+            ),
 
             //7
             body: Center(child: pages.elementAt(_selectedIndexForTabBar))));
