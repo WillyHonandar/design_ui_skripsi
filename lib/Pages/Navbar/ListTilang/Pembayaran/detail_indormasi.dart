@@ -16,7 +16,7 @@ class DetailInformasi extends StatelessWidget {
           children: [
             Text(
               "Anda sedang menjalani proses denda tilang, harap simak alur berikut :",
-              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 20),
             Container(

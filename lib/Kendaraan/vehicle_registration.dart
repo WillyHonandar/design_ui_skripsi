@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:aplikasi_tilang_training/Kendaraan/sukses_tambah_kendaraan.dart';
 import 'package:aplikasi_tilang_training/net/firebase.dart';
-import 'package:aplikasi_tilang_training/pages/intro/vehicle_list.dart';
-import 'package:aplikasi_tilang_training/pages/navbar/homepage.dart';
+import 'package:aplikasi_tilang_training/Kendaraan/vehicle_list.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -221,7 +222,7 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisteredVehicles()));
+                              builder: (context) => SuksesTambahKendaraan()));
                       setState(() {
                         User updateUser = FirebaseAuth.instance.currentUser;
                         updateUser.uid;
@@ -257,7 +258,7 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisteredVehicles()));
+                              builder: (context) => MyHomePage()));
                     },
                   ),
                 )

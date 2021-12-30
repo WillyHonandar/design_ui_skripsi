@@ -1,6 +1,5 @@
 import 'dart:async';
-
-import 'package:aplikasi_tilang_training/pages/intro/vehicle_registration.dart';
+import 'package:aplikasi_tilang_training/Kendaraan/vehicle_registration.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:fluttertoast/fluttertoast.dart';

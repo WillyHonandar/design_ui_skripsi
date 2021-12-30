@@ -1,7 +1,6 @@
 import 'package:aplikasi_tilang_training/Pages/Intro/intro_pages.dart';
-import 'package:aplikasi_tilang_training/Pages/Intro/vehicle_registration.dart';
+import 'package:aplikasi_tilang_training/Kendaraan/vehicle_list.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/my_profile.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/regis_kendaraan.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -62,14 +61,14 @@ class _SettingsState extends State<Settings> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => RegisKendaraan()));
+                                  builder: (context) => RegisteredVehicles()));
                         },
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             ListTile(
                               leading: Icon(Icons.album),
-                              title: Text('Registrasi Kendaraan'),
+                              title: Text('List Kendaraan'),
                               // subtitle:
                               //     Text('Registrasi Nomor Plat, Nomor Mesin, dkk'),
                             ),
