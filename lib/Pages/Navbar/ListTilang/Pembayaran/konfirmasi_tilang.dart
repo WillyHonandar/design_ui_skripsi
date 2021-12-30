@@ -1,4 +1,5 @@
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/alasan_bukan.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/detail_indormasi.dart';
 import 'package:flutter/material.dart';
 
 class KonfirmasiTilang extends StatelessWidget {
@@ -118,7 +119,7 @@ class KonfirmasiTilang extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 //Nanti dipilih berdasarkan index
-                                builder: (context) => KonfirmasiTilang()));
+                                builder: (context) => DetailInformasi()));
                       },
                       color: Colors.blue,
                       elevation: 0,
