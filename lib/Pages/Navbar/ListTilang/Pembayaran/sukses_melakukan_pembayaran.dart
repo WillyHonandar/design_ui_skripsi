@@ -1,7 +1,7 @@
 import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
 import 'package:flutter/material.dart';
 
-class SuksesBukanKendaraan extends StatelessWidget {
+class SuksesMelakukanPembayaran extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class SuksesBukanKendaraan extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 16),
                 child: Center(
                   child: Icon(
-                    Icons.timelapse,
+                    Icons.check,
                     size: 200,
                     color: Colors.blue,
                   ),
@@ -23,7 +23,7 @@ class SuksesBukanKendaraan extends StatelessWidget {
               SizedBox(height: 20),
               Center(
                 child: Text(
-                  "Terimakasih, silahkan cek kembali status tilang anda secara berkala dalam kurun waktu 2x24 jam",
+                  "Terimakasih Sudah Melakukan Pembayaran !",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
@@ -31,7 +31,7 @@ class SuksesBukanKendaraan extends StatelessWidget {
               SizedBox(height: 20),
               Center(
                 child: Text(
-                  "Apabila alasan anda masih kurang mendukung, maka status anda akan secara otomatis berubah menjadi melanggar",
+                  "Proses pembayaran akan diproses dalam kurun waktu 2x24 jam! Mohon untuk mengecek status pembayaran Anda secara berkala pada menu List Tilang.",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                 ),

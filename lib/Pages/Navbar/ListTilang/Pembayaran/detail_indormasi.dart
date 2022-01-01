@@ -1,3 +1,4 @@
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/pembayaran.dart';
 import 'package:flutter/material.dart';
 
 class DetailInformasi extends StatelessWidget {
@@ -61,7 +62,7 @@ class DetailInformasi extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     //Nanti dipilih berdasarkan index
-                    builder: (context) => DetailInformasi()));
+                    builder: (context) => Pembayaran()));
           },
           color: Colors.blue,
           elevation: 0,
