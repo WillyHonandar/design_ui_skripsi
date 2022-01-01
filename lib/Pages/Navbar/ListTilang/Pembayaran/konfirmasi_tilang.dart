@@ -1,5 +1,5 @@
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/alasan_bukan.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/detail_indormasi.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/detail_informasi.dart';
 import 'package:flutter/material.dart';
 
 class KonfirmasiTilang extends StatelessWidget {

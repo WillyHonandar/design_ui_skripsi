@@ -2,7 +2,8 @@
     package="com.example.aplikasi_tilang_training">
    <application
         android:label="aplikasi_tilang_training"
-        android:icon="@mipmap/logo_etle">
+        android:icon="@mipmap/logo_etle"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

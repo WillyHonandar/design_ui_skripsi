@@ -1,4 +1,5 @@
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/sukses_melakukan_pembayaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/upload_bukti_pembayaran.dart';
 import 'package:flutter/material.dart';
 
 class Pembayaran extends StatelessWidget {
@@ -79,7 +80,7 @@ class Pembayaran extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     //Nanti dipilih berdasarkan index
-                    builder: (context) => SuksesMelakukanPembayaran()));
+                    builder: (context) => UploadBuktiPembayaran()));
           },
           color: Colors.blue,
           elevation: 0,
@@ -87,7 +88,7 @@ class Pembayaran extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(
-            "Upload Bukti Pembayaran",
+            "Lanjutkan ke pembayaran",
             style: TextStyle(
                 fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
           ),
