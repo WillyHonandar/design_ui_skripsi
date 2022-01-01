@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/sukses_melakukan_pembayaran.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -34,19 +35,80 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
         backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       ),
       body: Container(
-          child: Column(
-        children: [
-          Spacer(),
-          // image != null ? Image.file(
-          //   image!,
-          //   width: 160,
-          //   height: 160,
-          //   fit: BoxFit.cover
-          //   )
-          //   : FlutterLogo(size: 160),
-          const SizedBox(height: 24),
-        ],
-      )),
+          margin: EdgeInsets.all(24),
+          child: Center(
+            child: Column(
+              children: [
+                image != null
+                    ? Image.file(image,
+                        width: 320, height: 320, fit: BoxFit.cover)
+                    : FlutterLogo(size: 320),
+                SizedBox(height: 24),
+                MaterialButton(
+                  // minWidth: double.infinity,
+                  height: 30,
+                  onPressed: () {
+                    pickImage(ImageSource.gallery);
+                  },
+                  color: Colors.grey,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Text(
+                    "Upload Image From Gallery",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        color: Colors.white),
+                  ),
+                ),
+                MaterialButton(
+                  // minWidth: double.infinity,
+                  height: 30,
+                  onPressed: () {
+                    pickImage(ImageSource.camera);
+                  },
+                  color: Colors.grey,
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Text(
+                    "Upload Image From Camera",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          )),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(24),
+        child: MaterialButton(
+          minWidth: double.infinity,
+          height: 60,
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    //Nanti dipilih berdasarkan index
+                    builder: (context) => SuksesMelakukanPembayaran()));
+          },
+          color: Colors.blue,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(
+            "Upload Bukti Pembayaran",
+            style: TextStyle(
+                fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -44,7 +44,7 @@ dependencies:
   postgrest: ^0.1.8
   provider: ^6.0.1
   carousel_pro: ^1.0.0
-  image_picker: ^0.8.4+1
+  image_picker: ^0.8.4
 
 dev_dependencies:
   flutter_test:
