@@ -4,8 +4,10 @@ import 'package:aplikasi_tilang_training/Kendaraan/sukses_tambah_kendaraan.dart'
 import 'package:aplikasi_tilang_training/net/firebase.dart';
 import 'package:aplikasi_tilang_training/Kendaraan/vehicle_list.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
+import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class RegisKendaraan extends StatefulWidget {
@@ -191,14 +193,14 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                                 Form(
                                     child: TextFormField(
                                   controller: _nomorMesinKendaraanController,
-                                  onChanged: (value) {
-                                    print(value);
-                                    setState(() {
-                                      currentText = value;
-                                    });
-                                    currentText =
-                                        _nomorMesinKendaraanController.text;
-                                  },
+                                  // onChanged: (value) {
+                                  //   print(value);
+                                  //   setState(() {
+                                  //     currentText = value;
+                                  //   });
+                                  //   currentText =
+                                  //       _nomorMesinKendaraanController.text;
+                                  // },
                                 ))
                               ],
                             ),
@@ -217,17 +219,32 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                   child: MaterialButton(
                     minWidth: double.infinity,
                     height: 60,
-                    onPressed: () {
+                    onPressed: () async {
+                      addKendaraanSupabase(
+                          FirebaseAuth.instance.currentUser.uid,
+                          _chosenValue,
+                          _nomorMesinKendaraanController.text,
+                          textEditingController.text);
                       _incrementCounter();
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SuksesTambahKendaraan()));
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => SuksesTambahKendaraan()));
                       setState(() {
-                        User updateUser = FirebaseAuth.instance.currentUser;
-                        updateUser.uid;
-                        vechicleSetup(_chosenValue, textEditingController.text,
-                            _nomorMesinKendaraanController.text);
+                        // User updateUser = FirebaseAuth.instance.currentUser;
+                        // updateUser.uid;
+
+                        Fluttertoast.showToast(
+                            msg: "Sukses Menambahkan Kendaraan");
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SuksesTambahKendaraan()));
+
+                        //add Supabase
+
+                        // vechicleSetup(_chosenValue, textEditingController.text,
+                        //     _nomorMesinKendaraanController.text);
                       });
                     },
                     color: Colors.blue,
@@ -266,5 +283,25 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
         ),
       ),
     );
+  }
+}
+
+addKendaraanSupabase(String uid, String jenisKendaraan, String noMesinKendaraan,
+    String noPlatKendaraan) async {
+  try {
+    print(uid);
+    print(jenisKendaraan);
+    print(noMesinKendaraan);
+    print(noPlatKendaraan);
+
+    var response = await client.from("m_kendaraan").insert({
+      'idUser': uid,
+      'jenisKendaraan': jenisKendaraan,
+      'noMesin': noMesinKendaraan,
+      'noPlat': noPlatKendaraan
+    }).execute();
+    print("sudah benar");
+  } catch (e) {
+    print("ini Error" + e);
   }
 }

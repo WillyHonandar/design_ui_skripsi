@@ -1,6 +1,8 @@
+import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
 import 'package:aplikasi_tilang_training/net/firebase.dart';
 import 'package:aplikasi_tilang_training/Authentication/login.dart';
 import 'package:aplikasi_tilang_training/Authentication/otp.dart';
+import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -90,25 +92,38 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           if (_passwordController.text.trim() ==
                               _confirmPasswordController.text.trim()) {
                             try {
-                              await FirebaseAuth.instance
+                              UserCredential user = await FirebaseAuth.instance
                                   .createUserWithEmailAndPassword(
                                       email: _emailController.text,
                                       password: _passwordController.text);
+                              //ini ambil data dri firebase setelah regist
+                              addUserSupabase(
+                                  user.user.uid,
+                                  _usernameController.text,
+                                  _emailController.text,
+                                  _phoneNumberController.text);
+                              //nanti disini untuk insert ke supabasenya (hanya data yg diperlukan)
                               setState(() {
                                 Fluttertoast.showToast(
                                     msg: "succesffuly signed up!");
+                                // Navigator.pushReplacement(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //       builder: (context) => OTPScreen(
+                                //           _phoneNumberController.text,
+                                //           _usernameController.text)),
+                                // );
+                                Fluttertoast.showToast(
+                                    msg: "Sukses Menambahkan Kendaraan");
                                 Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => OTPScreen(
-                                          _phoneNumberController.text,
-                                          _usernameController.text)),
-                                );
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => MyHomePage()));
                                 User updateUser =
                                     FirebaseAuth.instance.currentUser;
                                 updateUser.updateDisplayName(
                                     _usernameController.text);
-                                userSetup(_usernameController.text);
+                                // userSetup(_usernameController.text);
                               });
                             } catch (e) {
                               Fluttertoast.showToast(msg: "Error! $e");
@@ -223,4 +238,15 @@ Widget inputPhoneNum({label, controller, obscureText = false}) {
           ),
         )
       ]);
+}
+
+addUserSupabase(
+    String uid, String namaUser, String emailUser, String noTelpUser) async {
+  var response = await client.from("m_user").insert({
+    'idUser': uid,
+    'namaUser': namaUser,
+    'emailUser': emailUser,
+    'noTelpUser': noTelpUser
+  }).execute();
+  print(response);
 }

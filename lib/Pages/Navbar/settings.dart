@@ -11,6 +11,7 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  String displayName = FirebaseAuth.instance.currentUser.displayName;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +24,7 @@ class _SettingsState extends State<Settings> {
                 margin: EdgeInsets.symmetric(vertical: 64),
                 alignment: Alignment.center,
                 child: Text(
-                  "Halo!\nWilly Honandar",
+                  displayName,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),

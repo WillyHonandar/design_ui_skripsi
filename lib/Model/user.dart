@@ -10,16 +10,15 @@ class OurUser {
 }
 
 class User {
-  String nameUser;
+  String namaUser;
   String emailUser;
-  String passwordUser;
   String phoneUser;
 
-  User({this.nameUser, this.emailUser, this.passwordUser, this.phoneUser});
+  User({this.namaUser, this.emailUser, this.phoneUser});
 
   factory User.fromJson(Map<String, dynamic> map) {
     return User(
-        nameUser: map['nameUser'],
+        namaUser: map['namaUser'],
         emailUser: map['emailUser'],
         phoneUser: map['phoneUser']);
     // passwordUser: map['passwordUser'],

@@ -1,10 +1,19 @@
 import 'package:aplikasi_tilang_training/Kendaraan/vehicle_registration.dart';
 import 'package:aplikasi_tilang_training/Model/kendaraan.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
+import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+List<Kendaraan> dataKendaraan;
+String displayName = FirebaseAuth.instance.currentUser.displayName;
 
 class RegisteredVehicles extends StatefulWidget {
   @override
+
+  // final String displayName = FirebaseAuth.instance.currentUser.displayName;
+
   _RegisteredVehiclesState createState() => _RegisteredVehiclesState();
 }
 
@@ -12,27 +21,34 @@ class _RegisteredVehiclesState extends State<RegisteredVehicles> {
   bool hasError = false;
   String currentText = "";
 
-  int totalKendaraan = 0;
-
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   final formKey = GlobalKey<FormState>();
   final TextEditingController textEditingController = TextEditingController();
   final TextEditingController _nomorMesinKendaraanController =
       TextEditingController();
 
-  Widget _buildChild() {
-    totalKendaraan = 1;
-    if (totalKendaraan != 0) {
-      return KendaraanAda();
-    } else {
-      return KendaraanKosong();
-    }
-  }
-
   List<int> list = [1, 2, 3, 4, 5];
+  String user = FirebaseAuth.instance.currentUser.uid;
+  int totalKendaraan = 0;
+  //lempar data
+
   @override
   Widget build(BuildContext context) {
-    return new Container(child: _buildChild());
+    return new Scaffold(
+      body: FutureBuilder<List<Kendaraan>>(
+          future: getKendaraan(user),
+          builder: (context, AsyncSnapshot<List<Kendaraan>> snapshot) {
+            if (snapshot.hasData == false) {
+              return Center(child: CircularProgressIndicator());
+            }
+            dataKendaraan = snapshot.data;
+            totalKendaraan = snapshot.data.length;
+            if (totalKendaraan == 0) {
+              return KendaraanKosong();
+            }
+            return KendaraanAda();
+          }),
+    );
   }
 }
 
@@ -65,7 +81,7 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Halo Alessandro",
+                      displayName,
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w800,
@@ -74,7 +90,7 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: Text(
-                        "Anda Memiliki total .. kendaraan!",
+                        "Anda Memiliki total .. kendaraan!" + "asdasd",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w500),
                       ),
@@ -84,60 +100,88 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                 Container(
                   margin: EdgeInsets.only(top: 24),
                   height: 400,
-                  child: Scrollbar(
-                    child: ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemCount: 6,
-                        padding: EdgeInsets.only(top: 10),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            padding: EdgeInsets.only(left: 15),
-                            margin: EdgeInsets.only(
-                                bottom: 10, left: 10, right: 10),
-                            height: 80,
-                            width: 300,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(
-                                  width: 2.0, color: Colors.blue[800]),
-                            ),
-                            child: Row(
-                              children: [
-                                Row(
-                                  children: [
-                                    Container(
-                                      height: 60,
-                                      width: 60,
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                              width: 1, color: Colors.purple),
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                    ),
-                                    SizedBox(
-                                      width: 13,
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.only(top: 20),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text("Plat Nomor"),
-                                          Text("Nomor Mesin Kendaraan")
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
-                        }),
+                  child: ListView(
+                    children: dataKendaraan
+                        .map((kendaraan) => Container(
+                              child: Card(
+                                child: ListTile(
+                                  leading: Icon(Icons.car_rental),
+                                  title: Text(kendaraan.noPlat),
+                                  subtitle: Text(kendaraan.noMesin),
+                                  trailing: InkWell(
+                                      onTap: () {
+                                        deleteKendaraan(kendaraan.idKendaraan)
+                                            .then((value) {
+                                          setState(() {});
+                                        });
+                                      },
+                                      // onTap: () => deleteKendaraan(
+                                      //     kendaraan.idKendaraan),
+                                      // Fluttertoast.showToast(
+                                      //     msg: "Sukses Hapus Kendaraan!");
+
+                                      // onTap: () => deleteKendaraan(
+                                      //     kendaraan.idKendaraan),
+                                      child: Icon(
+                                        Icons.delete,
+                                        color: Colors.red,
+                                      )),
+                                ),
+                              ),
+                            ))
+                        .toList(),
                   ),
+                  // child: Scrollbar(
+                  //   child: ListView.builder(
+                  //       scrollDirection: Axis.vertical,
+                  //       itemCount: totalKendaraan,
+                  //       padding: EdgeInsets.only(top: 10),
+                  //       itemBuilder: (context, index) {
+                  //         return Container(
+                  //           padding: EdgeInsets.only(left: 15),
+                  //           margin: EdgeInsets.only(
+                  //               bottom: 10, left: 10, right: 10),
+                  //           height: 80,
+                  //           width: 300,
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(5),
+                  //             border: Border.all(
+                  //                 width: 2.0, color: Colors.blue[800]),
+                  //           ),
+                  //           child: Row(
+                  //             children: [
+                  //               Row(
+                  //                 children: [
+                  //                   Container(
+                  //                     height: 60,
+                  //                     width: 60,
+                  //                     decoration: BoxDecoration(
+                  //                         border: Border.all(
+                  //                             width: 1, color: Colors.purple),
+                  //                         color: Colors.white,
+                  //                         borderRadius:
+                  //                             BorderRadius.circular(10)),
+                  //                   ),
+                  //                   SizedBox(
+                  //                     width: 13,
+                  //                   ),
+                  //                   Container(
+                  //                     padding: EdgeInsets.only(top: 20),
+                  //                     child: Column(
+                  //                       mainAxisAlignment:
+                  //                           MainAxisAlignment.start,
+                  //                       crossAxisAlignment:
+                  //                           CrossAxisAlignment.start,
+                  //                       children:
+                  //                     ),
+                  //                   )
+                  //                 ],
+                  //               )
+                  //             ],
+                  //           ),
+                  //         );
+                  //       }),
+                  // ),
                 ),
               ]),
         ),
@@ -271,4 +315,32 @@ class _KendaraanKosongState extends State<KendaraanKosong> {
       ),
     );
   }
+}
+
+// Future<List<Kendaraan>> getKendaraan() async {
+//   final response = await client
+//       .from('m_kendaraan')
+//       .select('noPlat, noMesin')
+//       // .order('nameUser', ascending: true)
+//       .execute();
+
+//   final dataList = response.data as List;
+//   return dataList.map((map) => Kendaraan.fromJson(map)).toList();
+// }
+
+Future<List<Kendaraan>> getKendaraan(String user) async {
+  final response = await client
+      .rpc("getKendaraan2", params: {'currentUser': user}).execute();
+
+  final dataList = response.data as List;
+  return dataList.map((map) => Kendaraan.fromJson(map)).toList();
+}
+
+Future deleteKendaraan(int idKendaraan) async {
+  var response = await client
+      .from("m_kendaraan")
+      .delete()
+      .eq('idKendaraan', idKendaraan)
+      .execute();
+  print(response);
 }
