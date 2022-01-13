@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 
 List<Pelanggaran> dataPelanggaran;
 int totalPelanggaran;
-String user = FirebaseAuth.instance.currentUser.uid;
 
 class TilangBerlangsung extends StatefulWidget {
   @override
@@ -26,9 +25,9 @@ class _TilangBerlangsungState extends State<TilangBerlangsung> {
             }
             dataPelanggaran = snapshot.data;
             totalPelanggaran = snapshot.data.length;
-            // if (totalPelanggaran == 0) {
-            //   return KendaraanKosong();
-            // }
+            if (totalPelanggaran == 0) {
+              return ListPelanggaranKosong();
+            }
             return ListPelanggaranAda();
           }),
     );
@@ -48,53 +47,135 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
       child: ListView(
         children: dataPelanggaran
             .map((pelanggaran) => Container(
-                  // child: InkWell(
-                  //   onTap: () {
-                  //     Navigator.push(
-                  //         context,
-                  //         MaterialPageRoute(
-                  //             //Nanti dipilih berdasarkan index
-                  //             builder: (context) => KonfirmasiTilang()));
-                  //   },
-                  child: Card(
-                    elevation: 5,
-                    child: Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  //Nanti dipilih berdasarkan index
-                                  builder: (context) => KonfirmasiTilang()));
-                        },
-                        child: ListTile(
-                            leading: Icon(
-                              Icons.car_rental,
-                              size: 50,
-                            ),
-                            title: Text(
-                              pelanggaran.noTilang,
-                              style: TextStyle(fontSize: 16),
-                            ),
-                            subtitle: Container(
-                              decoration: new BoxDecoration(
-                                borderRadius: new BorderRadius.circular(16.0),
-                                color: Colors.yellow,
+                    // child: InkWell(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //             //Nanti dipilih berdasarkan index
+                    //             builder: (context) => KonfirmasiTilang()));
+                    //   },
+                    child: Builder(builder: (context) {
+                  /// some operation here ...
+                  if (pelanggaran.status == "Pemberitahuan Informasi") {
+                    return Card(
+                      elevation: 5,
+                      child: Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    //Nanti dipilih berdasarkan index
+                                    builder: (context) => KonfirmasiTilang()));
+                          },
+                          child: ListTile(
+                              leading: Icon(
+                                Icons.car_rental,
+                                size: 50,
                               ),
-                              margin: EdgeInsets.only(right: 60, top: 10),
-                              padding: EdgeInsets.symmetric(vertical: 5),
-                              child: Center(
-                                //Status di ambil dari database
-                                child: Text(pelanggaran.status,
-                                    style: TextStyle(fontSize: 12)),
+                              title: Text(
+                                pelanggaran.noTilang,
+                                style: TextStyle(fontSize: 16),
                               ),
-                            )),
+                              subtitle: Container(
+                                decoration: new BoxDecoration(
+                                  borderRadius: new BorderRadius.circular(16.0),
+                                  color: Colors.orange,
+                                ),
+                                margin: EdgeInsets.only(right: 60, top: 10),
+                                padding: EdgeInsets.symmetric(vertical: 5),
+                                child: Center(
+                                  //Status di ambil dari database
+                                  child: Text(pelanggaran.status,
+                                      style: TextStyle(fontSize: 12)),
+                                ),
+                              )),
+                        ),
                       ),
-                    ),
-                  ),
-                ))
+                    );
+                  } else
+                    return Card(
+                      elevation: 5,
+                      child: Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                        child: InkWell(
+                          // onTap: () {
+                          //   Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           //Nanti dipilih berdasarkan index
+                          //           builder: (context) => KonfirmasiTilang()));
+                          // },
+                          child: ListTile(
+                              leading: Icon(
+                                Icons.car_rental,
+                                size: 50,
+                              ),
+                              title: Text(
+                                pelanggaran.noTilang,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              subtitle: Container(
+                                decoration: new BoxDecoration(
+                                  borderRadius: new BorderRadius.circular(16.0),
+                                  color: Colors.yellow,
+                                ),
+                                margin: EdgeInsets.only(right: 60, top: 10),
+                                padding: EdgeInsets.symmetric(vertical: 5),
+                                child: Center(
+                                  //Status di ambil dari database
+                                  child: Text(pelanggaran.status,
+                                      style: TextStyle(fontSize: 12)),
+                                ),
+                              )),
+                        ),
+                      ),
+                    );
+                })
+
+                    // child: Card(
+                    //   elevation: 5,
+                    //   child: Container(
+                    //     margin:
+                    //         EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                    //     child: InkWell(
+                    //       onTap: () {
+                    //         Navigator.push(
+                    //             context,
+                    //             MaterialPageRoute(
+                    //                 //Nanti dipilih berdasarkan index
+                    //                 builder: (context) => KonfirmasiTilang()));
+                    //       },
+                    //       child: ListTile(
+                    //           leading: Icon(
+                    //             Icons.car_rental,
+                    //             size: 50,
+                    //           ),
+                    //           title: Text(
+                    //             pelanggaran.noTilang,
+                    //             style: TextStyle(fontSize: 16),
+                    //           ),
+                    //           subtitle: Container(
+                    //             decoration: new BoxDecoration(
+                    //               borderRadius: new BorderRadius.circular(16.0),
+                    //               color: Colors.yellow,
+                    //             ),
+                    //             margin: EdgeInsets.only(right: 60, top: 10),
+                    //             padding: EdgeInsets.symmetric(vertical: 5),
+                    //             child: Center(
+                    //               //Status di ambil dari database
+                    //               child: Text(pelanggaran.status,
+                    //                   style: TextStyle(fontSize: 12)),
+                    //             ),
+                    //           )),
+                    //     ),
+                    //   ),
+                    // ),
+                    ))
             .toList(),
       ),
     );
@@ -173,9 +254,70 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
   }
 }
 
+class ListPelanggaranKosong extends StatefulWidget {
+  @override
+  _ListPelanggaranKosongState createState() => _ListPelanggaranKosongState();
+}
+
+class _ListPelanggaranKosongState extends State<ListPelanggaranKosong> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        width: double.infinity,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Center(
+                child: ListView(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.symmetric(horizontal: 36, vertical: 24),
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(bottom: 16),
+                        child: Center(
+                          child: Icon(
+                            Icons.car_rental_sharp,
+                            size: 200,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              "Anda belum pernah terindikasi dalam melakukan pelanggaran!",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "Segera Melakukan Pelanggaran",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ]),
+              ),
+            ]),
+      ),
+    );
+  }
+}
+
 Future<List<Pelanggaran>> getListPelanggaran() async {
-  final response = await client
-      .rpc("getListPelanggaran", params: {'currentUser': user}).execute();
+  final response = await client.rpc("getListPelanggaran",
+      params: {'currentUser': FirebaseAuth.instance.currentUser.uid}).execute();
 
   final dataList = response.data as List;
   return dataList.map((map) => Pelanggaran.fromJson(map)).toList();

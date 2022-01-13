@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/sukses_melakukan_pembayaran.dart';
+import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
@@ -91,6 +92,8 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
           minWidth: double.infinity,
           height: 60,
           onPressed: () {
+            //Function Update Status menjadi Menunggu Konfirmasi
+
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -111,4 +114,13 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
       ),
     );
   }
+}
+
+updateStatus(int idPelanggaran, int idStatus) async {
+  var response = client
+      .from("m_pelanggaran")
+      .update({'idStatus': idStatus})
+      .eq('idPelanggaran', idPelanggaran)
+      .execute();
+  print(response);
 }

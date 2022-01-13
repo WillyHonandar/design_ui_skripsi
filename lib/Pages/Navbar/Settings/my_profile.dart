@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyProfile extends StatefulWidget {
@@ -22,7 +23,7 @@ class _MyProfileState extends State<MyProfile> {
                 title: Text('Nama Lengkap',
                     style:
                         TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-                subtitle: Text('Willy Hoanandar',
+                subtitle: Text(FirebaseAuth.instance.currentUser.displayName,
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
               ),
@@ -30,7 +31,7 @@ class _MyProfileState extends State<MyProfile> {
                 title: Text('Email',
                     style:
                         TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-                subtitle: Text('WillyHoanandar@gmail.com',
+                subtitle: Text(FirebaseAuth.instance.currentUser.email,
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
               ),
@@ -38,7 +39,7 @@ class _MyProfileState extends State<MyProfile> {
                 title: Text('Nomor Handphone',
                     style:
                         TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
-                subtitle: Text('08123456789',
+                subtitle: Text(FirebaseAuth.instance.currentUser.phoneNumber,
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
               )

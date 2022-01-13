@@ -6,9 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-List<Kendaraan> dataKendaraan;
-String displayName = FirebaseAuth.instance.currentUser.displayName;
-
 class RegisteredVehicles extends StatefulWidget {
   @override
 
@@ -32,6 +29,9 @@ class _RegisteredVehiclesState extends State<RegisteredVehicles> {
   int totalKendaraan = 0;
   //lempar data
 
+  List<Kendaraan> dataKendaraan;
+  String displayName = FirebaseAuth.instance.currentUser.displayName;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -46,18 +46,27 @@ class _RegisteredVehiclesState extends State<RegisteredVehicles> {
             if (totalKendaraan == 0) {
               return KendaraanKosong();
             }
-            return KendaraanAda();
+            return KendaraanAda(dataKendaraan: dataKendaraan);
           }),
     );
   }
 }
 
 class KendaraanAda extends StatefulWidget {
+  final List<Kendaraan> dataKendaraan;
+
+  KendaraanAda({this.dataKendaraan});
+
   @override
-  _KendaraanAdaState createState() => _KendaraanAdaState();
+  _KendaraanAdaState createState() =>
+      _KendaraanAdaState(dataKendaraan: dataKendaraan);
 }
 
 class _KendaraanAdaState extends State<KendaraanAda> {
+  List<Kendaraan> dataKendaraan;
+
+  _KendaraanAdaState({this.dataKendaraan});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +90,7 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      displayName,
+                      FirebaseAuth.instance.currentUser.displayName,
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w800,
@@ -112,8 +121,19 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                                       onTap: () {
                                         deleteKendaraan(kendaraan.idKendaraan)
                                             .then((value) {
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  //Nanti dipilih berdasarkan index
+                                                  builder: (context) =>
+                                                      RegisteredVehicles()));
+                                          Fluttertoast.showToast(
+                                              msg:
+                                                  "Sukses Menghapus Kendaraan!");
                                           setState(() {});
                                         });
+
+                                        // setState(() {});
                                       },
                                       // onTap: () => deleteKendaraan(
                                       //     kendaraan.idKendaraan),
@@ -243,7 +263,7 @@ class _KendaraanKosongState extends State<KendaraanKosong> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Halo Alessandro",
+                      FirebaseAuth.instance.currentUser.displayName,
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.w800,

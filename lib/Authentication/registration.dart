@@ -115,10 +115,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 // );
                                 Fluttertoast.showToast(
                                     msg: "Sukses Menambahkan Kendaraan");
-                                Navigator.pushReplacement(
+                                Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => MyHomePage()));
+                                        builder: (context) => MyHomePage()),
+                                    (route) => false);
+                                // Navigator.pushReplacement(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => MyHomePage()));
                                 User updateUser =
                                     FirebaseAuth.instance.currentUser;
                                 updateUser.updateDisplayName(

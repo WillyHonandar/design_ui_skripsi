@@ -105,11 +105,16 @@ class _LoginPageState extends State<LoginPage> {
                               Fluttertoast.showToast(
                                   msg:
                                       "Signed in sucessfully!"); //kasih tau nama sign in
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => MyHomePage()),
-                              );
+                              // Navigator.pushReplacement(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //       builder: (context) => MyHomePage()),
+                              // );
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyHomePage()),
+                                  (route) => false);
                               print(FirebaseAuth.instance.currentUser.uid);
                             });
                           } catch (e) {

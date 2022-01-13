@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 List<Pelanggaran> dataPelanggaran;
 int totalRiwayatPelanggaran;
-String user = FirebaseAuth.instance.currentUser.uid;
 
 class RiwayatTilang extends StatefulWidget {
   @override
@@ -24,9 +23,9 @@ class _RiwayatTilangState extends State<RiwayatTilang> {
             }
             dataPelanggaran = snapshot.data;
             totalRiwayatPelanggaran = snapshot.data.length;
-            // if (totalPelanggaran == 0) {
-            //   return KendaraanKosong();
-            // }
+            if (totalRiwayatPelanggaran == 0) {
+              return RiwayatKosong();
+            }
             return RiwayatTilangAda();
           }),
     );
@@ -156,9 +155,70 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
   }
 }
 
+class RiwayatKosong extends StatefulWidget {
+  @override
+  _RiwayatKosongState createState() => _RiwayatKosongState();
+}
+
+class _RiwayatKosongState extends State<RiwayatKosong> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        width: double.infinity,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Center(
+                child: ListView(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.symmetric(horizontal: 36, vertical: 24),
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(bottom: 16),
+                        child: Center(
+                          child: Icon(
+                            Icons.car_rental_sharp,
+                            size: 200,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              "Anda belum pernah terindikasi dalam melakukan pelanggaran!",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "Segera Melakukan Pelanggaran",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ]),
+              ),
+            ]),
+      ),
+    );
+  }
+}
+
 Future<List<Pelanggaran>> getRiwayatPelanggaran() async {
-  final response = await client
-      .rpc("getRiwayatPelanggaran", params: {'currentUser': user}).execute();
+  final response = await client.rpc("getRiwayatPelanggaran",
+      params: {'currentUser': FirebaseAuth.instance.currentUser.uid}).execute();
 
   final dataList = response.data as List;
   return dataList.map((map) => Pelanggaran.fromJson(map)).toList();
