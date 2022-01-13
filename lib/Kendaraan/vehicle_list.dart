@@ -80,7 +80,7 @@ class _KendaraanAdaState extends State<KendaraanAda> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           width: double.infinity,
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

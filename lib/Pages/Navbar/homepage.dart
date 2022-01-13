@@ -265,7 +265,7 @@ class CekPengetahuan extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
             child: Row(
               children: [
                 Icon(Icons.lightbulb_rounded),
@@ -285,7 +285,7 @@ class CekPengetahuan extends StatelessWidget {
           /// disini tambah nya
           Container(
             color: Colors.yellow,
-            margin: EdgeInsets.symmetric(horizontal: 24),
+            margin: EdgeInsets.symmetric(horizontal: 16),
             height: 150,
             child: Carousel(
               radius: Radius.circular(10),
@@ -443,7 +443,7 @@ class NewsHomepage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
             child: Row(
               children: [
                 Icon(Icons.notes),

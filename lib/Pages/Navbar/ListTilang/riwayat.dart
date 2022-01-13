@@ -41,7 +41,7 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 24, left: 24, right: 24),
+      margin: EdgeInsets.only(top: 16, left: 16, right: 16),
       child: ListView(
         children: dataPelanggaran
             .map((pelanggaran) => Container(
@@ -165,7 +165,7 @@ class _RiwayatKosongState extends State<RiwayatKosong> {
   Widget build(BuildContext context) {
     return Container(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: EdgeInsets.symmetric(horizontal: 16),
         width: double.infinity,
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

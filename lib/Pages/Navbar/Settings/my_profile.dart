@@ -16,7 +16,7 @@ class _MyProfileState extends State<MyProfile> {
         backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       ),
       body: Container(
-          padding: EdgeInsets.all(24),
+          padding: EdgeInsets.all(16),
           child: Column(
             children: [
               ListTile(
