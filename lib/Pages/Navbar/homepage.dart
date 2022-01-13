@@ -459,53 +459,101 @@ class NewsHomepage extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            height: 220,
-            margin: EdgeInsets.symmetric(horizontal: 24),
-            child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: newsImage.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 5,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => News(
-                                      ind: index,
-                                    )));
-                      },
-                      splashColor: Colors.blue.withAlpha(30),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Container(
-                            margin: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 20),
-                            child: ListTile(
-                              leading: ClipRRect(
-                                  borderRadius: BorderRadius.circular(5),
-                                  child: Image(
-                                    image: AssetImage(
-                                        "assets/berita/" + newsImage[index]),
-                                  )),
-                              title: Text(
-                                newsTitle[index],
-                                style: TextStyle(fontSize: 12),
-                                // textAlign: TextAlign.justify
-                              ),
-                            ),
-                            // subtitle: Text(newsDesc[index],
-                            //     textAlign: TextAlign.justify)),
-                          ),
-                        ],
+
+          ListView.builder(
+              itemCount: newsImage.length,
+              padding: EdgeInsets.only(left: 16, right: 16),
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return Container(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => News(
+                                    ind: index,
+                                  )));
+                    },
+                    child: ListTile(
+                      leading: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Image(
+                            image:
+                                AssetImage("assets/berita/" + newsImage[index]),
+                          )),
+                      title: Text(
+                        newsTitle[index],
+                        style: TextStyle(fontSize: 12),
+                        // textAlign: TextAlign.justify
                       ),
                     ),
-                  );
-                }),
-          ),
+                  ),
+                  height: 80,
+                  margin: EdgeInsets.only(bottom: 13),
+                  padding:
+                      EdgeInsets.only(left: 24, top: 12, bottom: 12, right: 22),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 10,
+                            spreadRadius: 1,
+                            offset: Offset(8.0, 8.0))
+                      ]),
+                );
+              })
+
+          // Container(
+          //   height: 220,
+          //   margin: EdgeInsets.symmetric(horizontal: 24),
+          //   child: ListView.builder(
+          //       scrollDirection: Axis.vertical,
+          //       itemCount: newsImage.length,
+          //       itemBuilder: (context, index) {
+          //         return Card(
+          //           elevation: 5,
+          //           child: InkWell(
+          //             onTap: () {
+          //               Navigator.push(
+          //                   context,
+          //                   MaterialPageRoute(
+          //                       builder: (context) => News(
+          //                             ind: index,
+          //                           )));
+          //             },
+          //             splashColor: Colors.blue.withAlpha(30),
+          //             child: Column(
+          //               mainAxisSize: MainAxisSize.min,
+          //               children: <Widget>[
+          //                 Container(
+          //                   margin: EdgeInsets.symmetric(
+          //                       horizontal: 10, vertical: 20),
+          //                   child: ListTile(
+          //                     leading: ClipRRect(
+          //                         borderRadius: BorderRadius.circular(5),
+          //                         child: Image(
+          //                           image: AssetImage(
+          //                               "assets/berita/" + newsImage[index]),
+          //                         )),
+          //                     title: Text(
+          //                       newsTitle[index],
+          //                       style: TextStyle(fontSize: 12),
+          //                       // textAlign: TextAlign.justify
+          //                     ),
+          //                   ),
+          //                   // subtitle: Text(newsDesc[index],
+          //                   //     textAlign: TextAlign.justify)),
+          //                 ),
+          //               ],
+          //             ),
+          //           ),
+          //         );
+          //       }),
+          // ),
+
           // berita(
           //     image: "assets/berita/berita1.jpeg",
           //     title: "Peraturan Terbaru ETLE",
