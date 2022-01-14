@@ -460,51 +460,55 @@ class NewsHomepage extends StatelessWidget {
             ),
           ),
 
-          ListView.builder(
-              itemCount: newsImage.length,
-              padding: EdgeInsets.only(left: 16, right: 16),
-              shrinkWrap: true,
-              itemBuilder: (context, index) {
-                return Container(
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => News(
-                                    ind: index,
-                                  )));
-                    },
-                    child: ListTile(
-                      leading: ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: Image(
-                            image:
-                                AssetImage("assets/berita/" + newsImage[index]),
-                          )),
-                      title: Text(
-                        newsTitle[index],
-                        style: TextStyle(fontSize: 12),
-                        // textAlign: TextAlign.justify
+          Container(
+            child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                scrollDirection: Axis.vertical,
+                itemCount: newsImage.length,
+                padding: EdgeInsets.only(left: 16, right: 16),
+                shrinkWrap: true,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => News(
+                                      ind: index,
+                                    )));
+                      },
+                      child: ListTile(
+                        leading: ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Image(
+                              image: AssetImage(
+                                  "assets/berita/" + newsImage[index]),
+                            )),
+                        title: Text(
+                          newsTitle[index],
+                          style: TextStyle(fontSize: 12),
+                          // textAlign: TextAlign.justify
+                        ),
                       ),
                     ),
-                  ),
-                  height: 80,
-                  margin: EdgeInsets.only(bottom: 13),
-                  padding:
-                      EdgeInsets.only(left: 24, top: 12, bottom: 12, right: 22),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey,
-                            blurRadius: 10,
-                            spreadRadius: 1,
-                            offset: Offset(8.0, 8.0))
-                      ]),
-                );
-              })
+                    height: 80,
+                    margin: EdgeInsets.only(bottom: 13),
+                    padding: EdgeInsets.only(
+                        left: 24, top: 12, bottom: 12, right: 22),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 10,
+                              spreadRadius: 1,
+                              offset: Offset(8.0, 8.0))
+                        ]),
+                  );
+                }),
+          )
 
           // Container(
           //   height: 220,
@@ -572,34 +576,34 @@ class NewsHomepage extends StatelessWidget {
   }
 }
 
-Widget berita({image, title, date}) {
-  return Container(
-    height: 70,
-    padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
-    margin: EdgeInsets.only(top: 20, left: 50, right: 35),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(5),
-      color: Colors.green,
-    ),
-    child: Row(
-      children: [
-        Row(
-          children: [
-            Container(
-              height: 57,
-              width: 60,
-              decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(image))),
-            ),
-            SizedBox(width: 13),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text(title), Text(date)],
-            )
-          ],
-        )
-      ],
-    ),
-  );
-}
+// Widget berita({image, title, date}) {
+//   return Container(
+//     height: 70,
+//     padding: EdgeInsets.only(left: 15, right: 15, top: 10, bottom: 10),
+//     margin: EdgeInsets.only(top: 20, left: 50, right: 35),
+//     decoration: BoxDecoration(
+//       borderRadius: BorderRadius.circular(5),
+//       color: Colors.green,
+//     ),
+//     child: Row(
+//       children: [
+//         Row(
+//           children: [
+//             Container(
+//               height: 57,
+//               width: 60,
+//               decoration: BoxDecoration(
+//                   image: DecorationImage(image: AssetImage(image))),
+//             ),
+//             SizedBox(width: 13),
+//             Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               mainAxisAlignment: MainAxisAlignment.center,
+//               children: [Text(title), Text(date)],
+//             )
+//           ],
+//         )
+//       ],
+//     ),
+//   );
+// }

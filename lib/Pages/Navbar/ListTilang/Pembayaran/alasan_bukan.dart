@@ -1,12 +1,27 @@
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/sukses_bukan_kendaraan.dart';
+import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AlasanBukan extends StatefulWidget {
+  final String status;
+  final int idPelanggaran;
+
+  AlasanBukan(this.status, this.idPelanggaran);
+
   @override
-  _AlasanBukanState createState() => _AlasanBukanState();
+  State<StatefulWidget> createState() {
+    return _AlasanBukanState(this.status, this.idPelanggaran);
+  }
 }
 
 class _AlasanBukanState extends State<AlasanBukan> {
+  final TextEditingController _alasanBukanController = TextEditingController();
+  String status;
+  int idPelanggaran;
+
+  _AlasanBukanState(this.status, this.idPelanggaran);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +43,7 @@ class _AlasanBukanState extends State<AlasanBukan> {
                 ),
                 SizedBox(height: 20),
                 TextField(
+                  controller: _alasanBukanController,
                   maxLines: 16,
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -50,11 +66,19 @@ class _AlasanBukanState extends State<AlasanBukan> {
           minWidth: double.infinity,
           height: 60,
           onPressed: () {
-            Navigator.push(
+            addAlasanBukan(idPelanggaran, _alasanBukanController.text);
+            updateStatus(idPelanggaran, 2);
+            // updateStatus(idPelanggaran, idStatus)
+            // Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //         //Nanti dipilih berdasarkan index
+            //         builder: (context) => SuksesBukanKendaraan()));
+
+            Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(
-                    //Nanti dipilih berdasarkan index
-                    builder: (context) => SuksesBukanKendaraan()));
+                MaterialPageRoute(builder: (context) => SuksesBukanKendaraan()),
+                (route) => false);
           },
           color: Colors.blue,
           elevation: 0,
@@ -70,4 +94,29 @@ class _AlasanBukanState extends State<AlasanBukan> {
       ),
     );
   }
+}
+
+addAlasanBukan(int idPelanggaran, String alasanBukan) async {
+  try {
+    print(idPelanggaran);
+
+    print(alasanBukan);
+
+    var response = await client.from("m_komplain").insert({
+      'idPelanggaran': idPelanggaran,
+      'alasanBukan': alasanBukan,
+    }).execute();
+    print("sudah benar");
+  } catch (e) {
+    print("ini Error" + e);
+  }
+}
+
+updateStatus(int idPelanggaran, int idStatus) async {
+  var response = client
+      .from("m_pelanggaran")
+      .update({'idStatus': idStatus})
+      .eq('idPelanggaran', idPelanggaran)
+      .execute();
+  print(response);
 }

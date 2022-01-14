@@ -42,21 +42,21 @@ class Pembayaran extends StatelessWidget {
                                       '- Login aplikasi BRI Mobile\n'
                                       '- Pilih menu Mobile Banking BRI > Pembayaran > BRIVA\n'
                                       '- Masukkan 15 angka Nomor Pembayaran Tilang\n'
-                                      '-Masukkan nominal pembayaran sesuai jumlah denda yang harus dibayarkan, Transaksi akan ditolak jika pembayaran tidak sesuai dengan jumlah denda titipan\n'
-                                      '-Masukkan PIN\n'
-                                      '-Simpan notifikasi SMS sebagai bukti pembayaran\n'
-                                      '-Tunjukkan notifikasi SMS ke penindak untuk ditukarkan dengan barang bukti yang disita\n',
+                                      '- Masukkan nominal pembayaran sesuai jumlah denda yang harus dibayarkan, Transaksi akan ditolak jika pembayaran tidak sesuai dengan jumlah denda titipan\n'
+                                      '- Masukkan PIN\n'
+                                      '- Simpan notifikasi SMS sebagai bukti pembayaran\n'
+                                      '- Tunjukkan notifikasi SMS ke penindak untuk ditukarkan dengan barang bukti yang disita\n',
                                       textAlign: TextAlign.justify)),
                               ListTile(
                                   title: Text("2. Melalui ATM BRI\n"),
                                   subtitle: Text(
-                                      '-Masukkan Kartu Debit BRI dan PIN Anda\n'
-                                      '-Pilih menu Transaksi Lain > Pembayaran > Lainnya > BRIVA\n'
-                                      '-Masukkan 15 angka Nomor Pembayaran Tilang\n'
-                                      '-Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti Nomor BRIVA, Nama Pelanggar dan Jumlah Pembayaran\n'
-                                      '-Ikuti instruksi untuk menyelesaikan transaksi\n'
-                                      '-Copy struk ATM sebagai bukti pembayaran yang sah dan disimpan\n'
-                                      '-Struk ATM asli diserahkan ke penindak untuk ditukarkan dengan barang bukti yang disita\n',
+                                      '- Masukkan Kartu Debit BRI dan PIN Anda\n'
+                                      '- Pilih menu Transaksi Lain > Pembayaran > Lainnya > BRIVA\n'
+                                      '- Masukkan 15 angka Nomor Pembayaran Tilang\n'
+                                      '- Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti Nomor BRIVA, Nama Pelanggar dan Jumlah Pembayaran\n'
+                                      '- Ikuti instruksi untuk menyelesaikan transaksi\n'
+                                      '- Copy struk ATM sebagai bukti pembayaran yang sah dan disimpan\n'
+                                      '- Struk ATM asli diserahkan ke penindak untuk ditukarkan dengan barang bukti yang disita\n',
                                       textAlign: TextAlign.justify)),
                             ],
                           ),

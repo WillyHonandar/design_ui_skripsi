@@ -1,25 +1,42 @@
 class Pelanggaran {
+  int idPelanggaran;
   String noTilang;
   String jenisPelanggaran;
   String deskripsiPelanggaran;
   String fotoBuktiPelanggaran;
+  String tanggalPelanggaran;
   String status;
+  String alasanBukan;
+  String jenisKendaraan;
+  String noPlat;
+  String noMesin;
 
   Pelanggaran(
-      {this.noTilang,
+      {this.idPelanggaran,
+      this.noTilang,
       this.jenisPelanggaran,
       this.deskripsiPelanggaran,
       this.fotoBuktiPelanggaran,
-      this.status});
+      this.tanggalPelanggaran,
+      this.status,
+      this.alasanBukan,
+      this.jenisKendaraan,
+      this.noPlat,
+      this.noMesin});
 
   factory Pelanggaran.fromJson(Map<String, dynamic> map) {
     return Pelanggaran(
-      noTilang: map['noTilang'],
-      jenisPelanggaran: map['jenisPelanggaran'],
-      deskripsiPelanggaran: map['deskripsiPelanggaran'],
-      fotoBuktiPelanggaran: map['fotoBuktiPelanggaran'],
-      status: map['status'],
-    );
+        idPelanggaran: map['idPelanggaran'],
+        noTilang: map['noTilang'],
+        jenisPelanggaran: map['jenisPelanggaran'],
+        deskripsiPelanggaran: map['deskripsiPelanggaran'],
+        fotoBuktiPelanggaran: map['fotoBuktiPelanggaran'],
+        tanggalPelanggaran: map['tanggalPelanggaran'],
+        status: map['status'],
+        alasanBukan: map['alasanBukan'],
+        jenisKendaraan: map['jenisKendaraan'],
+        noPlat: map['noPlat'],
+        noMesin: map['noMesin']);
   }
 }
 

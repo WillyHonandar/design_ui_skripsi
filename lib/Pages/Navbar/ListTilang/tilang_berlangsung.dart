@@ -4,6 +4,7 @@ import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/detail_status.d
 import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 List<Pelanggaran> dataPelanggaran;
 int totalPelanggaran;
@@ -40,6 +41,9 @@ class ListPelanggaranAda extends StatefulWidget {
 }
 
 class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
+  int idPelanggaran = pelanggaran.idPelanggaran;
+  String status = pelanggaran.status;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,16 +69,28 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: InkWell(
                           onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    //Nanti dipilih berdasarkan index
-                                    builder: (context) => KonfirmasiTilang()));
+                            // Navigator.pushNamed(
+                            //     context, "KonfirmasiPelanggaran", arguments: {
+                            //   "idPelanggaran": pelanggaran.idPelanggaran,
+                            //   "status": pelanggaran.status
+                            // });
+
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         //Nanti dipilih berdasarkan index
+                            //         builder: (context) =>
+                            //             KonfirmasiPelanggaran()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => KonfirmasiPelanggaran(
+                                    pelanggaran.status,
+                                    pelanggaran.idPelanggaran)));
                           },
                           child: ListTile(
                               leading: Icon(
-                                Icons.car_rental,
-                                size: 50,
+                                MaterialCommunityIcons.information,
+                                size: 60,
+                                color: Colors.orange,
                               ),
                               title: Text(
                                 pelanggaran.noTilang,
@@ -111,27 +127,29 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                           //           builder: (context) => KonfirmasiTilang()));
                           // },
                           child: ListTile(
-                              leading: Icon(
-                                Icons.car_rental,
-                                size: 50,
+                            leading: Icon(
+                              MaterialCommunityIcons.clock,
+                              size: 60,
+                              color: Colors.yellow,
+                            ),
+                            title: Text(
+                              pelanggaran.noTilang,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            subtitle: Container(
+                              decoration: new BoxDecoration(
+                                borderRadius: new BorderRadius.circular(16.0),
+                                color: Colors.yellow,
                               ),
-                              title: Text(
-                                pelanggaran.noTilang,
-                                style: TextStyle(fontSize: 16),
+                              margin: EdgeInsets.only(right: 60, top: 10),
+                              padding: EdgeInsets.symmetric(vertical: 5),
+                              child: Center(
+                                //Status di ambil dari database
+                                child: Text(pelanggaran.status,
+                                    style: TextStyle(fontSize: 12)),
                               ),
-                              subtitle: Container(
-                                decoration: new BoxDecoration(
-                                  borderRadius: new BorderRadius.circular(16.0),
-                                  color: Colors.yellow,
-                                ),
-                                margin: EdgeInsets.only(right: 60, top: 10),
-                                padding: EdgeInsets.symmetric(vertical: 5),
-                                child: Center(
-                                  //Status di ambil dari database
-                                  child: Text(pelanggaran.status,
-                                      style: TextStyle(fontSize: 12)),
-                                ),
-                              )),
+                            ),
+                          ),
                         ),
                       ),
                     );
@@ -179,7 +197,81 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
             .toList(),
       ),
     );
-    // return Container(
+  }
+}
+
+class ListPelanggaranKosong extends StatefulWidget {
+  @override
+  _ListPelanggaranKosongState createState() => _ListPelanggaranKosongState();
+}
+
+class _ListPelanggaranKosongState extends State<ListPelanggaranKosong> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        width: double.infinity,
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Center(
+                child: ListView(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.symmetric(horizontal: 36, vertical: 24),
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(bottom: 16),
+                        child: Center(
+                          child: Icon(
+                            Icons.car_rental_sharp,
+                            size: 200,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Center(
+                        child: Column(
+                          children: [
+                            Text(
+                              "Anda belum pernah terindikasi dalam melakukan pelanggaran!",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(height: 20),
+                            Text(
+                              "Segera Melakukan Pelanggaran",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ]),
+              ),
+            ]),
+      ),
+    );
+  }
+}
+
+Future<List<Pelanggaran>> getListPelanggaran() async {
+  final response = await client.rpc("getListPelanggaran",
+      params: {'currentUser': FirebaseAuth.instance.currentUser.uid}).execute();
+  print(pelanggaran.idPelanggaran);
+  print(pelanggaran.status);
+  final dataList = response.data as List;
+  return dataList.map((map) => Pelanggaran.fromJson(map)).toList();
+}
+
+
+ // return Container(
     //   child: Container(
     //     margin: EdgeInsets.all(24),
     //     child: ListView.builder(
@@ -251,74 +343,3 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
     //         }),
     //   ),
     // );
-  }
-}
-
-class ListPelanggaranKosong extends StatefulWidget {
-  @override
-  _ListPelanggaranKosongState createState() => _ListPelanggaranKosongState();
-}
-
-class _ListPelanggaranKosongState extends State<ListPelanggaranKosong> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        width: double.infinity,
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Center(
-                child: ListView(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.symmetric(horizontal: 36, vertical: 24),
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(bottom: 16),
-                        child: Center(
-                          child: Icon(
-                            Icons.car_rental_sharp,
-                            size: 200,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Center(
-                        child: Column(
-                          children: [
-                            Text(
-                              "Anda belum pernah terindikasi dalam melakukan pelanggaran!",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(height: 20),
-                            Text(
-                              "Segera Melakukan Pelanggaran",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.grey),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ]),
-              ),
-            ]),
-      ),
-    );
-  }
-}
-
-Future<List<Pelanggaran>> getListPelanggaran() async {
-  final response = await client.rpc("getListPelanggaran",
-      params: {'currentUser': FirebaseAuth.instance.currentUser.uid}).execute();
-
-  final dataList = response.data as List;
-  return dataList.map((map) => Pelanggaran.fromJson(map)).toList();
-}

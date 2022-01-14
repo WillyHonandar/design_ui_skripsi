@@ -4,6 +4,7 @@ import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
 import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisteredVehicles extends StatefulWidget {
@@ -15,22 +16,12 @@ class RegisteredVehicles extends StatefulWidget {
 }
 
 class _RegisteredVehiclesState extends State<RegisteredVehicles> {
-  bool hasError = false;
-  String currentText = "";
-
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-  final formKey = GlobalKey<FormState>();
-  final TextEditingController textEditingController = TextEditingController();
-  final TextEditingController _nomorMesinKendaraanController =
-      TextEditingController();
-
   List<int> list = [1, 2, 3, 4, 5];
   String user = FirebaseAuth.instance.currentUser.uid;
   int totalKendaraan = 0;
   //lempar data
 
   List<Kendaraan> dataKendaraan;
-  String displayName = FirebaseAuth.instance.currentUser.displayName;
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +90,7 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: Text(
-                        "Anda Memiliki total .. kendaraan!" + "asdasd",
+                        "Anda Memiliki total .. kendaraan!",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w500),
                       ),
@@ -112,42 +103,93 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                   child: ListView(
                     children: dataKendaraan
                         .map((kendaraan) => Container(
-                              child: Card(
-                                child: ListTile(
-                                  leading: Icon(Icons.car_rental),
-                                  title: Text(kendaraan.noPlat),
-                                  subtitle: Text(kendaraan.noMesin),
-                                  trailing: InkWell(
-                                      onTap: () {
-                                        deleteKendaraan(kendaraan.idKendaraan)
-                                            .then((value) {
-                                          Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(
-                                                  //Nanti dipilih berdasarkan index
-                                                  builder: (context) =>
-                                                      RegisteredVehicles()));
-                                          Fluttertoast.showToast(
-                                              msg:
-                                                  "Sukses Menghapus Kendaraan!");
-                                          setState(() {});
-                                        });
+                              child: Builder(builder: (context) {
+                                if (kendaraan.jenisKendaraan == "Mobil") {
+                                  return Card(
+                                    child: ListTile(
+                                      leading: Icon(
+                                        MaterialCommunityIcons.car,
+                                        size: 50,
+                                        color: Colors.black,
+                                      ),
+                                      title: Text(kendaraan.noPlat),
+                                      subtitle: Text(kendaraan.noMesin),
+                                      trailing: InkWell(
+                                          onTap: () {
+                                            deleteKendaraan(
+                                                    kendaraan.idKendaraan)
+                                                .then((value) {
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      //Nanti dipilih berdasarkan index
+                                                      builder: (context) =>
+                                                          RegisteredVehicles()));
+                                              // Fluttertoast.showToast(
+                                              //     msg:
+                                              //         "Sukses Menghapus Kendaraan!");
+                                              // setState(() {});
+                                            });
 
-                                        // setState(() {});
-                                      },
-                                      // onTap: () => deleteKendaraan(
-                                      //     kendaraan.idKendaraan),
-                                      // Fluttertoast.showToast(
-                                      //     msg: "Sukses Hapus Kendaraan!");
+                                            // setState(() {});
+                                          },
+                                          // onTap: () => deleteKendaraan(
+                                          //     kendaraan.idKendaraan),
+                                          // Fluttertoast.showToast(
+                                          //     msg: "Sukses Hapus Kendaraan!");
 
-                                      // onTap: () => deleteKendaraan(
-                                      //     kendaraan.idKendaraan),
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: Colors.red,
-                                      )),
-                                ),
-                              ),
+                                          // onTap: () => deleteKendaraan(
+                                          //     kendaraan.idKendaraan),
+                                          child: Icon(
+                                            Icons.delete,
+                                            color: Colors.red,
+                                          )),
+                                    ),
+                                  );
+                                } else {
+                                  return Card(
+                                    child: ListTile(
+                                      leading: Icon(
+                                        MaterialCommunityIcons.motorbike,
+                                        size: 50,
+                                        color: Colors.black,
+                                      ),
+                                      title: Text(kendaraan.noPlat),
+                                      subtitle: Text(kendaraan.noMesin),
+                                      trailing: InkWell(
+                                          onTap: () {
+                                            deleteKendaraan(
+                                                    kendaraan.idKendaraan)
+                                                .then((value) {
+                                              Navigator.pushReplacement(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      //Nanti dipilih berdasarkan index
+                                                      builder: (context) =>
+                                                          RegisteredVehicles()));
+                                              // Fluttertoast.showToast(
+                                              //     msg:
+                                              //         "Sukses Menghapus Kendaraan!");
+                                              // setState(() {});
+                                            });
+
+                                            // setState(() {});
+                                          },
+                                          // onTap: () => deleteKendaraan(
+                                          //     kendaraan.idKendaraan),
+                                          // Fluttertoast.showToast(
+                                          //     msg: "Sukses Hapus Kendaraan!");
+
+                                          // onTap: () => deleteKendaraan(
+                                          //     kendaraan.idKendaraan),
+                                          child: Icon(
+                                            Icons.delete,
+                                            color: Colors.red,
+                                          )),
+                                    ),
+                                  );
+                                }
+                              }),
                             ))
                         .toList(),
                   ),
@@ -349,8 +391,8 @@ class _KendaraanKosongState extends State<KendaraanKosong> {
 // }
 
 Future<List<Kendaraan>> getKendaraan(String user) async {
-  final response = await client
-      .rpc("getKendaraan2", params: {'currentUser': user}).execute();
+  final response =
+      await client.rpc("getKendaraan", params: {'currentUser': user}).execute();
 
   final dataList = response.data as List;
   return dataList.map((map) => Kendaraan.fromJson(map)).toList();
@@ -362,5 +404,12 @@ Future deleteKendaraan(int idKendaraan) async {
       .delete()
       .eq('idKendaraan', idKendaraan)
       .execute();
-  print(response);
+  if (response.error == null) {
+    Fluttertoast.showToast(msg: "Sukses Menghapus Kendaraan!");
+  } else {
+    Fluttertoast.showToast(
+        msg:
+            "Gagal Menghapus Kendaraan! Kendaraan anda masih dalam proses tilang!");
+  }
+  print(response.error);
 }

@@ -94,11 +94,16 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
           onPressed: () {
             //Function Update Status menjadi Menunggu Konfirmasi
 
-            Navigator.push(
+            // Navigator.push(
+            //     context,
+            //     MaterialPageRoute(
+            //         //Nanti dipilih berdasarkan index
+            //         builder: (context) => SuksesMelakukanPembayaran()));
+            Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(
-                    //Nanti dipilih berdasarkan index
-                    builder: (context) => SuksesMelakukanPembayaran()));
+                    builder: (context) => SuksesMelakukanPembayaran()),
+                (route) => false);
           },
           color: Colors.blue,
           elevation: 0,
