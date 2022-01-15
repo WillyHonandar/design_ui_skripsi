@@ -106,20 +106,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               setState(() {
                                 Fluttertoast.showToast(
                                     msg: "succesffuly signed up!");
-                                // Navigator.pushReplacement(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) => OTPScreen(
-                                //           _phoneNumberController.text,
-                                //           _usernameController.text)),
-                                // );
-                                Fluttertoast.showToast(
-                                    msg: "Sukses Menambahkan Kendaraan");
-                                Navigator.pushAndRemoveUntil(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => MyHomePage()),
-                                    (route) => false);
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => OTPScreen(
+                                          _phoneNumberController.text,
+                                          _usernameController.text)),
+                                );
                                 // Navigator.pushReplacement(
                                 //     context,
                                 //     MaterialPageRoute(
