@@ -48,6 +48,7 @@ dependencies:
   image_picker: ^0.8.4
   im_stepper: ^0.1.2+10
   cupertino_stepper: ^0.2.1
+  status_change: ^1.0.0
   
 dev_dependencies:
   flutter_test:

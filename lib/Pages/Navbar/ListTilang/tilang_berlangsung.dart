@@ -1,6 +1,7 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/konfirmasi_tilang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/detail_status.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/stepper.dart';
 import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -87,28 +88,43 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                     pelanggaran.idPelanggaran)));
                           },
                           child: ListTile(
-                              leading: Icon(
-                                MaterialCommunityIcons.information,
-                                size: 60,
+                            leading: Icon(
+                              MaterialCommunityIcons.information,
+                              size: 60,
+                              color: Colors.orange,
+                            ),
+                            title: Text(
+                              pelanggaran.noTilang,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            subtitle: Container(
+                              decoration: new BoxDecoration(
+                                borderRadius: new BorderRadius.circular(16.0),
                                 color: Colors.orange,
                               ),
-                              title: Text(
-                                pelanggaran.noTilang,
-                                style: TextStyle(fontSize: 16),
+                              margin: EdgeInsets.only(right: 20, top: 10),
+                              padding: EdgeInsets.symmetric(vertical: 5),
+                              child: Center(
+                                //Status di ambil dari database
+                                child: Text(pelanggaran.status,
+                                    style: TextStyle(fontSize: 12)),
                               ),
-                              subtitle: Container(
-                                decoration: new BoxDecoration(
-                                  borderRadius: new BorderRadius.circular(16.0),
-                                  color: Colors.orange,
-                                ),
-                                margin: EdgeInsets.only(right: 60, top: 10),
-                                padding: EdgeInsets.symmetric(vertical: 5),
-                                child: Center(
-                                  //Status di ambil dari database
-                                  child: Text(pelanggaran.status,
-                                      style: TextStyle(fontSize: 12)),
-                                ),
-                              )),
+                            ),
+                            trailing: InkWell(
+                              onTap: () {
+                                // Navigator.of(context).push(MaterialPageRoute(
+                                //     builder: (context) => StepperPage(
+                                //         pelanggaran.status,
+                                //         pelanggaran.idPelanggaran)));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => HorizontalExample(
+                                        pelanggaran.status,
+                                        pelanggaran.idPelanggaran)));
+                              },
+                              child: Icon(
+                                  MaterialCommunityIcons.information_variant),
+                            ),
+                          ),
                         ),
                       ),
                     );
@@ -141,13 +157,27 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 borderRadius: new BorderRadius.circular(16.0),
                                 color: Colors.yellow,
                               ),
-                              margin: EdgeInsets.only(right: 60, top: 10),
+                              margin: EdgeInsets.only(right: 20, top: 10),
                               padding: EdgeInsets.symmetric(vertical: 5),
                               child: Center(
                                 //Status di ambil dari database
                                 child: Text(pelanggaran.status,
                                     style: TextStyle(fontSize: 12)),
                               ),
+                            ),
+                            trailing: InkWell(
+                              onTap: () {
+                                // Navigator.of(context).push(MaterialPageRoute(
+                                //     builder: (context) => StepperPage(
+                                //         pelanggaran.status,
+                                //         pelanggaran.idPelanggaran)));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => HorizontalExample(
+                                        pelanggaran.status,
+                                        pelanggaran.idPelanggaran)));
+                              },
+                              child: Icon(
+                                  MaterialCommunityIcons.information_variant),
                             ),
                           ),
                         ),

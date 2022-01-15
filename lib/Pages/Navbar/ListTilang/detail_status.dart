@@ -5,13 +5,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:cupertino_stepper/cupertino_stepper.dart';
 
+int currentStep;
+
 class StepperPage extends StatefulWidget {
   @override
-  _StepperPageState createState() => _StepperPageState();
+  final int idPelanggaran;
+  final String status;
+  StepperPage(this.status, this.idPelanggaran);
+
+  @override
+  State<StatefulWidget> createState() {
+    return _StepperPageState(this.status, this.idPelanggaran);
+  }
 }
 
 class _StepperPageState extends State<StepperPage> {
-  int currentStep = 1;
+  int idPelanggaran;
+  String status;
+  _StepperPageState(this.status, this.idPelanggaran);
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +48,16 @@ class _StepperPageState extends State<StepperPage> {
   }
 
   CupertinoStepper _buildStepper(StepperType type) {
+    void statusValidation(String status) {
+      if (status == "Pemberitahuan Informasi") {
+        currentStep = 0;
+      } else {
+        currentStep = 1;
+      }
+    }
+
+    statusValidation(status);
+
     return CupertinoStepper(
       type: type,
       currentStep: currentStep,

@@ -1,7 +1,9 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/stepper.dart';
 import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 List<Pelanggaran> dataPelanggaran;
 int totalRiwayatPelanggaran;
@@ -59,35 +61,50 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                       margin:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                       child: InkWell(
-                        // onTap: () {
-                        //   Navigator.push(
-                        //       context,
-                        //       MaterialPageRoute(
-                        //           //Nanti dipilih berdasarkan index
-                        //           builder: (context) => KonfirmasiTilang()));
-                        // },
+                        onTap: () {
+                          // Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(
+                          //         //Nanti dipilih berdasarkan index
+                          //         builder: (context) => KonfirmasiTilang()));
+                        },
                         child: ListTile(
-                            leading: Icon(
-                              Icons.car_rental,
-                              size: 50,
+                          leading: Icon(
+                            Icons.car_rental,
+                            size: 50,
+                          ),
+                          title: Text(
+                            pelanggaran.noTilang,
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          subtitle: Container(
+                            decoration: new BoxDecoration(
+                              borderRadius: new BorderRadius.circular(16.0),
+                              color: Colors.green,
                             ),
-                            title: Text(
-                              pelanggaran.noTilang,
-                              style: TextStyle(fontSize: 16),
+                            margin: EdgeInsets.only(right: 20, top: 10),
+                            padding: EdgeInsets.symmetric(vertical: 5),
+                            child: Center(
+                              //Status di ambil dari database
+                              child: Text(pelanggaran.status,
+                                  style: TextStyle(fontSize: 12)),
                             ),
-                            subtitle: Container(
-                              decoration: new BoxDecoration(
-                                borderRadius: new BorderRadius.circular(16.0),
-                                color: Colors.green,
-                              ),
-                              margin: EdgeInsets.only(right: 80, top: 10),
-                              padding: EdgeInsets.symmetric(vertical: 5),
-                              child: Center(
-                                //Status di ambil dari database
-                                child: Text(pelanggaran.status,
-                                    style: TextStyle(fontSize: 12)),
-                              ),
-                            )),
+                          ),
+                          trailing: InkWell(
+                            onTap: () {
+                              // Navigator.of(context).push(MaterialPageRoute(
+                              //     builder: (context) => StepperPage(
+                              //         pelanggaran.status,
+                              //         pelanggaran.idPelanggaran)));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => HorizontalExample(
+                                      pelanggaran.status,
+                                      pelanggaran.idPelanggaran)));
+                            },
+                            child: Icon(
+                                MaterialCommunityIcons.information_variant),
+                          ),
+                        ),
                       ),
                     ),
                   ),
