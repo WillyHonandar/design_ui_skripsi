@@ -2,6 +2,7 @@ class Pelanggaran {
   int idPelanggaran;
   String noTilang;
   String jenisPelanggaran;
+  String jumlahPembayaran;
   String deskripsiPelanggaran;
   String fotoBuktiPelanggaran;
   String tanggalPelanggaran;
@@ -15,6 +16,7 @@ class Pelanggaran {
       {this.idPelanggaran,
       this.noTilang,
       this.jenisPelanggaran,
+      this.jumlahPembayaran,
       this.deskripsiPelanggaran,
       this.fotoBuktiPelanggaran,
       this.tanggalPelanggaran,
@@ -29,6 +31,7 @@ class Pelanggaran {
         idPelanggaran: map['idPelanggaran'],
         noTilang: map['noTilang'],
         jenisPelanggaran: map['jenisPelanggaran'],
+        jumlahPembayaran: map['jumlahPembayaran'],
         deskripsiPelanggaran: map['deskripsiPelanggaran'],
         fotoBuktiPelanggaran: map['fotoBuktiPelanggaran'],
         tanggalPelanggaran: map['tanggalPelanggaran'],

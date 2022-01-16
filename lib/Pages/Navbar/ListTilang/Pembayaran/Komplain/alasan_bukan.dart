@@ -1,4 +1,4 @@
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/sukses_bukan_kendaraan.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Komplain/sukses_bukan_kendaraan.dart';
 import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +67,7 @@ class _AlasanBukanState extends State<AlasanBukan> {
           height: 60,
           onPressed: () {
             addAlasanBukan(idPelanggaran, _alasanBukanController.text);
-            updateStatus(idPelanggaran, 2);
+            updateStatus(idPelanggaran, 7);
             // updateStatus(idPelanggaran, idStatus)
             // Navigator.push(
             //     context,

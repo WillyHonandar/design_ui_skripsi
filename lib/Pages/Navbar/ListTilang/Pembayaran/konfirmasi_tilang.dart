@@ -1,5 +1,5 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/alasan_bukan.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Komplain/alasan_bukan.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/detail_informasi.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/tilang_berlangsung.dart';
 import 'package:aplikasi_tilang_training/runner/main.dart';
@@ -36,7 +36,9 @@ class _KonfirmasiPelanggaranState extends State<KonfirmasiPelanggaran> {
             dataPelanggaran = snapshot.data;
 
             return DetailPelanggaran(
-                dataPelanggaran: dataPelanggaran, idPelanggaran: idPelanggaran);
+                dataPelanggaran: dataPelanggaran,
+                idPelanggaran: idPelanggaran,
+                status: status);
           }),
     );
   }
@@ -45,7 +47,8 @@ class _KonfirmasiPelanggaranState extends State<KonfirmasiPelanggaran> {
 class DetailPelanggaran extends StatefulWidget {
   List<Pelanggaran> dataPelanggaran;
   int idPelanggaran;
-  DetailPelanggaran({this.dataPelanggaran, this.idPelanggaran});
+  String status;
+  DetailPelanggaran({this.dataPelanggaran, this.idPelanggaran, this.status});
 
   @override
   _DetailPelanggaranState createState() =>
@@ -234,8 +237,27 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500),
                                     ),
+                                    Flexible(
+                                      child: Text(
+                                        pelanggaran.jenisPelanggaran,
+                                        maxLines: 10,
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
                                     Text(
-                                      pelanggaran.jenisPelanggaran,
+                                      "Jumlah Pembayaran: ",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    Text(
+                                      pelanggaran.jumlahPembayaran,
                                       style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500),
@@ -246,20 +268,32 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                   children: [
                                     Text(
                                       "Deskripsi Pelanggaran: ",
+                                      maxLines: 20,
                                       style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500),
                                     ),
-                                    Text(
-                                      pelanggaran.deskripsiPelanggaran,
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                    Flexible(
+                                      child: Text(
+                                        pelanggaran.deskripsiPelanggaran,
+                                        maxLines: 10,
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w500),
+                                      ),
                                     ),
                                   ],
                                 ),
                               ],
                             ),
+                          ),
+                          SizedBox(height: 20),
+                          Text(
+                            "Foto Bukti Pelanggaran",
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey),
                           ),
                           Container(
                             margin: EdgeInsets.only(top: 20),
@@ -278,12 +312,17 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                     minWidth: double.infinity,
                                     height: 60,
                                     onPressed: () {
+                                      printidPelanggaran(
+                                          pelanggaran.idPelanggaran);
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               //Nanti dipilih berdasarkan index
                                               builder: (context) =>
-                                                  DetailInformasi()));
+                                                  DetailInformasi(
+                                                      pelanggaran.status,
+                                                      pelanggaran
+                                                          .idPelanggaran)));
                                     },
                                     color: Colors.blue,
                                     elevation: 0,
@@ -346,4 +385,8 @@ Future<List<Pelanggaran>> getKonfirmasiTilang(int idPelanggaran) async {
 
   final dataList = response.data as List;
   return dataList.map((map) => Pelanggaran.fromJson(map)).toList();
+}
+
+printidPelanggaran(int idPelanggaran) {
+  print(idPelanggaran);
 }

@@ -23,13 +23,21 @@ class _HorizontalExampleState extends State<HorizontalExample> {
 
   final _processes = [
     'Pemberitahuan Informasi',
-    'Menunggu Konfirmasi',
-    'Sudah Bayar'
+    'Segera Lakukan Sidang',
+    'Segera Lakukan Pembayaran',
+    'Menunggu Konfirmasi Pembayaran',
+    'Selesai',
+    'Pembayaran di tolak',
+    'Tunggu Email',
   ];
   final _content = [
     '1',
     '2',
     '3',
+    '1',
+    '2',
+    '3',
+    '1',
   ];
 
   Color getColor(int index) {
@@ -47,10 +55,18 @@ class _HorizontalExampleState extends State<HorizontalExample> {
     void _status(String status) {
       if (status == "Pemberitahuan Informasi") {
         _processIndex = 0;
-      } else if (status == "Menunggu Konfirmasi") {
+      } else if (status == "Segera Lakukan Sidang") {
         _processIndex = 1;
-      } else if (status == "Sudah Bayar") {
+      } else if (status == "Segera Lakukan Pembayaran") {
         _processIndex = 2;
+      } else if (status == "Menunggu Konfirmasi Pembayaran") {
+        _processIndex = 3;
+      } else if (status == "Selesai") {
+        _processIndex = 4;
+      } else if (status == "Pembayaran di tolak") {
+        _processIndex = 5;
+      } else if (status == "Tunggu Email") {
+        _processIndex = 6;
       }
     }
 

@@ -95,155 +95,154 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                             fontSize: 14, fontWeight: FontWeight.w500),
                       ),
                     ),
+                    Container(
+                      margin: EdgeInsets.only(top: 24),
+                      child: Column(
+                        children: dataKendaraan
+                            .map((kendaraan) => Container(
+                                  child: Builder(builder: (context) {
+                                    if (kendaraan.jenisKendaraan == "Mobil") {
+                                      return Card(
+                                        child: ListTile(
+                                          leading: Icon(
+                                            MaterialCommunityIcons.car,
+                                            size: 50,
+                                            color: Colors.black,
+                                          ),
+                                          title: Text(kendaraan.noPlat),
+                                          subtitle: Text(kendaraan.noMesin),
+                                          trailing: InkWell(
+                                              onTap: () {
+                                                deleteKendaraan(
+                                                        kendaraan.idKendaraan)
+                                                    .then((value) {
+                                                  Navigator.pushReplacement(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          //Nanti dipilih berdasarkan index
+                                                          builder: (context) =>
+                                                              RegisteredVehicles()));
+                                                  // Fluttertoast.showToast(
+                                                  //     msg:
+                                                  //         "Sukses Menghapus Kendaraan!");
+                                                  // setState(() {});
+                                                });
+
+                                                // setState(() {});
+                                              },
+                                              // onTap: () => deleteKendaraan(
+                                              //     kendaraan.idKendaraan),
+                                              // Fluttertoast.showToast(
+                                              //     msg: "Sukses Hapus Kendaraan!");
+
+                                              // onTap: () => deleteKendaraan(
+                                              //     kendaraan.idKendaraan),
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              )),
+                                        ),
+                                      );
+                                    } else {
+                                      return Card(
+                                        child: ListTile(
+                                          leading: Icon(
+                                            MaterialCommunityIcons.motorbike,
+                                            size: 50,
+                                            color: Colors.black,
+                                          ),
+                                          title: Text(kendaraan.noPlat),
+                                          subtitle: Text(kendaraan.noMesin),
+                                          trailing: InkWell(
+                                              onTap: () {
+                                                deleteKendaraan(
+                                                        kendaraan.idKendaraan)
+                                                    .then((value) {
+                                                  Navigator.pushReplacement(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          //Nanti dipilih berdasarkan index
+                                                          builder: (context) =>
+                                                              RegisteredVehicles()));
+                                                  // Fluttertoast.showToast(
+                                                  //     msg:
+                                                  //         "Sukses Menghapus Kendaraan!");
+                                                  // setState(() {});
+                                                });
+
+                                                // setState(() {});
+                                              },
+                                              // onTap: () => deleteKendaraan(
+                                              //     kendaraan.idKendaraan),
+                                              // Fluttertoast.showToast(
+                                              //     msg: "Sukses Hapus Kendaraan!");
+
+                                              // onTap: () => deleteKendaraan(
+                                              //     kendaraan.idKendaraan),
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              )),
+                                        ),
+                                      );
+                                    }
+                                  }),
+                                ))
+                            .toList(),
+                      ),
+                      // child: Scrollbar(
+                      //   child: ListView.builder(
+                      //       scrollDirection: Axis.vertical,
+                      //       itemCount: totalKendaraan,
+                      //       padding: EdgeInsets.only(top: 10),
+                      //       itemBuilder: (context, index) {
+                      //         return Container(
+                      //           padding: EdgeInsets.only(left: 15),
+                      //           margin: EdgeInsets.only(
+                      //               bottom: 10, left: 10, right: 10),
+                      //           height: 80,
+                      //           width: 300,
+                      //           decoration: BoxDecoration(
+                      //             borderRadius: BorderRadius.circular(5),
+                      //             border: Border.all(
+                      //                 width: 2.0, color: Colors.blue[800]),
+                      //           ),
+                      //           child: Row(
+                      //             children: [
+                      //               Row(
+                      //                 children: [
+                      //                   Container(
+                      //                     height: 60,
+                      //                     width: 60,
+                      //                     decoration: BoxDecoration(
+                      //                         border: Border.all(
+                      //                             width: 1, color: Colors.purple),
+                      //                         color: Colors.white,
+                      //                         borderRadius:
+                      //                             BorderRadius.circular(10)),
+                      //                   ),
+                      //                   SizedBox(
+                      //                     width: 13,
+                      //                   ),
+                      //                   Container(
+                      //                     padding: EdgeInsets.only(top: 20),
+                      //                     child: Column(
+                      //                       mainAxisAlignment:
+                      //                           MainAxisAlignment.start,
+                      //                       crossAxisAlignment:
+                      //                           CrossAxisAlignment.start,
+                      //                       children:
+                      //                     ),
+                      //                   )
+                      //                 ],
+                      //               )
+                      //             ],
+                      //           ),
+                      //         );
+                      //       }),
+                      // ),
+                    ),
                   ],
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 24),
-                  height: 400,
-                  child: ListView(
-                    children: dataKendaraan
-                        .map((kendaraan) => Container(
-                              child: Builder(builder: (context) {
-                                if (kendaraan.jenisKendaraan == "Mobil") {
-                                  return Card(
-                                    child: ListTile(
-                                      leading: Icon(
-                                        MaterialCommunityIcons.car,
-                                        size: 50,
-                                        color: Colors.black,
-                                      ),
-                                      title: Text(kendaraan.noPlat),
-                                      subtitle: Text(kendaraan.noMesin),
-                                      trailing: InkWell(
-                                          onTap: () {
-                                            deleteKendaraan(
-                                                    kendaraan.idKendaraan)
-                                                .then((value) {
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      //Nanti dipilih berdasarkan index
-                                                      builder: (context) =>
-                                                          RegisteredVehicles()));
-                                              // Fluttertoast.showToast(
-                                              //     msg:
-                                              //         "Sukses Menghapus Kendaraan!");
-                                              // setState(() {});
-                                            });
-
-                                            // setState(() {});
-                                          },
-                                          // onTap: () => deleteKendaraan(
-                                          //     kendaraan.idKendaraan),
-                                          // Fluttertoast.showToast(
-                                          //     msg: "Sukses Hapus Kendaraan!");
-
-                                          // onTap: () => deleteKendaraan(
-                                          //     kendaraan.idKendaraan),
-                                          child: Icon(
-                                            Icons.delete,
-                                            color: Colors.red,
-                                          )),
-                                    ),
-                                  );
-                                } else {
-                                  return Card(
-                                    child: ListTile(
-                                      leading: Icon(
-                                        MaterialCommunityIcons.motorbike,
-                                        size: 50,
-                                        color: Colors.black,
-                                      ),
-                                      title: Text(kendaraan.noPlat),
-                                      subtitle: Text(kendaraan.noMesin),
-                                      trailing: InkWell(
-                                          onTap: () {
-                                            deleteKendaraan(
-                                                    kendaraan.idKendaraan)
-                                                .then((value) {
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      //Nanti dipilih berdasarkan index
-                                                      builder: (context) =>
-                                                          RegisteredVehicles()));
-                                              // Fluttertoast.showToast(
-                                              //     msg:
-                                              //         "Sukses Menghapus Kendaraan!");
-                                              // setState(() {});
-                                            });
-
-                                            // setState(() {});
-                                          },
-                                          // onTap: () => deleteKendaraan(
-                                          //     kendaraan.idKendaraan),
-                                          // Fluttertoast.showToast(
-                                          //     msg: "Sukses Hapus Kendaraan!");
-
-                                          // onTap: () => deleteKendaraan(
-                                          //     kendaraan.idKendaraan),
-                                          child: Icon(
-                                            Icons.delete,
-                                            color: Colors.red,
-                                          )),
-                                    ),
-                                  );
-                                }
-                              }),
-                            ))
-                        .toList(),
-                  ),
-                  // child: Scrollbar(
-                  //   child: ListView.builder(
-                  //       scrollDirection: Axis.vertical,
-                  //       itemCount: totalKendaraan,
-                  //       padding: EdgeInsets.only(top: 10),
-                  //       itemBuilder: (context, index) {
-                  //         return Container(
-                  //           padding: EdgeInsets.only(left: 15),
-                  //           margin: EdgeInsets.only(
-                  //               bottom: 10, left: 10, right: 10),
-                  //           height: 80,
-                  //           width: 300,
-                  //           decoration: BoxDecoration(
-                  //             borderRadius: BorderRadius.circular(5),
-                  //             border: Border.all(
-                  //                 width: 2.0, color: Colors.blue[800]),
-                  //           ),
-                  //           child: Row(
-                  //             children: [
-                  //               Row(
-                  //                 children: [
-                  //                   Container(
-                  //                     height: 60,
-                  //                     width: 60,
-                  //                     decoration: BoxDecoration(
-                  //                         border: Border.all(
-                  //                             width: 1, color: Colors.purple),
-                  //                         color: Colors.white,
-                  //                         borderRadius:
-                  //                             BorderRadius.circular(10)),
-                  //                   ),
-                  //                   SizedBox(
-                  //                     width: 13,
-                  //                   ),
-                  //                   Container(
-                  //                     padding: EdgeInsets.only(top: 20),
-                  //                     child: Column(
-                  //                       mainAxisAlignment:
-                  //                           MainAxisAlignment.start,
-                  //                       crossAxisAlignment:
-                  //                           CrossAxisAlignment.start,
-                  //                       children:
-                  //                     ),
-                  //                   )
-                  //                 ],
-                  //               )
-                  //             ],
-                  //           ),
-                  //         );
-                  //       }),
-                  // ),
                 ),
               ]),
         ),

@@ -55,59 +55,167 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                   //             //Nanti dipilih berdasarkan index
                   //             builder: (context) => KonfirmasiTilang()));
                   //   },
-                  child: Card(
-                    elevation: 5,
-                    child: Container(
-                      margin:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                      child: InkWell(
-                        onTap: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         //Nanti dipilih berdasarkan index
-                          //         builder: (context) => KonfirmasiTilang()));
-                        },
-                        child: ListTile(
-                          leading: Icon(
-                            Icons.car_rental,
-                            size: 50,
-                          ),
-                          title: Text(
-                            pelanggaran.noTilang,
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          subtitle: Container(
-                            decoration: new BoxDecoration(
-                              borderRadius: new BorderRadius.circular(16.0),
-                              color: Colors.green,
-                            ),
-                            margin: EdgeInsets.only(right: 20, top: 10),
-                            padding: EdgeInsets.symmetric(vertical: 5),
-                            child: Center(
-                              //Status di ambil dari database
-                              child: Text(pelanggaran.status,
-                                  style: TextStyle(fontSize: 12)),
-                            ),
-                          ),
-                          trailing: InkWell(
+                  child: Builder(builder: (context) {
+                    if (pelanggaran.status == "Tunggu Email") {
+                      return Card(
+                        elevation: 5,
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 20),
+                          child: InkWell(
                             onTap: () {
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              //     builder: (context) => StepperPage(
-                              //         pelanggaran.status,
-                              //         pelanggaran.idPelanggaran)));
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => HorizontalExample(
-                                      pelanggaran.status,
-                                      pelanggaran.idPelanggaran)));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         //Nanti dipilih berdasarkan index
+                              //         builder: (context) => KonfirmasiTilang()));
                             },
-                            child: Icon(
-                                MaterialCommunityIcons.information_variant),
+                            child: ListTile(
+                              leading: Icon(MaterialCommunityIcons.email_alert,
+                                  size: 60, color: Colors.green),
+                              title: Text(
+                                pelanggaran.noTilang,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              subtitle: Container(
+                                decoration: new BoxDecoration(
+                                  borderRadius: new BorderRadius.circular(16.0),
+                                  color: Colors.green,
+                                ),
+                                margin: EdgeInsets.only(right: 20, top: 10),
+                                padding: EdgeInsets.symmetric(vertical: 5),
+                                child: Center(
+                                  //Status di ambil dari database
+                                  child: Text(pelanggaran.status,
+                                      style: TextStyle(fontSize: 12)),
+                                ),
+                              ),
+                              trailing: InkWell(
+                                onTap: () {
+                                  // Navigator.of(context).push(MaterialPageRoute(
+                                  //     builder: (context) => StepperPage(
+                                  //         pelanggaran.status,
+                                  //         pelanggaran.idPelanggaran)));
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => HorizontalExample(
+                                          pelanggaran.status,
+                                          pelanggaran.idPelanggaran)));
+                                },
+                                child: Icon(
+                                    MaterialCommunityIcons.information_variant),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
+                      );
+                    } else if (pelanggaran.status == "Pembayaran di tolak") {
+                      return Card(
+                        elevation: 5,
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 20),
+                          child: InkWell(
+                            onTap: () {
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         //Nanti dipilih berdasarkan index
+                              //         builder: (context) => KonfirmasiTilang()));
+                            },
+                            child: ListTile(
+                              leading: Icon(MaterialCommunityIcons.close_box,
+                                  size: 60, color: Colors.red),
+                              title: Text(
+                                pelanggaran.noTilang,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              subtitle: Container(
+                                decoration: new BoxDecoration(
+                                  borderRadius: new BorderRadius.circular(16.0),
+                                  color: Colors.red,
+                                ),
+                                margin: EdgeInsets.only(right: 20, top: 10),
+                                padding: EdgeInsets.symmetric(vertical: 5),
+                                child: Center(
+                                  //Status di ambil dari database
+                                  child: Text(pelanggaran.status,
+                                      style: TextStyle(fontSize: 12)),
+                                ),
+                              ),
+                              trailing: InkWell(
+                                onTap: () {
+                                  // Navigator.of(context).push(MaterialPageRoute(
+                                  //     builder: (context) => StepperPage(
+                                  //         pelanggaran.status,
+                                  //         pelanggaran.idPelanggaran)));
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => HorizontalExample(
+                                          pelanggaran.status,
+                                          pelanggaran.idPelanggaran)));
+                                },
+                                child: Icon(
+                                    MaterialCommunityIcons.information_variant),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else if (pelanggaran.status == "Selesai") {
+                      return Card(
+                        elevation: 5,
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 20),
+                          child: InkWell(
+                            onTap: () {
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         //Nanti dipilih berdasarkan index
+                              //         builder: (context) => KonfirmasiTilang()));
+                            },
+                            child: ListTile(
+                              leading: Icon(MaterialCommunityIcons.check_bold,
+                                  size: 60, color: Colors.green),
+                              title: Text(
+                                pelanggaran.noTilang,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                              subtitle: Container(
+                                decoration: new BoxDecoration(
+                                  borderRadius: new BorderRadius.circular(16.0),
+                                  color: Colors.green,
+                                ),
+                                margin: EdgeInsets.only(right: 20, top: 10),
+                                padding: EdgeInsets.symmetric(vertical: 5),
+                                child: Center(
+                                  //Status di ambil dari database
+                                  child: Text(pelanggaran.status,
+                                      style: TextStyle(fontSize: 12)),
+                                ),
+                              ),
+                              trailing: InkWell(
+                                onTap: () {
+                                  // Navigator.of(context).push(MaterialPageRoute(
+                                  //     builder: (context) => StepperPage(
+                                  //         pelanggaran.status,
+                                  //         pelanggaran.idPelanggaran)));
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => HorizontalExample(
+                                          pelanggaran.status,
+                                          pelanggaran.idPelanggaran)));
+                                },
+                                child: Icon(
+                                    MaterialCommunityIcons.information_variant),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    } else {
+                      return Card();
+                    }
+                  }),
                 ))
             .toList(),
       ),
