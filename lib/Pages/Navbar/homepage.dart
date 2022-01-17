@@ -1,9 +1,7 @@
-import 'package:aplikasi_tilang_training/Pages/Navbar/Notification/latihan_image.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/police_station_location.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Content/content.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/list_tilang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Notification/notifications_page.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/pembayaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -95,7 +93,7 @@ class _HomeState extends State<Home> {
                         context,
                         MaterialPageRoute(
                             //Nanti dipilih berdasarkan index
-                            builder: (context) => LatihanBosku()));
+                            builder: (context) => NotificationsList()));
                   },
                   padding: EdgeInsets.only(top: 8),
                   icon: Icon(Icons.notifications),

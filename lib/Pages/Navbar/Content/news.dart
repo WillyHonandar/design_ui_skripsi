@@ -47,7 +47,7 @@ class Berita1 extends StatelessWidget {
                     textAlign: TextAlign.center),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 25),
+                margin: EdgeInsets.symmetric(vertical: 16),
                 child: Center(
                   child: Image(
                     image: AssetImage("assets/berita/berita1.jpeg"),
@@ -57,7 +57,7 @@ class Berita1 extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   children: [
                     Card(
@@ -113,7 +113,7 @@ class Berita2 extends StatelessWidget {
                     textAlign: TextAlign.center),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 25),
+                margin: EdgeInsets.symmetric(vertical: 16),
                 child: Center(
                   child: Image(
                     image: AssetImage("assets/berita/berita2.jpeg"),
@@ -123,7 +123,7 @@ class Berita2 extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   children: [
                     Card(
@@ -182,7 +182,7 @@ class Berita3 extends StatelessWidget {
                     textAlign: TextAlign.center),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 25),
+                margin: EdgeInsets.symmetric(vertical: 16),
                 child: Center(
                   child: Image(
                     image: AssetImage("assets/berita/berita3.jpeg"),
@@ -192,7 +192,7 @@ class Berita3 extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   children: [
                     Card(
@@ -249,7 +249,7 @@ class Berita4 extends StatelessWidget {
                     textAlign: TextAlign.center),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 25),
+                margin: EdgeInsets.symmetric(vertical: 16),
                 child: Center(
                   child: Image(
                     image: AssetImage("assets/berita/berita4.jpeg"),
@@ -259,7 +259,7 @@ class Berita4 extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   children: [
                     Card(

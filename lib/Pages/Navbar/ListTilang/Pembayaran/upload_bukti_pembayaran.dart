@@ -2,17 +2,41 @@ import 'dart:io';
 
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/sukses_melakukan_pembayaran.dart';
 import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 
 class UploadBuktiPembayaran extends StatefulWidget {
+  final int idPelanggaran;
+  final String status;
+  UploadBuktiPembayaran(this.status, this.idPelanggaran);
+
   @override
-  _UploadBuktiPembayaranState createState() => _UploadBuktiPembayaranState();
+  State<StatefulWidget> createState() {
+    return _UploadBuktiPembayaranState(this.status, this.idPelanggaran);
+  }
 }
 
 class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
+  int idPelanggaran;
+  String status;
+  _UploadBuktiPembayaranState(this.status, this.idPelanggaran);
+  String buktiPembayaran;
   File image;
+
+  Future uploadImageToFirebase(BuildContext context) async {
+    String fileName = basename(image.path);
+    Reference firebaseStorageRef =
+        FirebaseStorage.instance.ref().child('buktiTilang/$fileName');
+    UploadTask uploadTask = firebaseStorageRef.putFile(image);
+    TaskSnapshot taskSnapshot = await uploadTask;
+    taskSnapshot.ref.getDownloadURL().then(
+          (value) => print("Done: $value"),
+        );
+    buktiPembayaran = taskSnapshot.ref.getDownloadURL().toString();
+  }
 
   Future pickImage(ImageSource source) async {
     try {
@@ -94,6 +118,9 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
           onPressed: () {
             //Function Update Status menjadi Menunggu Konfirmasi
 
+            updateStatus(idPelanggaran, 4);
+            uploadImageToFirebase(context);
+            addBuktiPembayaran(idPelanggaran, buktiPembayaran);
             // Navigator.push(
             //     context,
             //     MaterialPageRoute(
@@ -127,5 +154,13 @@ updateStatus(int idPelanggaran, int idStatus) async {
       .update({'idStatus': idStatus})
       .eq('idPelanggaran', idPelanggaran)
       .execute();
+  print(response);
+}
+
+addBuktiPembayaran(int idPelanggaran, String buktiPembayaran) async {
+  var response = await client.from("m_pembayaran").insert({
+    'idPelanggaran': idPelanggaran,
+    'buktiPembayaran': buktiPembayaran,
+  }).execute();
   print(response);
 }

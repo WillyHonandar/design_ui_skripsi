@@ -1,3 +1,4 @@
+import 'package:aplikasi_tilang_training/Model/user.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
 import 'package:aplikasi_tilang_training/net/firebase.dart';
 import 'package:aplikasi_tilang_training/Authentication/login.dart';
@@ -119,6 +120,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                           _phoneNumberController.text,
                                           _usernameController.text)),
                                 );
+                                // Navigator.pushReplacement(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //       builder: (context) => MyHomePage()),
+                                // );
                                 // Navigator.pushReplacement(
                                 //     context,
                                 //     MaterialPageRoute(

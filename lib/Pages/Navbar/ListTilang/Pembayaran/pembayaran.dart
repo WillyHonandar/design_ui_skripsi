@@ -3,6 +3,9 @@ import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/uplo
 import 'package:flutter/material.dart';
 
 class Pembayaran extends StatelessWidget {
+  final int idPelanggaran;
+  final String status;
+  Pembayaran(this.status, this.idPelanggaran);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +83,8 @@ class Pembayaran extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     //Nanti dipilih berdasarkan index
-                    builder: (context) => UploadBuktiPembayaran()));
+                    builder: (context) =>
+                        UploadBuktiPembayaran(status, idPelanggaran)));
           },
           color: Colors.blue,
           elevation: 0,

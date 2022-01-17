@@ -197,7 +197,9 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 context,
                                 MaterialPageRoute(
                                     //Nanti dipilih berdasarkan index
-                                    builder: (context) => Pembayaran()));
+                                    builder: (context) => Pembayaran(
+                                        pelanggaran.status,
+                                        pelanggaran.idPelanggaran)));
                           },
                           child: ListTile(
                             leading: Icon(

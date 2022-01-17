@@ -1,23 +1,31 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class OurUser {
-  String uid;
-  String email;
-  String fullname;
-  Timestamp accountCreated;
+// class OurUser {
+//   String idUser;
+//   String email;
+//   String displayName;
+//   String phoneNumber;
+//   Timestamp accountCreated;
 
-  OurUser({this.uid, this.email, this.fullname, this.accountCreated});
-}
+//   OurUser(
+//       {this.idUser,
+//       this.email,
+//       this.displayName,
+//       this.phoneNumber,
+//       this.accountCreated});
+// }
 
-class User {
+// OurUser ourUser;
+
+class User2 {
   String namaUser;
   String emailUser;
   String phoneUser;
 
-  User({this.namaUser, this.emailUser, this.phoneUser});
+  User2({this.namaUser, this.emailUser, this.phoneUser});
 
-  factory User.fromJson(Map<String, dynamic> map) {
-    return User(
+  factory User2.fromJson(Map<String, dynamic> map) {
+    return User2(
         namaUser: map['namaUser'],
         emailUser: map['emailUser'],
         phoneUser: map['phoneUser']);

@@ -86,7 +86,8 @@ class _DetailInformasiState extends State<DetailInformasi> {
                             context,
                             MaterialPageRoute(
                                 //Nanti dipilih berdasarkan index
-                                builder: (context) => Pembayaran()));
+                                builder: (context) =>
+                                    Pembayaran(status, idPelanggaran)));
                       },
                       color: Colors.blue,
                       elevation: 0,

@@ -83,6 +83,7 @@ class _SettingsState extends State<Settings> {
                         onTap: () async {
                           print("User Logged Out");
                           await FirebaseAuth.instance.signOut();
+                          print(FirebaseAuth.instance.currentUser);
                           setState(() {
                             Fluttertoast.showToast(msg: "You are logged out!");
                             Navigator.pushAndRemoveUntil(

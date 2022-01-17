@@ -39,7 +39,7 @@ class CekPengetahuan1 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 25),
+                margin: EdgeInsets.symmetric(vertical: 16),
                 child: Center(
                   child: Image(
                     image: AssetImage("assets/etle-logo.png"),
@@ -57,7 +57,7 @@ class CekPengetahuan1 extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   children: [
                     Card(
@@ -104,7 +104,7 @@ class CekPengetahuan2 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 25),
+                margin: EdgeInsets.symmetric(vertical: 16),
                 child: Center(
                   child: Image(
                     image: AssetImage("assets/cek_pengetahuan/proses.png"),
@@ -120,7 +120,7 @@ class CekPengetahuan2 extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   children: [
                     Card(
@@ -254,7 +254,7 @@ class CekPengetahuan3 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 25),
+                margin: EdgeInsets.symmetric(vertical: 16),
                 child: Center(
                   child: Image(
                     image: AssetImage("assets/cek_pengetahuan/cara_bayar.png"),
@@ -270,7 +270,7 @@ class CekPengetahuan3 extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   children: [
                     Card(
@@ -349,7 +349,7 @@ class CekPengetahuan4 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.symmetric(vertical: 25),
+                margin: EdgeInsets.symmetric(vertical: 16),
                 child: Center(
                   child: Image(
                     image: AssetImage("assets/cek_pengetahuan/faq.png"),
@@ -365,7 +365,7 @@ class CekPengetahuan4 extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                 child: Column(
                   children: [
                     Card(
