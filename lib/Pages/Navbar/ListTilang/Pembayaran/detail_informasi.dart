@@ -40,7 +40,7 @@ class _DetailInformasiState extends State<DetailInformasi> {
                 ),
                 SizedBox(height: 20),
                 Container(
-                  height: 400,
+                  height: 300,
                   child: Card(
                     child: InkWell(
                       splashColor: Colors.blue.withAlpha(30),
@@ -50,16 +50,20 @@ class _DetailInformasiState extends State<DetailInformasi> {
                           Container(
                             margin: EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 20),
-                            child: ListTile(
-                                title: Text("KETENTUAN\n"),
-                                subtitle: Text(
-                                    '1.Datang ke pengadilan negeri setempat sesuai jadwal yang telah ditentukan.\n\n'
-                                    '2.Mengambil nomor antrian sidang dan menunggu waktu sidangnya.\n\n'
-                                    '3.Mengikuti sidang, hakim akan membacakan pelanggaran sesuai urutannya. \n\n'
-                                    '4.Pelanggar diminta menjawab pertanyaan dari hakim.\n\n'
-                                    '5.Jika terbukti bersalah, pelanggar diwajibkan membayar denda di kasir pengadilan.\n\n'
-                                    '6.Mengambil STNK atau SIM yang disita polisi.',
-                                    textAlign: TextAlign.justify)),
+                            child: Column(
+                              children: [
+                                ListTile(
+                                    title: Text("Langsung Bayar\n"),
+                                    subtitle: Text(
+                                        'Anda akan membayar tagihan sebesar Rp. 250.000, Silahkan menekan tombol "Langsung Bayar" untuk menyelesaikan transaksi\n',
+                                        textAlign: TextAlign.justify)),
+                                ListTile(
+                                    title: Text("Lakukan Sidang\n"),
+                                    subtitle: Text(
+                                        'Anda diharuskan datang ke pengadilan untuk mengurus penilangan, Silahkan menekan tombol "Lakukan Sidang" untuk dilanjutkan ke sidang',
+                                        textAlign: TextAlign.justify)),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -90,7 +94,7 @@ class _DetailInformasiState extends State<DetailInformasi> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        "Lanjutkan Pembayaran",
+                        "Langsung Bayar",
                         style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 18,

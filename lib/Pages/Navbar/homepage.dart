@@ -1,3 +1,4 @@
+import 'package:aplikasi_tilang_training/Pages/Navbar/Notification/latihan_image.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/police_station_location.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Content/content.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/list_tilang.dart';
@@ -94,7 +95,7 @@ class _HomeState extends State<Home> {
                         context,
                         MaterialPageRoute(
                             //Nanti dipilih berdasarkan index
-                            builder: (context) => NotificationsList()));
+                            builder: (context) => LatihanBosku()));
                   },
                   padding: EdgeInsets.only(top: 8),
                   icon: Icon(Icons.notifications),

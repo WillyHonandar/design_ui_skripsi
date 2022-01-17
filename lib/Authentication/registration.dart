@@ -96,12 +96,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   .createUserWithEmailAndPassword(
                                       email: _emailController.text,
                                       password: _passwordController.text);
+
                               //ini ambil data dri firebase setelah regist
                               addUserSupabase(
                                   user.user.uid,
                                   _usernameController.text,
                                   _emailController.text,
                                   _phoneNumberController.text);
+                              User updateUser =
+                                  FirebaseAuth.instance.currentUser;
+                              updateUser
+                                  .updateDisplayName(_usernameController.text);
+                              userSetup(_usernameController.text);
                               //nanti disini untuk insert ke supabasenya (hanya data yg diperlukan)
                               setState(() {
                                 Fluttertoast.showToast(
@@ -117,11 +123,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 //     context,
                                 //     MaterialPageRoute(
                                 //         builder: (context) => MyHomePage()));
-                                User updateUser =
-                                    FirebaseAuth.instance.currentUser;
-                                updateUser.updateDisplayName(
-                                    _usernameController.text);
-                                // userSetup(_usernameController.text);
                               });
                             } catch (e) {
                               Fluttertoast.showToast(msg: "Error! $e");

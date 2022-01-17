@@ -103,12 +103,12 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 borderRadius: new BorderRadius.circular(16.0),
                                 color: Colors.orange,
                               ),
-                              margin: EdgeInsets.only(right: 10, top: 10),
+                              margin: EdgeInsets.only(top: 10),
                               padding: EdgeInsets.symmetric(vertical: 5),
                               child: Center(
                                 //Status di ambil dari database
                                 child: Text(pelanggaran.status,
-                                    style: TextStyle(fontSize: 12)),
+                                    style: TextStyle(fontSize: 10)),
                               ),
                             ),
                             trailing: InkWell(
@@ -158,12 +158,12 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 borderRadius: new BorderRadius.circular(16.0),
                                 color: Colors.yellow,
                               ),
-                              margin: EdgeInsets.only(right: 10, top: 10),
+                              margin: EdgeInsets.only(top: 10),
                               padding: EdgeInsets.symmetric(vertical: 5),
                               child: Center(
                                 //Status di ambil dari database
                                 child: Text(pelanggaran.status,
-                                    style: TextStyle(fontSize: 12)),
+                                    style: TextStyle(fontSize: 10)),
                               ),
                             ),
                             trailing: InkWell(
@@ -214,12 +214,12 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 borderRadius: new BorderRadius.circular(16.0),
                                 color: Colors.orange,
                               ),
-                              margin: EdgeInsets.only(right: 10, top: 10),
+                              margin: EdgeInsets.only(top: 10),
                               padding: EdgeInsets.symmetric(vertical: 5),
                               child: Center(
                                 //Status di ambil dari database
                                 child: Text(pelanggaran.status,
-                                    style: TextStyle(fontSize: 12)),
+                                    style: TextStyle(fontSize: 10)),
                               ),
                             ),
                             trailing: InkWell(
@@ -270,12 +270,12 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 borderRadius: new BorderRadius.circular(16.0),
                                 color: Colors.yellow,
                               ),
-                              margin: EdgeInsets.only(right: 10, top: 10),
+                              margin: EdgeInsets.only(top: 10),
                               padding: EdgeInsets.symmetric(vertical: 5),
                               child: Center(
                                 //Status di ambil dari database
                                 child: Text(pelanggaran.status,
-                                    style: TextStyle(fontSize: 12)),
+                                    style: TextStyle(fontSize: 10)),
                               ),
                             ),
                             trailing: InkWell(

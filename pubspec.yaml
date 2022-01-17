@@ -49,6 +49,9 @@ dependencies:
   im_stepper: ^0.1.2+10
   cupertino_stepper: ^0.2.1
   status_change: ^1.0.0
+  permission_handler: ^8.0.0
+  firebase_storage: ^10.2.5
+
   
 dev_dependencies:
   flutter_test:

@@ -38,7 +38,7 @@ class _LakukanSidangState extends State<LakukanSidang> {
             ),
             SizedBox(height: 20),
             Container(
-              height: 380,
+              height: 400,
               child: Card(
                 child: SingleChildScrollView(
                   child: InkWell(
@@ -49,22 +49,16 @@ class _LakukanSidangState extends State<LakukanSidang> {
                         Container(
                           margin: EdgeInsets.symmetric(
                               horizontal: 20, vertical: 20),
-                          child: Column(
-                            children: [
-                              ListTile(
-                                  title:
-                                      Text("Langkah-langkah ke persidangan\n"),
-                                  subtitle: Text(
-                                      '- Login aplikasi BRI Mobile\n'
-                                      '- Pilih menu Mobile Banking BRI > Pembayaran > BRIVA\n'
-                                      '- Masukkan 15 angka Nomor Pembayaran Tilang\n'
-                                      '- Masukkan nominal pembayaran sesuai jumlah denda yang harus dibayarkan, Transaksi akan ditolak jika pembayaran tidak sesuai dengan jumlah denda titipan\n'
-                                      '- Masukkan PIN\n'
-                                      '- Simpan notifikasi SMS sebagai bukti pembayaran\n'
-                                      '- Tunjukkan notifikasi SMS ke penindak untuk ditukarkan dengan barang bukti yang disita\n',
-                                      textAlign: TextAlign.justify)),
-                            ],
-                          ),
+                          child: ListTile(
+                              title: Text("Alur Sidang\n"),
+                              subtitle: Text(
+                                  '1.Datang ke pengadilan negeri setempat sesuai jadwal yang telah ditentukan.\n\n'
+                                  '2.Mengambil nomor antrian sidang dan menunggu waktu sidangnya.\n\n'
+                                  '3.Mengikuti sidang, hakim akan membacakan pelanggaran sesuai urutannya. \n\n'
+                                  '4.Pelanggar diminta menjawab pertanyaan dari hakim.\n\n'
+                                  '5.Jika terbukti bersalah, pelanggar diwajibkan membayar denda di kasir pengadilan.\n\n'
+                                  '6.Mengambil STNK atau SIM yang disita polisi.',
+                                  textAlign: TextAlign.justify)),
                         ),
                       ],
                     ),

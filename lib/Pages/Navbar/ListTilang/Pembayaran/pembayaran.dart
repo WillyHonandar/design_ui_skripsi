@@ -8,23 +8,23 @@ class Pembayaran extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
-        title: Text("Pembayaran", style: TextStyle(color: Colors.black)),
+        title: Text("Detail Pembayaran", style: TextStyle(color: Colors.black)),
         backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       ),
-      body: Container(
-        margin: EdgeInsets.all(24),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Anda diharuskan untuk melanjutkan ke tahap pembayaran dengan petunjuk sebagai berikut :",
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Container(
-              height: 380,
-              child: Card(
-                child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Anda diharuskan untuk melanjutkan ke tahap pembayaran dengan petunjuk sebagai berikut :",
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
+              Container(
+                height: 660,
+                child: Card(
                   child: InkWell(
                     splashColor: Colors.blue.withAlpha(30),
                     child: Column(
@@ -56,7 +56,7 @@ class Pembayaran extends StatelessWidget {
                                       '- Di halaman konfirmasi, pastikan detil pembayaran sudah sesuai seperti Nomor BRIVA, Nama Pelanggar dan Jumlah Pembayaran\n'
                                       '- Ikuti instruksi untuk menyelesaikan transaksi\n'
                                       '- Copy struk ATM sebagai bukti pembayaran yang sah dan disimpan\n'
-                                      '- Struk ATM asli diserahkan ke penindak untuk ditukarkan dengan barang bukti yang disita\n',
+                                      '- Struk ATM asli diserahkan ke penindak untuk ditukarkan dengan barang bukti yang disita',
                                       textAlign: TextAlign.justify)),
                             ],
                           ),
@@ -66,8 +66,8 @@ class Pembayaran extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Padding(

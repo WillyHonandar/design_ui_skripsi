@@ -82,12 +82,12 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                                   borderRadius: new BorderRadius.circular(16.0),
                                   color: Colors.green,
                                 ),
-                                margin: EdgeInsets.only(right: 20, top: 10),
+                                margin: EdgeInsets.only(top: 10),
                                 padding: EdgeInsets.symmetric(vertical: 5),
                                 child: Center(
                                   //Status di ambil dari database
                                   child: Text(pelanggaran.status,
-                                      style: TextStyle(fontSize: 12)),
+                                      style: TextStyle(fontSize: 10)),
                                 ),
                               ),
                               trailing: InkWell(
@@ -134,12 +134,12 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                                   borderRadius: new BorderRadius.circular(16.0),
                                   color: Colors.red,
                                 ),
-                                margin: EdgeInsets.only(right: 20, top: 10),
+                                margin: EdgeInsets.only(top: 10),
                                 padding: EdgeInsets.symmetric(vertical: 5),
                                 child: Center(
                                   //Status di ambil dari database
                                   child: Text(pelanggaran.status,
-                                      style: TextStyle(fontSize: 12)),
+                                      style: TextStyle(fontSize: 10)),
                                 ),
                               ),
                               trailing: InkWell(
@@ -186,12 +186,12 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                                   borderRadius: new BorderRadius.circular(16.0),
                                   color: Colors.green,
                                 ),
-                                margin: EdgeInsets.only(right: 20, top: 10),
+                                margin: EdgeInsets.only(top: 10),
                                 padding: EdgeInsets.symmetric(vertical: 5),
                                 child: Center(
                                   //Status di ambil dari database
                                   child: Text(pelanggaran.status,
-                                      style: TextStyle(fontSize: 12)),
+                                      style: TextStyle(fontSize: 10)),
                                 ),
                               ),
                               trailing: InkWell(

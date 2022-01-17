@@ -122,7 +122,7 @@ class _OTPScreenState extends State<OTPScreen> {
   }
 
   verifyPhoneNumber() async {
-    startTimer();
+    // startTimer();
     await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: '+62${widget.phone}',
         verificationCompleted: (PhoneAuthCredential credential) async {
