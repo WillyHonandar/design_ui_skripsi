@@ -10,7 +10,7 @@ class ListTilang extends StatefulWidget {
 }
 
 class _ListTilangState extends State<ListTilang> {
-  final List<Widget> pages = [RiwayatTilang(), TilangBerlangsung()];
+  final List<Widget> pages = [TilangBerlangsung(), RiwayatTilang()];
   int _selectedIndexForTabBar = 0;
 
   void _onItemTappedForTabBar(int index) {
@@ -26,10 +26,10 @@ class _ListTilangState extends State<ListTilang> {
       onTap: _onItemTappedForTabBar,
       tabs: <Widget>[
         new Tab(
-          text: "Riwayat Tilang",
+          text: "Tilang Berlangsung",
         ),
         new Tab(
-          text: "Tilang Berlangsung",
+          text: "Riwayat Tilang",
         ),
       ],
     );
