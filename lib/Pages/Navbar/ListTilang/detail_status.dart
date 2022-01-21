@@ -1,98 +1,444 @@
-// Copyright 2020 J-P Nurmi <jpnurmi@gmail.com>
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
+import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
-import 'package:flutter/cupertino.dart';
-import 'package:cupertino_stepper/cupertino_stepper.dart';
-
-int currentStep;
-
-class StepperPage extends StatefulWidget {
-  @override
+class DetailStatus extends StatefulWidget {
   final int idPelanggaran;
   final String status;
-  StepperPage(this.status, this.idPelanggaran);
-
+  DetailStatus(this.status, this.idPelanggaran);
   @override
   State<StatefulWidget> createState() {
-    return _StepperPageState(this.status, this.idPelanggaran);
+    return _DetailStatusState(this.status, this.idPelanggaran);
   }
 }
 
-class _StepperPageState extends State<StepperPage> {
+class _DetailStatusState extends State<DetailStatus> {
   int idPelanggaran;
   String status;
-  _StepperPageState(this.status, this.idPelanggaran);
+  _DetailStatusState(this.status, this.idPelanggaran);
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text('CupertinoStepper for Flutter'),
-      ),
-      child: SafeArea(
-        child: OrientationBuilder(
-          builder: (BuildContext context, Orientation orientation) {
-            switch (orientation) {
-              case Orientation.portrait:
-                return _buildStepper(StepperType.vertical);
-              case Orientation.landscape:
-                return _buildStepper(StepperType.horizontal);
-              default:
-                throw UnimplementedError(orientation.toString());
-            }
-          },
+    return Scaffold(
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.black),
+          title: Text("Detail Status", style: TextStyle(color: Colors.black)),
+          backgroundColor: Color.fromRGBO(245, 245, 245, 1),
         ),
-      ),
-    );
-  }
-
-  CupertinoStepper _buildStepper(StepperType type) {
-    void statusValidation(String status) {
-      if (status == "Pemberitahuan Informasi") {
-        currentStep = 0;
-      } else {
-        currentStep = 1;
-      }
-    }
-
-    statusValidation(status);
-
-    return CupertinoStepper(
-      type: type,
-      currentStep: currentStep,
-      steps: [
-        _buildStep(
-          title: Text('Pemberitahuan Informasi'),
-          state: StepState.disabled,
-        ),
-        _buildStep(
-          title: Text('Menuggu Konfirmasi'),
-          state: StepState.disabled,
-        ),
-        _buildStep(
-          title: Text('Selesai'),
-          state: StepState.disabled,
-        )
-      ],
-    );
-  }
-
-  Step _buildStep({
-    Widget title,
-    StepState state = StepState.indexed,
-    bool isActive = false,
-  }) {
-    return Step(
-      title: title,
-      subtitle: Text('Subtitle'),
-      state: state,
-      isActive: isActive,
-      content: LimitedBox(
-        maxWidth: 200,
-        maxHeight: 200,
-        child: Container(color: CupertinoColors.systemGrey),
-      ),
-    );
+        body: SingleChildScrollView(
+          child: Container(
+            child: Builder(
+              builder: (context) {
+                if (status == "Pemberitahuan Informasi") {
+                  return Container(
+                    margin: EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Detail Status: Pemberitahuan Informasi",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: Card(
+                            child: InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                            leading: Icon(MaterialCommunityIcons
+                                                .information),
+                                            title: Text(
+                                                "Pemberitahuan Informasi\n"),
+                                            subtitle: Text(
+                                                'Segera lakukan pembayaran/sidang untuk menyelesaikan proses sidang atau anda dapat melakukan komplain.',
+                                                textAlign: TextAlign.justify)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (status == "Segera Lakukan Sidang") {
+                  return Container(
+                    margin: EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Detail Status: Segera Lakukan Sidang",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: Card(
+                            child: InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          leading: Icon(MaterialCommunityIcons
+                                              .information),
+                                          title:
+                                              Text("Pemberitahuan Informasi\n"),
+                                        ),
+                                        ListTile(
+                                            leading: Icon(MaterialCommunityIcons
+                                                .information),
+                                            title:
+                                                Text("Segera Lakukan Sidang\n"),
+                                            subtitle: Text(
+                                                'Anda diharuskan datang ke pengadilan untuk mengurus penilangan, Silahkan menekan tombol "Lakukan Sidang" untuk dilanjutkan ke sidang',
+                                                textAlign: TextAlign.justify)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (status == "Segera Lakukan Pembayaran") {
+                  return Container(
+                    margin: EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Detail Status: Segera Lakukan Pembayaran",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: Card(
+                            child: InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          leading: Icon(MaterialCommunityIcons
+                                              .information),
+                                          title:
+                                              Text("Pemberitahuan Informasi\n"),
+                                        ),
+                                        ListTile(
+                                          leading: Icon(MaterialCommunityIcons
+                                              .information),
+                                          title:
+                                              Text("Segera Lakukan Sidang\n"),
+                                        ),
+                                        ListTile(
+                                            leading: Icon(
+                                                MaterialCommunityIcons.paypal),
+                                            title: Text(
+                                                "Segera Lakukan Pembayaran\n"),
+                                            subtitle: Text(
+                                                'Segera Lakukan Pembayaran di Mobile Banking BRI atau ATM BRI terdekat!',
+                                                textAlign: TextAlign.justify)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (status == "Menunggu Konfirmasi Pembayaran") {
+                  return Container(
+                    margin: EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Detail Status: Menunggu Konfirmasi Pembayaran",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: Card(
+                            child: InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          leading: Icon(MaterialCommunityIcons
+                                              .information),
+                                          title:
+                                              Text("Pemberitahuan Informasi\n"),
+                                        ),
+                                        ListTile(
+                                            leading: Icon(MaterialCommunityIcons
+                                                .timelapse),
+                                            title: Text(
+                                                "Menunggu Konfirmasi Pembayaran\n"),
+                                            subtitle: Text(
+                                                'Silahkan menunggu konfirmasi pembayaran hingga status berubah!',
+                                                textAlign: TextAlign.justify)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (status == "Selesai") {
+                  return Container(
+                    margin: EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Detail Status: Selesai",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: Card(
+                            child: InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          leading: Icon(MaterialCommunityIcons
+                                              .information),
+                                          title:
+                                              Text("Pemberitahuan Informasi\n"),
+                                        ),
+                                        ListTile(
+                                          leading: Icon(
+                                              MaterialCommunityIcons.timelapse),
+                                          title: Text(
+                                              "Menunggu Konfirmasi Pembayaran\n"),
+                                        ),
+                                        ListTile(
+                                            leading: Icon(
+                                                MaterialCommunityIcons.check),
+                                            title: Text("Selesai\n"),
+                                            subtitle: Text(
+                                                'Terima kasih telah melakukan pembayaran!',
+                                                textAlign: TextAlign.justify)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (status == "Pembayaran di tolak") {
+                  return Container(
+                    margin: EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Detail Status: Pembayaran di tolak",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: Card(
+                            child: InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          leading: Icon(MaterialCommunityIcons
+                                              .information),
+                                          title:
+                                              Text("Pemberitahuan Informasi\n"),
+                                        ),
+                                        ListTile(
+                                          leading: Icon(
+                                              MaterialCommunityIcons.timelapse),
+                                          title: Text(
+                                              "Menunggu Konfirmasi Pembayaran\n"),
+                                        ),
+                                        ListTile(
+                                            leading: Icon(MaterialCommunityIcons
+                                                .close_box),
+                                            title: Text("Ditolak\n"),
+                                            subtitle: Text(
+                                                'Mohon maaf, Pembayaran anda ditolak, silahkan cek email yang terdaftar pada aplikasi untuk melihat lebih detail mengenai penolakan pembayaran anda!',
+                                                textAlign: TextAlign.justify)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (status == "Tunggu Email") {
+                  return Container(
+                    margin: EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Detail Status: Tunggu Email",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: Card(
+                            child: InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          leading: Icon(MaterialCommunityIcons
+                                              .information),
+                                          title:
+                                              Text("Pemberitahuan Informasi\n"),
+                                        ),
+                                        ListTile(
+                                            leading: Icon(MaterialCommunityIcons
+                                                .email_alert),
+                                            title: Text("Tunggu Email\n"),
+                                            subtitle: Text(
+                                                'Silahkan menunggu email dari pihak kepolisian untuk detail lebih lanjut seputar komplain!',
+                                                textAlign: TextAlign.justify)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (status == "Email telah dikirim") {
+                  return Container(
+                    margin: EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Detail Status: Email telah dikirim",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: Card(
+                            child: InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                          leading: Icon(MaterialCommunityIcons
+                                              .information),
+                                          title:
+                                              Text("Pemberitahuan Informasi\n"),
+                                        ),
+                                        ListTile(
+                                          leading: Icon(MaterialCommunityIcons
+                                              .email_alert),
+                                          title: Text("Tunggu Email\n"),
+                                        ),
+                                        ListTile(
+                                            leading: Icon(MaterialCommunityIcons
+                                                .email_check),
+                                            title: Text("Email Terkirim\n"),
+                                            subtitle: Text(
+                                                'Silahkan periksa email yang terdaftar pada aplikasi anda untuk informasi lebih lanjut seputar komplain!',
+                                                textAlign: TextAlign.justify)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  return null;
+                }
+              },
+            ),
+          ),
+        ));
   }
 }

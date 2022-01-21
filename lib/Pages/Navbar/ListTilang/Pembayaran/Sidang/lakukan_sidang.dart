@@ -2,6 +2,7 @@ import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Sidang/sukses_lakukan_sidang.dart';
 import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LakukanSidang extends StatefulWidget {
   final int idPelanggaran;
@@ -77,6 +78,7 @@ class _LakukanSidangState extends State<LakukanSidang> {
           onPressed: () {
             printidPelanggaran(idPelanggaran);
             updateStatus(idPelanggaran, 2);
+            Fluttertoast.showToast(msg: "Sukses memilih alur sidang!");
             Navigator.push(
                 context,
                 MaterialPageRoute(

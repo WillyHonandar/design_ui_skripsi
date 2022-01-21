@@ -6,19 +6,20 @@ import 'package:flutter/material.dart';
 
 class DetailInformasi extends StatefulWidget {
   final int idPelanggaran;
-  final String status;
-  DetailInformasi(this.status, this.idPelanggaran);
+  final String jumlahPembayaran, status;
+  DetailInformasi(this.jumlahPembayaran, this.status, this.idPelanggaran);
 
   @override
   State<StatefulWidget> createState() {
-    return _DetailInformasiState(this.status, this.idPelanggaran);
+    return _DetailInformasiState(
+        this.jumlahPembayaran, this.status, this.idPelanggaran);
   }
 }
 
 class _DetailInformasiState extends State<DetailInformasi> {
   int idPelanggaran;
-  String status;
-  _DetailInformasiState(this.status, this.idPelanggaran);
+  String status, jumlahPembayaran;
+  _DetailInformasiState(this.jumlahPembayaran, this.status, this.idPelanggaran);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,9 +55,26 @@ class _DetailInformasiState extends State<DetailInformasi> {
                               children: [
                                 ListTile(
                                     title: Text("Langsung Bayar\n"),
-                                    subtitle: Text(
-                                        'Anda akan membayar tagihan sebesar Rp. 250.000, Silahkan menekan tombol "Langsung Bayar" untuk menyelesaikan transaksi\n',
-                                        textAlign: TextAlign.justify)),
+                                    subtitle: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                            'Anda akan membayar tagihan sebesar: ',
+                                            textAlign: TextAlign.justify),
+                                        Text(
+                                          jumlahPembayaran,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                            'Silahkan menekan tombol "Langsung Bayar" untuk menyelesaikan transaksi\n',
+                                            textAlign: TextAlign.justify)
+                                      ],
+                                    )),
                                 ListTile(
                                     title: Text("Lakukan Sidang\n"),
                                     subtitle: Text(

@@ -5,6 +5,7 @@ import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 
@@ -23,19 +24,16 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
   int idPelanggaran;
   String status;
   _UploadBuktiPembayaranState(this.status, this.idPelanggaran);
-  String buktiPembayaran;
   File image;
+  bool _isLoading = false;
 
-  Future uploadImageToFirebase(BuildContext context) async {
+  Future<String> uploadImageToFirebase(BuildContext context) async {
     String fileName = basename(image.path);
     Reference firebaseStorageRef =
-        FirebaseStorage.instance.ref().child('buktiTilang/$fileName');
+        FirebaseStorage.instance.ref().child('buktiPembayaran/$fileName');
     UploadTask uploadTask = firebaseStorageRef.putFile(image);
     TaskSnapshot taskSnapshot = await uploadTask;
-    taskSnapshot.ref.getDownloadURL().then(
-          (value) => print("Done: $value"),
-        );
-    buktiPembayaran = taskSnapshot.ref.getDownloadURL().toString();
+    return await taskSnapshot.ref.getDownloadURL();
   }
 
   Future pickImage(ImageSource source) async {
@@ -50,7 +48,22 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
     }
   }
 
+  dataLoadFunction() async {
+    setState(() {
+      _isLoading = true; // your loader has started to load
+    });
+    // fetch you data over here
+    setState(() {
+      _isLoading = false; // your loder will stop to finish after the data fetch
+    });
+  }
+
   @override
+  void initState() {
+    super.initState();
+    dataLoadFunction(); // this function gets called
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -116,21 +129,29 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
           minWidth: double.infinity,
           height: 60,
           onPressed: () {
-            //Function Update Status menjadi Menunggu Konfirmasi
+            if (image == null) {
+              Fluttertoast.showToast(msg: "Anda belum mengupload gambar!");
+            } else
+              //Function Update Status menjadi Menunggu Konfirmasi
 
-            updateStatus(idPelanggaran, 4);
-            uploadImageToFirebase(context);
-            addBuktiPembayaran(idPelanggaran, buktiPembayaran);
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         //Nanti dipilih berdasarkan index
-            //         builder: (context) => SuksesMelakukanPembayaran()));
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => SuksesMelakukanPembayaran()),
-                (route) => false);
+              _isLoading
+                  ? CircularProgressIndicator() // this will show when loading is true
+                  : updateStatus(idPelanggaran, 4);
+            uploadImageToFirebase(context).then((buktiPembayaran) => {
+                  addBuktiPembayaran(idPelanggaran, buktiPembayaran),
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         //Nanti dipilih berdasarkan index
+                  //         builder: (context) => SuksesMelakukanPembayaran()));
+                  Fluttertoast.showToast(
+                      msg: "Sukses Upload Bukti Pembayaran!"),
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SuksesMelakukanPembayaran()),
+                      (route) => false)
+                });
           },
           color: Colors.blue,
           elevation: 0,

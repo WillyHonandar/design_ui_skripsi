@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:aplikasi_tilang_training/Kendaraan/vehicle_registration.dart';
+import 'package:aplikasi_tilang_training/net/firebase.dart';
+import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -7,15 +9,21 @@ import 'package:pinput/pin_put/pin_put.dart';
 import 'package:flutter/material.dart';
 
 class OTPScreen extends StatefulWidget {
-  final String phone, username;
+  final String email, phone, username, password;
 
-  OTPScreen(this.phone, this.username);
+  OTPScreen(this.username, this.email, this.phone, this.password);
 
   @override
-  _OTPScreenState createState() => _OTPScreenState();
+  State<StatefulWidget> createState() {
+    return _OTPScreenState(
+        this.username, this.email, this.phone, this.password);
+  }
 }
 
 class _OTPScreenState extends State<OTPScreen> {
+  String email, phone, username, password;
+  _OTPScreenState(this.username, this.email, this.phone, this.password);
+
   FirebaseAuth _auth = FirebaseAuth.instance;
   String _verificationCode;
 
@@ -61,11 +69,27 @@ class _OTPScreenState extends State<OTPScreen> {
                           verificationId: _verificationCode, smsCode: pin))
                       .then((value) async {
                     if (value.user != null) {
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RegisKendaraan()),
-                          (route) => false);
+                      UserCredential user = await FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: email, password: password);
+                      addUserSupabase(user.user.uid, username, email, phone);
+                      User updateUser = FirebaseAuth.instance.currentUser;
+                      updateUser.updateDisplayName(username);
+
+                      userSetup(username);
+                      setState(() {
+                        Fluttertoast.showToast(msg: "succesffuly signed up!");
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegisKendaraan()),
+                            (route) => false);
+                      });
+                      //         //nanti disini untuk insert ke supabasenya (hanya data yg diperlukan)
+                      //         setState(() {
+                      //           Fluttertoast.showToast(
+                      //               msg: "succesffuly signed up!");
+
                     }
                   });
                 } catch (e) {
@@ -169,4 +193,15 @@ class _OTPScreenState extends State<OTPScreen> {
     super.initState();
     verifyPhoneNumber();
   }
+}
+
+addUserSupabase(
+    String uid, String namaUser, String emailUser, String noTelpUser) async {
+  var response = await client.from("m_user").insert({
+    'idUser': uid,
+    'namaUser': namaUser,
+    'emailUser': emailUser,
+    'noTelpUser': noTelpUser
+  }).execute();
+  print(response);
 }

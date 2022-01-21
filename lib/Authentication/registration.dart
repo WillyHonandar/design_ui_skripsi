@@ -93,22 +93,23 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           if (_passwordController.text.trim() ==
                               _confirmPasswordController.text.trim()) {
                             try {
-                              UserCredential user = await FirebaseAuth.instance
-                                  .createUserWithEmailAndPassword(
-                                      email: _emailController.text,
-                                      password: _passwordController.text);
+                              // UserCredential user = await FirebaseAuth.instance
+                              //     .createUserWithEmailAndPassword(
+                              //         email: _emailController.text,
+                              //         password: _passwordController.text);
 
                               //ini ambil data dri firebase setelah regist
-                              addUserSupabase(
-                                  user.user.uid,
-                                  _usernameController.text,
-                                  _emailController.text,
-                                  _phoneNumberController.text);
-                              User updateUser =
-                                  FirebaseAuth.instance.currentUser;
-                              updateUser
-                                  .updateDisplayName(_usernameController.text);
-                              userSetup(_usernameController.text);
+                              // addUserSupabase(
+                              //     user.user.uid,
+                              //     _usernameController.text,
+                              //     _emailController.text,
+                              //     _phoneNumberController.text);
+                              // User updateUser =
+                              //     FirebaseAuth.instance.currentUser;
+                              // updateUser
+                              //     .updateDisplayName(_usernameController.text);
+
+                              // userSetup(_usernameController.text);
                               //nanti disini untuk insert ke supabasenya (hanya data yg diperlukan)
                               setState(() {
                                 Fluttertoast.showToast(
@@ -117,18 +118,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => OTPScreen(
+                                          _usernameController.text,
+                                          _emailController.text,
                                           _phoneNumberController.text,
-                                          _usernameController.text)),
+                                          _passwordController.text)),
                                 );
                                 // Navigator.pushReplacement(
                                 //   context,
                                 //   MaterialPageRoute(
                                 //       builder: (context) => MyHomePage()),
                                 // );
-                                // Navigator.pushReplacement(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) => MyHomePage()));
                               });
                             } catch (e) {
                               Fluttertoast.showToast(msg: "Error! $e");

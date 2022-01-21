@@ -1,4 +1,5 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/detail_status.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/stepper.dart';
 import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -56,22 +57,22 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                   //             builder: (context) => KonfirmasiTilang()));
                   //   },
                   child: Builder(builder: (context) {
-                    if (pelanggaran.status == "Tunggu Email") {
+                    if (pelanggaran.status == "Email telah dikirim") {
                       return Card(
                         elevation: 5,
                         child: Container(
                           margin: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 20),
                           child: InkWell(
-                            onTap: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         //Nanti dipilih berdasarkan index
-                              //         builder: (context) => KonfirmasiTilang()));
-                            },
+                            // onTap: () {
+                            //   // Navigator.push(
+                            //   //     context,
+                            //   //     MaterialPageRoute(
+                            //   //         //Nanti dipilih berdasarkan index
+                            //   //         builder: (context) => KonfirmasiTilang()));
+                            // },
                             child: ListTile(
-                              leading: Icon(MaterialCommunityIcons.email_alert,
+                              leading: Icon(MaterialCommunityIcons.email_check,
                                   size: 60, color: Colors.green),
                               title: Text(
                                 pelanggaran.noTilang,
@@ -97,7 +98,7 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                                   //         pelanggaran.status,
                                   //         pelanggaran.idPelanggaran)));
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => HorizontalExample(
+                                      builder: (context) => DetailStatus(
                                           pelanggaran.status,
                                           pelanggaran.idPelanggaran)));
                                 },
@@ -115,13 +116,13 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                           margin: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 20),
                           child: InkWell(
-                            onTap: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         //Nanti dipilih berdasarkan index
-                              //         builder: (context) => KonfirmasiTilang()));
-                            },
+                            // onTap: () {
+                            //   // Navigator.push(
+                            //   //     context,
+                            //   //     MaterialPageRoute(
+                            //   //         //Nanti dipilih berdasarkan index
+                            //   //         builder: (context) => KonfirmasiTilang()));
+                            // },
                             child: ListTile(
                               leading: Icon(MaterialCommunityIcons.close_box,
                                   size: 60, color: Colors.red),
@@ -149,7 +150,7 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                                   //         pelanggaran.status,
                                   //         pelanggaran.idPelanggaran)));
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => HorizontalExample(
+                                      builder: (context) => DetailStatus(
                                           pelanggaran.status,
                                           pelanggaran.idPelanggaran)));
                                 },
@@ -167,13 +168,13 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                           margin: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 20),
                           child: InkWell(
-                            onTap: () {
-                              // Navigator.push(
-                              //     context,
-                              //     MaterialPageRoute(
-                              //         //Nanti dipilih berdasarkan index
-                              //         builder: (context) => KonfirmasiTilang()));
-                            },
+                            // onTap: () {
+                            //   // Navigator.push(
+                            //   //     context,
+                            //   //     MaterialPageRoute(
+                            //   //         //Nanti dipilih berdasarkan index
+                            //   //         builder: (context) => KonfirmasiTilang()));
+                            // },
                             child: ListTile(
                               leading: Icon(MaterialCommunityIcons.check_bold,
                                   size: 60, color: Colors.green),
@@ -201,7 +202,7 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                                   //         pelanggaran.status,
                                   //         pelanggaran.idPelanggaran)));
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => HorizontalExample(
+                                      builder: (context) => DetailStatus(
                                           pelanggaran.status,
                                           pelanggaran.idPelanggaran)));
                                 },

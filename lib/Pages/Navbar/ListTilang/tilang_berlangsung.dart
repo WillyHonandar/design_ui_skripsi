@@ -118,7 +118,7 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 //         pelanggaran.status,
                                 //         pelanggaran.idPelanggaran)));
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => HorizontalExample(
+                                    builder: (context) => DetailStatus(
                                         pelanggaran.status,
                                         pelanggaran.idPelanggaran)));
                               },
@@ -173,7 +173,7 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 //         pelanggaran.status,
                                 //         pelanggaran.idPelanggaran)));
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => HorizontalExample(
+                                    builder: (context) => DetailStatus(
                                         pelanggaran.status,
                                         pelanggaran.idPelanggaran)));
                               },
@@ -231,7 +231,7 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 //         pelanggaran.status,
                                 //         pelanggaran.idPelanggaran)));
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => HorizontalExample(
+                                    builder: (context) => DetailStatus(
                                         pelanggaran.status,
                                         pelanggaran.idPelanggaran)));
                               },
@@ -287,7 +287,62 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 //         pelanggaran.status,
                                 //         pelanggaran.idPelanggaran)));
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => HorizontalExample(
+                                    builder: (context) => DetailStatus(
+                                        pelanggaran.status,
+                                        pelanggaran.idPelanggaran)));
+                              },
+                              child: Icon(
+                                  MaterialCommunityIcons.information_variant),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  } else if (pelanggaran.status == "Tunggu Email") {
+                    return Card(
+                      elevation: 5,
+                      child: Container(
+                        margin:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                        child: InkWell(
+                          // onTap: () {
+                          //   Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(
+                          //           //Nanti dipilih berdasarkan index
+                          //           builder: (context) => Pembayaran()));
+                          // },
+                          child: ListTile(
+                            leading: Icon(
+                              MaterialCommunityIcons.email_alert,
+                              size: 60,
+                              color: Colors.yellow,
+                            ),
+                            title: Text(
+                              pelanggaran.noTilang,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            subtitle: Container(
+                              decoration: new BoxDecoration(
+                                borderRadius: new BorderRadius.circular(16.0),
+                                color: Colors.yellow,
+                              ),
+                              margin: EdgeInsets.only(top: 10),
+                              padding: EdgeInsets.symmetric(vertical: 5),
+                              child: Center(
+                                //Status di ambil dari database
+                                child: Text(pelanggaran.status,
+                                    style: TextStyle(fontSize: 10)),
+                              ),
+                            ),
+                            trailing: InkWell(
+                              onTap: () {
+                                // Navigator.of(context).push(MaterialPageRoute(
+                                //     builder: (context) => StepperPage(
+                                //         pelanggaran.status,
+                                //         pelanggaran.idPelanggaran)));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => DetailStatus(
                                         pelanggaran.status,
                                         pelanggaran.idPelanggaran)));
                               },
@@ -410,7 +465,7 @@ class _ListPelanggaranKosongState extends State<ListPelanggaranKosong> {
 }
 
 Future<List<Pelanggaran>> getListPelanggaran() async {
-  final response = await client.rpc("getListPelanggaran",
+  final response = await client.rpc("getTilangBerlangsung",
       params: {'currentUser': FirebaseAuth.instance.currentUser.uid}).execute();
   print(pelanggaran.idPelanggaran);
   print(pelanggaran.status);

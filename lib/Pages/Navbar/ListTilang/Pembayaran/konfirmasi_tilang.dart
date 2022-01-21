@@ -113,25 +113,35 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                 Row(
                                   children: [
                                     Text(
-                                      "Nomor : ",
+                                      "Nomor Penilangan: ",
                                       style: TextStyle(
                                           fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       pelanggaran.noTilang,
                                       style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ],
                                 ),
 
-                                Text(
-                                  "Perihal: Surat Konfirmasi ETLE",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Perihal: ",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      "Surat Konfirmasi ETLE",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                                 Row(
                                   children: [
@@ -139,13 +149,13 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                       "Tanggal Penilangan : ",
                                       style: TextStyle(
                                           fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       pelanggaran.tanggalPelanggaran,
                                       style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -161,23 +171,24 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                 Text(
                                   "Detail Informasi",
                                   style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.grey),
                                 ),
+                                SizedBox(height: 5),
                                 Row(
                                   children: [
                                     Text(
                                       "Jenis Kendaraan: ",
                                       style: TextStyle(
                                           fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       pelanggaran.jenisKendaraan,
                                       style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -187,13 +198,13 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                       "No. Plat Kendaraan: ",
                                       style: TextStyle(
                                           fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       pelanggaran.noPlat,
                                       style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -203,13 +214,13 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                       "No. Mesin Kendaraan: ",
                                       style: TextStyle(
                                           fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       pelanggaran.noMesin,
                                       style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -225,61 +236,66 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                 Text(
                                   "Detail Pelanggaran",
                                   style: TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.grey),
                                 ),
-                                Row(
+                                SizedBox(height: 5),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       "Jenis Pelanggaran: ",
                                       style: TextStyle(
                                           fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.bold),
                                     ),
-                                    Flexible(
-                                      child: Text(
-                                        pelanggaran.jenisPelanggaran,
-                                        maxLines: 10,
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500),
+                                    Text(
+                                      pelanggaran.jenisPelanggaran,
+                                      maxLines: 10,
+                                      style: TextStyle(
+                                        fontSize: 12,
                                       ),
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "Jumlah Pembayaran: ",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                    Text(
-                                      pelanggaran.jumlahPembayaran,
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ],
-                                ),
-                                Row(
+                                SizedBox(height: 10),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       "Deskripsi Pelanggaran: ",
                                       maxLines: 20,
                                       style: TextStyle(
                                           fontSize: 12,
-                                          fontWeight: FontWeight.w500),
+                                          fontWeight: FontWeight.bold),
                                     ),
-                                    Flexible(
-                                      child: Text(
-                                        pelanggaran.deskripsiPelanggaran,
-                                        maxLines: 10,
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500),
+                                    Text(
+                                      pelanggaran.deskripsiPelanggaran,
+                                      maxLines: 10,
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Jumlah Pembayaran: ",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      pelanggaran.jumlahPembayaran,
+                                      style: TextStyle(
+                                        fontSize: 30,
                                       ),
                                     ),
                                   ],
@@ -287,21 +303,21 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
                           Text(
                             "Foto Bukti Pelanggaran",
                             style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey),
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           Container(
-                            margin: EdgeInsets.only(top: 20),
+                            margin: EdgeInsets.only(top: 10),
                             child: Center(
-                              child: Image(
-                                image: AssetImage("assets/img1.png"),
-                                height: 220,
-                              ),
+                              child: Image.network(
+                                  pelanggaran.fotoBuktiPelanggaran,
+                                  width: 300,
+                                  height: 300),
                             ),
                           ),
                           Container(
@@ -320,6 +336,8 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                               //Nanti dipilih berdasarkan index
                                               builder: (context) =>
                                                   DetailInformasi(
+                                                      pelanggaran
+                                                          .jumlahPembayaran,
                                                       pelanggaran.status,
                                                       pelanggaran
                                                           .idPelanggaran)));

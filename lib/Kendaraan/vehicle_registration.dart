@@ -222,40 +222,47 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                       minWidth: double.infinity,
                       height: 60,
                       onPressed: () async {
-                        addKendaraanSupabase(
-                            FirebaseAuth.instance.currentUser.uid,
-                            _chosenValue,
-                            _nomorMesinKendaraanController.text,
-                            textEditingController.text);
-                        _incrementCounter();
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => SuksesTambahKendaraan()));
-                        setState(() {
-                          // User updateUser = FirebaseAuth.instance.currentUser;
-                          // updateUser.uid;
-
+                        if (_chosenValue == null ||
+                            _nomorMesinKendaraanController.text == "" ||
+                            textEditingController.text == "") {
                           Fluttertoast.showToast(
-                              msg: "Sukses Menambahkan Kendaraan");
-
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      SuksesTambahKendaraan()),
-                              (route) => false);
-                          // Navigator.pushReplacement(
+                              msg: "Harap isi semua data kendaraan!");
+                        } else {
+                          addKendaraanSupabase(
+                              FirebaseAuth.instance.currentUser.uid,
+                              _chosenValue,
+                              _nomorMesinKendaraanController.text,
+                              textEditingController.text);
+                          _incrementCounter();
+                          // Navigator.push(
                           //     context,
                           //     MaterialPageRoute(
-                          //         builder: (context) =>
-                          //             SuksesTambahKendaraan()));
+                          //         builder: (context) => SuksesTambahKendaraan()));
+                          setState(() {
+                            // User updateUser = FirebaseAuth.instance.currentUser;
+                            // updateUser.uid;
 
-                          //add Supabase
+                            Fluttertoast.showToast(
+                                msg: "Sukses Menambahkan Kendaraan");
 
-                          // vechicleSetup(_chosenValue, textEditingController.text,
-                          //     _nomorMesinKendaraanController.text);
-                        });
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        SuksesTambahKendaraan()),
+                                (route) => false);
+                            // Navigator.pushReplacement(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) =>
+                            //             SuksesTambahKendaraan()));
+
+                            //add Supabase
+
+                            // vechicleSetup(_chosenValue, textEditingController.text,
+                            //     _nomorMesinKendaraanController.text);
+                          });
+                        }
                       },
                       color: Colors.blue,
                       elevation: 0,

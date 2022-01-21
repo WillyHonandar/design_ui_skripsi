@@ -73,15 +73,3 @@ class _ListTilangState extends State<ListTilang> {
 //         }),
 //   );
 // }
-
-Future<List<Kendaraan>> getKendaraan() async {
-  final response = await client
-      .from('m_kendaraan')
-      .select()
-      .order('noMesin', ascending: true)
-      .execute();
-
-  final dataList = response.data as List;
-  print(dataList);
-  return dataList.map((map) => Kendaraan.fromJson(map)).toList();
-}
