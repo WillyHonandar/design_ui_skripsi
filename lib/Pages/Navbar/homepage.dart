@@ -108,6 +108,7 @@ class _HomeState extends State<Home> {
                               MaterialPageRoute(
                                   //Nanti dipilih berdasarkan index
                                   builder: (context) => NotificationsList()));
+                          setState(() {});
                         },
                         padding: EdgeInsets.only(top: 8),
                         icon: Icon(Icons.notifications),

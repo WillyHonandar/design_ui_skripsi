@@ -1,4 +1,5 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Sidang/detail_sidang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/konfirmasi_tilang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/pembayaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/detail_status.dart';
@@ -197,9 +198,10 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                                 context,
                                 MaterialPageRoute(
                                     //Nanti dipilih berdasarkan index
-                                    builder: (context) => Pembayaran(
-                                        pelanggaran.status,
-                                        pelanggaran.idPelanggaran)));
+                                    builder: (context) =>
+                                        DetailPembayaranSidang(
+                                            pelanggaran.status,
+                                            pelanggaran.idPelanggaran)));
                           },
                           child: ListTile(
                             leading: Icon(

@@ -1,4 +1,5 @@
 import 'package:aplikasi_tilang_training/Model/notification.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Sidang/detail_sidang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/konfirmasi_tilang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/pembayaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/tilang_berlangsung.dart';
@@ -43,7 +44,7 @@ class _NotificationsListState extends State<NotificationsList> {
                     padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                     children: dataNotifikasi
                         .map((notifikasi) => Container(
-                              height: 80,
+                              height: 100,
                               child: Align(
                                 alignment: Alignment.center,
                                 child: Builder(builder: (context) {
@@ -87,7 +88,7 @@ class _NotificationsListState extends State<NotificationsList> {
                                                   MaterialPageRoute(
                                                       //Nanti dipilih berdasarkan index
                                                       builder: (context) =>
-                                                          Pembayaran(
+                                                          DetailPembayaranSidang(
                                                               notifikasi.status,
                                                               notifikasi
                                                                   .idPelanggaran)));
