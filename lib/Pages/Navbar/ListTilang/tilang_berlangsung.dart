@@ -427,14 +427,14 @@ class _ListPelanggaranKosongState extends State<ListPelanggaranKosong> {
                       Container(
                         margin: EdgeInsets.only(bottom: 16),
                         child: Center(
-                          child: Icon(
-                            Icons.car_rental_sharp,
-                            size: 200,
-                            color: Colors.grey,
+                          child: Image(
+                            image: AssetImage(
+                                "assets/icon/list_tilang_kosong.png"),
+                            height: 300,
+                            width: 300,
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
                       Center(
                         child: Column(
                           children: [
@@ -446,7 +446,7 @@ class _ListPelanggaranKosongState extends State<ListPelanggaranKosong> {
                             ),
                             SizedBox(height: 20),
                             Text(
-                              "Segera Melakukan Pelanggaran",
+                              "Tetap patuhi peraturan lalu lintas saat mengemudi/berkendara",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 14,

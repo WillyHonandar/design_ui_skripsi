@@ -37,7 +37,10 @@ class _RegisteredVehiclesState extends State<RegisteredVehicles> {
             if (totalKendaraan == 0) {
               return KendaraanKosong();
             }
-            return KendaraanAda(dataKendaraan: dataKendaraan);
+            return KendaraanAda(
+              dataKendaraan: dataKendaraan,
+              totalKendaraan: totalKendaraan,
+            );
           }),
     );
   }
@@ -45,18 +48,18 @@ class _RegisteredVehiclesState extends State<RegisteredVehicles> {
 
 class KendaraanAda extends StatefulWidget {
   final List<Kendaraan> dataKendaraan;
-
-  KendaraanAda({this.dataKendaraan});
+  final int totalKendaraan;
+  KendaraanAda({this.dataKendaraan, this.totalKendaraan});
 
   @override
-  _KendaraanAdaState createState() =>
-      _KendaraanAdaState(dataKendaraan: dataKendaraan);
+  _KendaraanAdaState createState() => _KendaraanAdaState(
+      dataKendaraan: dataKendaraan, totalKendaraan: totalKendaraan);
 }
 
 class _KendaraanAdaState extends State<KendaraanAda> {
   List<Kendaraan> dataKendaraan;
-
-  _KendaraanAdaState({this.dataKendaraan});
+  int totalKendaraan;
+  _KendaraanAdaState({this.dataKendaraan, this.totalKendaraan});
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +93,9 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                     Padding(
                       padding: const EdgeInsets.only(top: 10),
                       child: Text(
-                        "Anda Memiliki total .. kendaraan!",
+                        "Anda Memiliki total " +
+                            totalKendaraan.toString() +
+                            " kendaraan!",
                         style: TextStyle(
                             fontSize: 14, fontWeight: FontWeight.w500),
                       ),
@@ -280,14 +285,14 @@ class _KendaraanKosongState extends State<KendaraanKosong> {
                         Container(
                           margin: EdgeInsets.only(bottom: 16),
                           child: Center(
-                            child: Icon(
-                              Icons.car_rental_sharp,
-                              size: 200,
-                              color: Colors.red,
+                            child: Image(
+                              image: AssetImage(
+                                  "assets/icon/list_kendaraan_kosong.png"),
+                              height: 300,
+                              width: 300,
                             ),
                           ),
                         ),
-                        SizedBox(height: 20),
                         Center(
                           child: Text(
                             "Anda belum mendaftarkan kendaraan, segera daftar sekarang juga!",

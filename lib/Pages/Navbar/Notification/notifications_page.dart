@@ -43,63 +43,81 @@ class _NotificationsListState extends State<NotificationsList> {
                     padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                     children: dataNotifikasi
                         .map((notifikasi) => Container(
-                              child: Builder(builder: (context) {
-                                if (notifikasi.statusNotifikasi ==
-                                    "Belum dibuka") {
-                                  return Card(
-                                    color: Colors.amber,
-                                    child: ListTile(
-                                      leading:
-                                          Icon(Icons.notifications_outlined),
-                                      title: Text(notifikasi.jenisNotifikasi),
-                                      subtitle:
-                                          Text(notifikasi.dekripsiNotifikasi),
-                                      onTap: () {
-                                        if (notifikasi.status ==
-                                            "Pemberitahuan Informasi") {
-                                          updateStatusNotifikasi(
-                                              notifikasi.idNotifikasi, 1);
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  //Nanti dipilih berdasarkan index
-                                                  builder: (context) =>
-                                                      KonfirmasiPelanggaran(
-                                                          notifikasi.status,
-                                                          notifikasi
-                                                              .idPelanggaran)));
-                                        } else if (notifikasi.status ==
-                                            "Segera Lakukan Pembayaran") {
-                                          updateStatusNotifikasi(
-                                              notifikasi.idNotifikasi, 1);
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  //Nanti dipilih berdasarkan index
-                                                  builder: (context) =>
-                                                      Pembayaran(
-                                                          notifikasi.status,
-                                                          notifikasi
-                                                              .idPelanggaran)));
-                                        }
-                                      },
-                                    ),
-                                  );
-                                } else if (notifikasi.statusNotifikasi ==
-                                    "Sudah dibuka") {
-                                  return Card(
-                                    child: ListTile(
-                                      leading:
-                                          Icon(Icons.notifications_outlined),
-                                      title: Text(notifikasi.jenisNotifikasi),
-                                      subtitle:
-                                          Text(notifikasi.dekripsiNotifikasi),
-                                      // onTap: () {},
-                                    ),
-                                  );
-                                }
-                                return null;
-                              }),
+                              height: 80,
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Builder(builder: (context) {
+                                  if (notifikasi.statusNotifikasi ==
+                                      "Belum dibuka") {
+                                    return Card(
+                                      elevation: 3,
+                                      color: Colors.amber,
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: ListTile(
+                                          leading: Icon(
+                                              Icons.notifications_outlined),
+                                          title:
+                                              Text(notifikasi.jenisNotifikasi),
+                                          subtitle: Text(
+                                              notifikasi.dekripsiNotifikasi),
+                                          onTap: () {
+                                            if (notifikasi.status ==
+                                                "Pemberitahuan Informasi") {
+                                              updateStatusNotifikasi(
+                                                  notifikasi.idNotifikasi, 1);
+                                              setState(() {});
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      //Nanti dipilih berdasarkan index
+                                                      builder: (context) =>
+                                                          KonfirmasiPelanggaran(
+                                                              notifikasi.status,
+                                                              notifikasi
+                                                                  .idPelanggaran)));
+                                              setState(() {});
+                                            } else if (notifikasi.status ==
+                                                "Segera Lakukan Pembayaran") {
+                                              updateStatusNotifikasi(
+                                                  notifikasi.idNotifikasi, 1);
+                                              setState(() {});
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      //Nanti dipilih berdasarkan index
+                                                      builder: (context) =>
+                                                          Pembayaran(
+                                                              notifikasi.status,
+                                                              notifikasi
+                                                                  .idPelanggaran)));
+                                              setState(() {});
+                                            }
+                                          },
+                                        ),
+                                      ),
+                                    );
+                                  } else if (notifikasi.statusNotifikasi ==
+                                      "Sudah dibuka") {
+                                    return Card(
+                                      elevation: 3,
+                                      child: Align(
+                                        alignment: Alignment.center,
+                                        child: ListTile(
+                                          leading: Icon(
+                                              Icons.notifications_outlined),
+                                          title:
+                                              Text(notifikasi.jenisNotifikasi),
+                                          subtitle: Text(
+                                              notifikasi.dekripsiNotifikasi),
+                                          // onTap: () {},
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  return null;
+                                }),
+                              ),
                             ))
                         .toList()),
               );
