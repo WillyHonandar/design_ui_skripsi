@@ -1,8 +1,10 @@
+import 'package:aplikasi_tilang_training/Model/notification.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/police_station_location.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Content/content.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/list_tilang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Notification/notifications_page.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/settings.dart';
+import 'package:aplikasi_tilang_training/runner/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -70,138 +72,151 @@ class _HomeState extends State<Home> {
   int counter = 0;
   String uid;
   User user;
+  String userId = FirebaseAuth.instance.currentUser.uid;
+  List<Notifikasi> dataNotifikasi;
+  Notifikasi notif = new Notifikasi();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 0,
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          title: Image.asset(
-            'assets/etle-homeicon.png',
-            scale: 1.9,
-          ),
-          actions: [
-            Stack(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            //Nanti dipilih berdasarkan index
-                            builder: (context) => NotificationsList()));
-                  },
-                  padding: EdgeInsets.only(top: 8),
-                  icon: Icon(Icons.notifications),
-                  color: Colors.blue,
-                  iconSize: 32,
+      child: FutureBuilder<List<Notifikasi>>(
+          future: getNotifikasi(userId),
+          builder: (context, AsyncSnapshot<List<Notifikasi>> snapshot) {
+            if (snapshot.hasData == false) {
+              return Center(child: CircularProgressIndicator());
+            }
+            dataNotifikasi = snapshot.data;
+            counter = snapshot.data.length;
+
+            return Scaffold(
+              appBar: AppBar(
+                automaticallyImplyLeading: false,
+                elevation: 0,
+                backgroundColor: Colors.white,
+                centerTitle: true,
+                title: Image.asset(
+                  'assets/etle-homeicon.png',
+                  scale: 1.9,
                 ),
-                counter != 0
-                    ? Positioned(
-                        right: 28,
-                        top: 12,
-                        child: Container(
-                          padding: EdgeInsets.all(2),
-                          decoration: new BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          constraints: BoxConstraints(
-                            minWidth: 15,
-                            minHeight: 15,
-                          ),
-                          child: Text(
-                            '$counter',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      )
-                    : Container()
-              ],
-            )
-          ],
-        ),
-        // appBar: AppBar(
-        //   leading: Container(
-        //       margin: EdgeInsets.only(left: 10),
-        //       child: Image.asset('assets/etle-homeicon.png')),
-        //   backgroundColor: Colors.transparent,
-        //   elevation: 0,
-        //   actions: <Widget>[
-        //     Stack(
-        //       children: <Widget>[
-        //         Padding(
-        //           padding: const EdgeInsets.only(right: 24.0),
-        //           child: IconButton(
-        //             icon: Icon(Icons.notifications),
-        //             iconSize: 32.0,
-        //             color: Colors.black,
-        //             onPressed: () {
-        //               setState(() {
-        //                 counter = 0;
-        //                 Navigator.push(
-        //                     context,
-        //                     MaterialPageRoute(
-        //                         builder: (context) => NotificationsList()));
-        //               });
-        //             },
-        //           ),
-        //         ),
-        //         counter != 0
-        //             ? Positioned(
-        //                 right: 30,
-        //                 top: 8,
-        //                 child: Container(
-        //                   padding: EdgeInsets.all(2),
-        //                   decoration: new BoxDecoration(
-        //                     color: Colors.red,
-        //                     borderRadius: BorderRadius.circular(6),
-        //                   ),
-        //                   constraints: BoxConstraints(
-        //                     minWidth: 14,
-        //                     minHeight: 14,
-        //                   ),
-        //                   child: Text(
-        //                     '$counter',
-        //                     style: TextStyle(
-        //                       color: Colors.white,
-        //                       fontSize: 8,
-        //                     ),
-        //                     textAlign: TextAlign.center,
-        //                   ),
-        //                 ),
-        //               )
-        //             : Container()
-        //       ],
-        //     )
-        //   ],
-        // ),
-        body: SingleChildScrollView(
-          child: Column(children: [
-            // SearchBar(),
-            // NearestPoliceStation(),
-            CekPengetahuan(),
-            NewsHomepage(),
-          ]),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            print("Increment Counter");
-            setState(() {
-              counter++;
-            });
-          },
-          child: Icon(Icons.add),
-        ),
-      ),
+                actions: [
+                  Stack(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  //Nanti dipilih berdasarkan index
+                                  builder: (context) => NotificationsList()));
+                        },
+                        padding: EdgeInsets.only(top: 8),
+                        icon: Icon(Icons.notifications),
+                        color: Colors.blue,
+                        iconSize: 32,
+                      ),
+                      counter != 0
+                          ? Positioned(
+                              right: 28,
+                              top: 12,
+                              child: Container(
+                                padding: EdgeInsets.all(2),
+                                decoration: new BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(100),
+                                ),
+                                constraints: BoxConstraints(
+                                  minWidth: 15,
+                                  minHeight: 15,
+                                ),
+                                child: Text(
+                                  '$counter',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
+                          : Container()
+                    ],
+                  )
+                ],
+              ),
+              // appBar: AppBar(
+              //   leading: Container(
+              //       margin: EdgeInsets.only(left: 10),
+              //       child: Image.asset('assets/etle-homeicon.png')),
+              //   backgroundColor: Colors.transparent,
+              //   elevation: 0,
+              //   actions: <Widget>[
+              //     Stack(
+              //       children: <Widget>[
+              //         Padding(
+              //           padding: const EdgeInsets.only(right: 24.0),
+              //           child: IconButton(
+              //             icon: Icon(Icons.notifications),
+              //             iconSize: 32.0,
+              //             color: Colors.black,
+              //             onPressed: () {
+              //               setState(() {
+              //                 counter = 0;
+              //                 Navigator.push(
+              //                     context,
+              //                     MaterialPageRoute(
+              //                         builder: (context) => NotificationsList()));
+              //               });
+              //             },
+              //           ),
+              //         ),
+              //         counter != 0
+              //             ? Positioned(
+              //                 right: 30,
+              //                 top: 8,
+              //                 child: Container(
+              //                   padding: EdgeInsets.all(2),
+              //                   decoration: new BoxDecoration(
+              //                     color: Colors.red,
+              //                     borderRadius: BorderRadius.circular(6),
+              //                   ),
+              //                   constraints: BoxConstraints(
+              //                     minWidth: 14,
+              //                     minHeight: 14,
+              //                   ),
+              //                   child: Text(
+              //                     '$counter',
+              //                     style: TextStyle(
+              //                       color: Colors.white,
+              //                       fontSize: 8,
+              //                     ),
+              //                     textAlign: TextAlign.center,
+              //                   ),
+              //                 ),
+              //               )
+              //             : Container()
+              //       ],
+              //     )
+              //   ],
+              // ),
+              body: SingleChildScrollView(
+                child: Column(children: [
+                  // SearchBar(),
+                  // NearestPoliceStation(),
+                  CekPengetahuan(),
+                  NewsHomepage(),
+                ]),
+              ),
+              // floatingActionButton: FloatingActionButton(
+              //   onPressed: () {
+              //     print("Increment Counter");
+              //     setState(() {
+              //       counter++;
+              //     });
+              //   },
+              //   child: Icon(Icons.add),
+              // ),
+            );
+          }),
     );
   }
 }
@@ -606,3 +621,12 @@ class NewsHomepage extends StatelessWidget {
 //     ),
 //   );
 // }
+
+Future<List<Notifikasi>> getNotifikasi(String user) async {
+  final response = await client.rpc("getListNotifikasiBelumBayar",
+      params: {'currentUser': user}).execute();
+
+  final dataList = response.data as List;
+  print(dataList);
+  return dataList.map((map) => Notifikasi.fromJson(map)).toList();
+}

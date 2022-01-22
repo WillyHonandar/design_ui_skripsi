@@ -151,8 +151,10 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                                             size: 50,
                                             color: Colors.black,
                                           ),
-                                          title: Text(kendaraan.noPlat),
-                                          subtitle: Text(kendaraan.noMesin),
+                                          title: Text(kendaraan.noPlat ??
+                                              'default value'),
+                                          subtitle: Text(kendaraan.noMesin ??
+                                              'default value'),
                                           trailing: InkWell(
                                               onTap: () {
                                                 deleteKendaraan(
@@ -190,57 +192,6 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                                 ))
                             .toList(),
                       ),
-                      // child: Scrollbar(
-                      //   child: ListView.builder(
-                      //       scrollDirection: Axis.vertical,
-                      //       itemCount: totalKendaraan,
-                      //       padding: EdgeInsets.only(top: 10),
-                      //       itemBuilder: (context, index) {
-                      //         return Container(
-                      //           padding: EdgeInsets.only(left: 15),
-                      //           margin: EdgeInsets.only(
-                      //               bottom: 10, left: 10, right: 10),
-                      //           height: 80,
-                      //           width: 300,
-                      //           decoration: BoxDecoration(
-                      //             borderRadius: BorderRadius.circular(5),
-                      //             border: Border.all(
-                      //                 width: 2.0, color: Colors.blue[800]),
-                      //           ),
-                      //           child: Row(
-                      //             children: [
-                      //               Row(
-                      //                 children: [
-                      //                   Container(
-                      //                     height: 60,
-                      //                     width: 60,
-                      //                     decoration: BoxDecoration(
-                      //                         border: Border.all(
-                      //                             width: 1, color: Colors.purple),
-                      //                         color: Colors.white,
-                      //                         borderRadius:
-                      //                             BorderRadius.circular(10)),
-                      //                   ),
-                      //                   SizedBox(
-                      //                     width: 13,
-                      //                   ),
-                      //                   Container(
-                      //                     padding: EdgeInsets.only(top: 20),
-                      //                     child: Column(
-                      //                       mainAxisAlignment:
-                      //                           MainAxisAlignment.start,
-                      //                       crossAxisAlignment:
-                      //                           CrossAxisAlignment.start,
-                      //                       children:
-                      //                     ),
-                      //                   )
-                      //                 ],
-                      //               )
-                      //             ],
-                      //           ),
-                      //         );
-                      //       }),
-                      // ),
                     ),
                   ],
                 ),
