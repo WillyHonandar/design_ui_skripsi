@@ -1,7 +1,7 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Sidang/lakukan_sidang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/pembayaran.dart';
-import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:aplikasi_tilang_training/main.dart';
 import 'package:flutter/material.dart';
 
 class DetailInformasi extends StatefulWidget {
@@ -139,7 +139,7 @@ class _DetailInformasiState extends State<DetailInformasi> {
                             MaterialPageRoute(
                                 //Nanti dipilih berdasarkan index
                                 builder: (context) =>
-                                    LakukanSidang(status, idPelanggaran)));
+                                    DetailSidang(status, idPelanggaran)));
                       },
                       color: Colors.red,
                       elevation: 0,

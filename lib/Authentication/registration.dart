@@ -3,7 +3,7 @@ import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
 import 'package:aplikasi_tilang_training/net/firebase.dart';
 import 'package:aplikasi_tilang_training/Authentication/login.dart';
 import 'package:aplikasi_tilang_training/Authentication/otp.dart';
-import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:aplikasi_tilang_training/main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

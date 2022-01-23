@@ -1,5 +1,5 @@
 import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
-import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:aplikasi_tilang_training/main.dart';
 import 'package:flutter/material.dart';
 
 class SuksesLakukanSidang extends StatelessWidget {

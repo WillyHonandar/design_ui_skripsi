@@ -1,6 +1,6 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/pembayaran.dart';
-import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:aplikasi_tilang_training/main.dart';
 import 'package:flutter/material.dart';
 
 class DetailPembayaranSidang extends StatefulWidget {

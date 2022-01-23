@@ -1,23 +1,23 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Sidang/sukses_lakukan_sidang.dart';
-import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:aplikasi_tilang_training/main.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class LakukanSidang extends StatefulWidget {
+class DetailSidang extends StatefulWidget {
   final int idPelanggaran;
   final String status;
-  LakukanSidang(this.status, this.idPelanggaran);
+  DetailSidang(this.status, this.idPelanggaran);
   @override
   State<StatefulWidget> createState() {
-    return _LakukanSidangState(this.status, this.idPelanggaran);
+    return _DetailSidangState(this.status, this.idPelanggaran);
   }
 }
 
-class _LakukanSidangState extends State<LakukanSidang> {
+class _DetailSidangState extends State<DetailSidang> {
   int idPelanggaran;
   String status;
-  _LakukanSidangState(this.status, this.idPelanggaran);
+  _DetailSidangState(this.status, this.idPelanggaran);
 
   @override
   Widget build(BuildContext context) {

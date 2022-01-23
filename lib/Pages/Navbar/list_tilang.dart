@@ -1,6 +1,6 @@
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/riwayat.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/tilang_berlangsung.dart';
-import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:aplikasi_tilang_training/main.dart';
 import 'package:flutter/material.dart';
 import 'package:aplikasi_tilang_training/Model/kendaraan.dart';
 

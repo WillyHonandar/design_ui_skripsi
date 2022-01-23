@@ -4,7 +4,7 @@ import 'package:aplikasi_tilang_training/Kendaraan/sukses_tambah_kendaraan.dart'
 import 'package:aplikasi_tilang_training/net/firebase.dart';
 import 'package:aplikasi_tilang_training/Kendaraan/vehicle_list.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
-import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';

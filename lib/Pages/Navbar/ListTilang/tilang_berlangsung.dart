@@ -4,7 +4,7 @@ import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/konf
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/pembayaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/detail_status.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/stepper.dart';
-import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';

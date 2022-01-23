@@ -6,7 +6,7 @@ import 'package:aplikasi_tilang_training/Pages/Navbar/Content/content.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/list_tilang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Notification/notifications_page.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/settings.dart';
-import 'package:aplikasi_tilang_training/runner/main.dart';
+import 'package:aplikasi_tilang_training/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
