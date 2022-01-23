@@ -2,6 +2,7 @@ import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Komp
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Komplain extends StatefulWidget {
   final String status;
@@ -66,19 +67,26 @@ class _KomplainState extends State<Komplain> {
           minWidth: double.infinity,
           height: 60,
           onPressed: () {
-            addAlasanBukan(idPelanggaran, _alasanBukanController.text);
-            updateStatus(idPelanggaran, 7);
-            // updateStatus(idPelanggaran, idStatus)
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         //Nanti dipilih berdasarkan index
-            //         builder: (context) => SuksesBukanKendaraan()));
+            if (_alasanBukanController.text == "") {
+              Fluttertoast.showToast(
+                  msg: "Komplain tidak boleh kosong, harap di isi!");
+            } else {
+              addAlasanBukan(idPelanggaran, _alasanBukanController.text);
+              updateStatus(idPelanggaran, 7);
+              // updateStatus(idPelanggaran, idStatus)
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //         //Nanti dipilih berdasarkan index
+              //         builder: (context) => SuksesBukanKendaraan()));
 
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(builder: (context) => SuksesBukanKendaraan()),
-                (route) => false);
+              Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SuksesBukanKendaraan()),
+                  (route) => false);
+              Fluttertoast.showToast(msg: "Berhasil mengirim komplain!");
+            }
           },
           color: Colors.blue,
           elevation: 0,

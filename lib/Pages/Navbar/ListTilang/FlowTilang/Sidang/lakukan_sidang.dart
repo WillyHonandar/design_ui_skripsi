@@ -78,12 +78,13 @@ class _DetailSidangState extends State<DetailSidang> {
           onPressed: () {
             printidPelanggaran(idPelanggaran);
             updateStatus(idPelanggaran, 2);
-            Fluttertoast.showToast(msg: "Sukses memilih alur sidang!");
+
             Navigator.push(
                 context,
                 MaterialPageRoute(
                     //Nanti dipilih berdasarkan index
                     builder: (context) => SuksesLakukanSidang()));
+            Fluttertoast.showToast(msg: "Sukses memilih alur sidang!");
           },
           color: Colors.blue,
           elevation: 0,

@@ -241,15 +241,14 @@ class _RegisKendaraanState extends State<RegisKendaraan> {
                             // User updateUser = FirebaseAuth.instance.currentUser;
                             // updateUser.uid;
 
-                            Fluttertoast.showToast(
-                                msg: "Sukses Menambahkan Kendaraan");
-
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         SuksesTambahKendaraan()),
                                 (route) => false);
+                            Fluttertoast.showToast(
+                                msg: "Sukses Menambahkan Kendaraan");
                             // Navigator.pushReplacement(
                             //     context,
                             //     MaterialPageRoute(

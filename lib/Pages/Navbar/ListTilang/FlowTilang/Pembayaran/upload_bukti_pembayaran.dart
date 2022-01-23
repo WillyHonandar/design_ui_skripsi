@@ -144,13 +144,14 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
                   //     MaterialPageRoute(
                   //         //Nanti dipilih berdasarkan index
                   //         builder: (context) => SuksesMelakukanPembayaran()));
-                  Fluttertoast.showToast(
-                      msg: "Sukses Upload Bukti Pembayaran!"),
+
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(
                           builder: (context) => SuksesMelakukanPembayaran()),
-                      (route) => false)
+                      (route) => false),
+                  Fluttertoast.showToast(
+                      msg: "Sukses Upload Bukti Pembayaran!"),
                 });
           },
           color: Colors.blue,

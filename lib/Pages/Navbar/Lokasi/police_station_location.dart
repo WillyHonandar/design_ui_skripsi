@@ -4,7 +4,7 @@ import 'package:grouped_list/grouped_list.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 
 class LokasiPolsekPengadilan extends StatelessWidget {
-  List dummyData = [
+  List dataLokasiPolsekPengadilan = [
     {
       "namaPolice": "Pengadilan Negeri Jakarta Utara",
       "lokasiPolice": "Jl. Gajah Mada No.18, Jakarta Pusat (Lokasi Baru)",
@@ -401,7 +401,7 @@ class LokasiPolsekPengadilan extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(bottom: 16),
         child: GroupedListView<dynamic, String>(
-          elements: dummyData,
+          elements: dataLokasiPolsekPengadilan,
           groupBy: (element) => element['group'],
           groupSeparatorBuilder: (String groupByValue) {
             return SafeArea(
