@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:aplikasi_tilang_training/Model/notification.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/police_station_location.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Content/content.dart';
@@ -76,6 +78,11 @@ class _HomeState extends State<Home> {
   List<Notifikasi> dataNotifikasi;
   Notifikasi notif = new Notifikasi();
 
+  FutureOr onGoBack(dynamic value) {
+    build(context);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -107,7 +114,8 @@ class _HomeState extends State<Home> {
                               context,
                               MaterialPageRoute(
                                   //Nanti dipilih berdasarkan index
-                                  builder: (context) => NotificationsList()));
+                                  builder: (context) =>
+                                      NotificationsList())).then((onGoBack));
                           setState(() {});
                         },
                         padding: EdgeInsets.only(top: 8),
