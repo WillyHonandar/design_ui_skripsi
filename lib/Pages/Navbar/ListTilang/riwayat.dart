@@ -44,8 +44,8 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 16, left: 16, right: 16),
       child: ListView(
+        padding: EdgeInsets.all(16),
         children: dataPelanggaran
             .map((pelanggaran) => Container(
                   // child: InkWell(

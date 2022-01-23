@@ -398,66 +398,88 @@ class MapLauncherDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(),
-      body: GroupedListView<dynamic, String>(
-        elements: dummyData,
-        groupBy: (element) => element['group'],
-        groupSeparatorBuilder: (String groupByValue) {
-          return SafeArea(
-            child: Container(
-              width: double.infinity,
-              height: 60,
-              child: Center(
-                child: Text(
-                  groupByValue,
-                  style: TextStyle(
-                      fontSize: 20.0,
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold),
+      body: Padding(
+        padding: const EdgeInsets.only(bottom: 16),
+        child: GroupedListView<dynamic, String>(
+          elements: dummyData,
+          groupBy: (element) => element['group'],
+          groupSeparatorBuilder: (String groupByValue) {
+            return SafeArea(
+              child: Container(
+                decoration: BoxDecoration(
+                  // border: Border(
+                  //     top: BorderSide(width: 1.0, color: Colors.black),
+                  //     left: BorderSide(width: 1.0, color: Colors.black),
+                  //     right: BorderSide(width: 1.0, color: Colors.black),
+                  //     bottom: BorderSide(width: 1.0, color: Colors.black)),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+                width: double.infinity,
+                height: 60,
+                child: Center(
+                  child: Text(
+                    groupByValue,
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
-            ),
-          );
-        },
-        itemBuilder: (context, dynamic element) {
-          return InkWell(
-            onTap: () => openMapsSheet(context, element['namaPolice'],
-                element['latitude'], element['longtitude']),
-            child: Card(
-              child: ListTile(
-                title: Container(
-                    child: Text(
-                  element['namaPolice'],
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500),
-                )),
-                subtitle: Text(
-                  element['lokasiPolice'],
-                  style: TextStyle(fontSize: 12),
-                ),
-                leading: Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image(
-                      image: AssetImage("assets/" + element['image']),
+            );
+          },
+          itemBuilder: (context, dynamic element) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: InkWell(
+                onTap: () => openMapsSheet(context, element['namaPolice'],
+                    element['latitude'], element['longtitude']),
+                child: Card(
+                  child: ListTile(
+                    title: Container(
+                        child: Text(
+                      element['namaPolice'],
+                      style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    )),
+                    subtitle: Text(
+                      element['lokasiPolice'],
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    leading: Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image(
+                          image: AssetImage("assets/" + element['image']),
+                        ),
+                      ),
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.arrow_forward),
+                      onPressed: () {},
                     ),
                   ),
                 ),
-                trailing: IconButton(
-                  icon: Icon(Icons.arrow_forward),
-                  onPressed: () {},
-                ),
               ),
-            ),
-          );
-        },
-        itemComparator: (item1, item2) =>
-            item1['namaPolice'].compareTo(item2['namaPolice']), // optional
-        useStickyGroupSeparators: true, // optional
-        floatingHeader: false, // optional
-        order: GroupedListOrder.ASC, // optional
+            );
+          },
+          itemComparator: (item1, item2) =>
+              item1['namaPolice'].compareTo(item2['namaPolice']), // optional
+          useStickyGroupSeparators: true, // optional
+          floatingHeader: false, // optional
+          order: GroupedListOrder.ASC, // optional
+        ),
       ),
     );
   }

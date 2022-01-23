@@ -36,93 +36,184 @@ class _NotificationsListState extends State<NotificationsList> {
             dataNotifikasi = snapshot.data;
             totalNotifikasi = snapshot.data.length;
             if (totalNotifikasi == 0) {
-              return Container();
+              return Container(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  width: double.infinity,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Center(
+                          child: ListView(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 36, vertical: 24),
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.only(bottom: 16),
+                                  child: Center(
+                                    child: Image(
+                                      image: AssetImage(
+                                          "assets/icon/list_notifikasi_kosong.png"),
+                                      height: 300,
+                                      width: 300,
+                                    ),
+                                  ),
+                                ),
+                                Center(
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        "Belum ada notifikasi yang masuk!",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500),
+                                      ),
+                                      SizedBox(height: 20),
+                                      Text(
+                                        "Tetap patuhi peraturan lalu lintas saat mengemudi/berkendara",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.grey),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ]),
+                        ),
+                      ]),
+                ),
+              );
             }
             return Builder(builder: (context) {
               return Container(
                 child: ListView(
-                    padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+                    padding: EdgeInsets.all(16),
                     children: dataNotifikasi
                         .map((notifikasi) => Container(
-                              height: 100,
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Builder(builder: (context) {
-                                  if (notifikasi.statusNotifikasi ==
-                                      "Belum dibuka") {
-                                    return Card(
-                                      elevation: 3,
-                                      color: Colors.amber,
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: ListTile(
-                                          leading: Icon(
-                                            Icons.notifications_outlined,
-                                            size: 50,
-                                          ),
-                                          title:
-                                              Text(notifikasi.jenisNotifikasi),
-                                          subtitle: Text(
-                                              notifikasi.dekripsiNotifikasi),
-                                          onTap: () {
-                                            if (notifikasi.status ==
-                                                "Pemberitahuan Informasi") {
-                                              updateStatusNotifikasi(
-                                                  notifikasi.idNotifikasi, 1);
-                                              setState(() {});
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      //Nanti dipilih berdasarkan index
-                                                      builder: (context) =>
-                                                          KonfirmasiPelanggaran(
-                                                              notifikasi.status,
-                                                              notifikasi
-                                                                  .idPelanggaran)));
-                                              setState(() {});
-                                            } else if (notifikasi.status ==
-                                                "Segera Lakukan Pembayaran") {
-                                              updateStatusNotifikasi(
-                                                  notifikasi.idNotifikasi, 1);
-                                              setState(() {});
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      //Nanti dipilih berdasarkan index
-                                                      builder: (context) =>
-                                                          DetailPembayaranSidang(
-                                                              notifikasi.status,
-                                                              notifikasi
-                                                                  .idPelanggaran)));
-                                              setState(() {});
-                                            }
-                                          },
+                              child: Builder(builder: (context) {
+                                if (notifikasi.statusNotifikasi ==
+                                    "Belum dibuka") {
+                                  return Card(
+                                    elevation: 3,
+                                    color: Colors.amber,
+                                    child: Container(
+                                      margin:
+                                          EdgeInsets.symmetric(vertical: 10),
+                                      child: ListTile(
+                                        leading: Icon(
+                                          Icons.notifications_outlined,
+                                          size: 50,
                                         ),
-                                      ),
-                                    );
-                                  } else if (notifikasi.statusNotifikasi ==
-                                      "Sudah dibuka") {
-                                    return Card(
-                                      elevation: 3,
-                                      child: Align(
-                                        alignment: Alignment.center,
-                                        child: ListTile(
-                                          leading: Icon(
-                                            Icons.notifications_outlined,
-                                            size: 50,
-                                          ),
-                                          title:
-                                              Text(notifikasi.jenisNotifikasi),
-                                          subtitle: Text(
-                                              notifikasi.dekripsiNotifikasi),
-                                          // onTap: () {},
+                                        title: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              notifikasi.jenisNotifikasi,
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              "No. Tilang: " +
+                                                  notifikasi.noTilang,
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
                                         ),
+                                        subtitle: Text(
+                                          notifikasi.dekripsiNotifikasi,
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          if (notifikasi.status ==
+                                              "Pemberitahuan Informasi") {
+                                            updateStatusNotifikasi(
+                                                notifikasi.idNotifikasi, 1);
+                                            setState(() {});
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    //Nanti dipilih berdasarkan index
+                                                    builder: (context) =>
+                                                        KonfirmasiPelanggaran(
+                                                            notifikasi.status,
+                                                            notifikasi
+                                                                .idPelanggaran)));
+                                            setState(() {});
+                                          } else if (notifikasi.status ==
+                                              "Segera Lakukan Pembayaran") {
+                                            updateStatusNotifikasi(
+                                                notifikasi.idNotifikasi, 1);
+                                            setState(() {});
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    //Nanti dipilih berdasarkan index
+                                                    builder: (context) =>
+                                                        DetailPembayaranSidang(
+                                                            notifikasi.status,
+                                                            notifikasi
+                                                                .idPelanggaran)));
+                                            setState(() {});
+                                          }
+                                        },
                                       ),
-                                    );
-                                  }
-                                  return null;
-                                }),
-                              ),
+                                    ),
+                                  );
+                                } else if (notifikasi.statusNotifikasi ==
+                                    "Sudah dibuka") {
+                                  return Card(
+                                    elevation: 3,
+                                    child: Container(
+                                      margin:
+                                          EdgeInsets.symmetric(vertical: 10),
+                                      child: ListTile(
+                                        leading: Icon(
+                                          Icons.notifications_outlined,
+                                          size: 50,
+                                        ),
+                                        title: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              notifikasi.jenisNotifikasi,
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              "No. Tilang: " +
+                                                  notifikasi.noTilang,
+                                              style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
+                                        subtitle: Text(
+                                          notifikasi.dekripsiNotifikasi,
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        // onTap: () {},
+                                      ),
+                                    ),
+                                  );
+                                }
+                                return null;
+                              }),
                             ))
                         .toList()),
               );
