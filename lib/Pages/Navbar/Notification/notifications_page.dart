@@ -57,7 +57,9 @@ class _NotificationsListState extends State<NotificationsList> {
                                         alignment: Alignment.center,
                                         child: ListTile(
                                           leading: Icon(
-                                              Icons.notifications_outlined),
+                                            Icons.notifications_outlined,
+                                            size: 50,
+                                          ),
                                           title:
                                               Text(notifikasi.jenisNotifikasi),
                                           subtitle: Text(
@@ -106,7 +108,9 @@ class _NotificationsListState extends State<NotificationsList> {
                                         alignment: Alignment.center,
                                         child: ListTile(
                                           leading: Icon(
-                                              Icons.notifications_outlined),
+                                            Icons.notifications_outlined,
+                                            size: 50,
+                                          ),
                                           title:
                                               Text(notifikasi.jenisNotifikasi),
                                           subtitle: Text(

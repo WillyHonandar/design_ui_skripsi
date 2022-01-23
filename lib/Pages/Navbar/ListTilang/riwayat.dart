@@ -75,8 +75,8 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                               leading: Icon(MaterialCommunityIcons.email_check,
                                   size: 60, color: Colors.green),
                               title: Text(
-                                pelanggaran.noTilang,
-                                style: TextStyle(fontSize: 16),
+                                "No. Tilang: " + pelanggaran.noTilang,
+                                style: TextStyle(fontSize: 14),
                               ),
                               subtitle: Container(
                                 decoration: new BoxDecoration(
@@ -127,8 +127,8 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                               leading: Icon(MaterialCommunityIcons.close_box,
                                   size: 60, color: Colors.red),
                               title: Text(
-                                pelanggaran.noTilang,
-                                style: TextStyle(fontSize: 16),
+                                "No. Tilang: " + pelanggaran.noTilang,
+                                style: TextStyle(fontSize: 14),
                               ),
                               subtitle: Container(
                                 decoration: new BoxDecoration(
@@ -179,8 +179,8 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                               leading: Icon(MaterialCommunityIcons.check_bold,
                                   size: 60, color: Colors.green),
                               title: Text(
-                                pelanggaran.noTilang,
-                                style: TextStyle(fontSize: 16),
+                                "No. Tilang: " + pelanggaran.noTilang,
+                                style: TextStyle(fontSize: 14),
                               ),
                               subtitle: Container(
                                 decoration: new BoxDecoration(

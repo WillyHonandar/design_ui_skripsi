@@ -96,8 +96,8 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                               color: Colors.orange,
                             ),
                             title: Text(
-                              pelanggaran.noTilang,
-                              style: TextStyle(fontSize: 16),
+                              "No. Tilang: " + pelanggaran.noTilang,
+                              style: TextStyle(fontSize: 14),
                             ),
                             subtitle: Container(
                               decoration: new BoxDecoration(
@@ -152,7 +152,7 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             ),
                             title: Text(
                               pelanggaran.noTilang,
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 14),
                             ),
                             subtitle: Container(
                               decoration: new BoxDecoration(
@@ -210,8 +210,8 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                               color: Colors.orange,
                             ),
                             title: Text(
-                              pelanggaran.noTilang,
-                              style: TextStyle(fontSize: 16),
+                              "No. Tilang: " + pelanggaran.noTilang,
+                              style: TextStyle(fontSize: 14),
                             ),
                             subtitle: Container(
                               decoration: new BoxDecoration(
@@ -266,8 +266,8 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                               color: Colors.yellow,
                             ),
                             title: Text(
-                              pelanggaran.noTilang,
-                              style: TextStyle(fontSize: 16),
+                              "No. Tilang: " + pelanggaran.noTilang,
+                              style: TextStyle(fontSize: 14),
                             ),
                             subtitle: Container(
                               decoration: new BoxDecoration(
@@ -321,8 +321,8 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                               color: Colors.yellow,
                             ),
                             title: Text(
-                              pelanggaran.noTilang,
-                              style: TextStyle(fontSize: 16),
+                              "No. Tilang: " + pelanggaran.noTilang,
+                              style: TextStyle(fontSize: 14),
                             ),
                             subtitle: Container(
                               decoration: new BoxDecoration(
