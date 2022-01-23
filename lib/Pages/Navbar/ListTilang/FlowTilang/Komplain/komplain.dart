@@ -1,33 +1,33 @@
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Komplain/sukses_bukan_kendaraan.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Komplain/sukses_komplain.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class AlasanBukan extends StatefulWidget {
+class Komplain extends StatefulWidget {
   final String status;
   final int idPelanggaran;
 
-  AlasanBukan(this.status, this.idPelanggaran);
+  Komplain(this.status, this.idPelanggaran);
 
   @override
   State<StatefulWidget> createState() {
-    return _AlasanBukanState(this.status, this.idPelanggaran);
+    return _KomplainState(this.status, this.idPelanggaran);
   }
 }
 
-class _AlasanBukanState extends State<AlasanBukan> {
+class _KomplainState extends State<Komplain> {
   final TextEditingController _alasanBukanController = TextEditingController();
   String status;
   int idPelanggaran;
 
-  _AlasanBukanState(this.status, this.idPelanggaran);
+  _KomplainState(this.status, this.idPelanggaran);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
-        title: Text("Konfirmasi Tilang", style: TextStyle(color: Colors.black)),
+        title: Text("Komplain", style: TextStyle(color: Colors.black)),
         backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       ),
       body: Container(

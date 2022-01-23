@@ -1,22 +1,26 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/pembayaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Komplain/komplain.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/detail_informasi.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/tilang_berlangsung.dart';
 import 'package:aplikasi_tilang_training/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class DetailPembayaranSidang extends StatefulWidget {
+class KonfirmasiTilang extends StatefulWidget {
+  @override
   final int idPelanggaran;
   final String status;
-  DetailPembayaranSidang(this.status, this.idPelanggaran);
+  KonfirmasiTilang(this.status, this.idPelanggaran);
   @override
   State<StatefulWidget> createState() {
-    return _DetailPembayaranSidangState(this.status, this.idPelanggaran);
+    return _KonfirmasiTilangState(this.status, this.idPelanggaran);
   }
 }
 
-class _DetailPembayaranSidangState extends State<DetailPembayaranSidang> {
+class _KonfirmasiTilangState extends State<KonfirmasiTilang> {
   int idPelanggaran;
   String status;
-  _DetailPembayaranSidangState(this.status, this.idPelanggaran);
+  _KonfirmasiTilangState(this.status, this.idPelanggaran);
 
   List<Pelanggaran> dataPelanggaran;
 
@@ -31,7 +35,7 @@ class _DetailPembayaranSidangState extends State<DetailPembayaranSidang> {
             }
             dataPelanggaran = snapshot.data;
 
-            return DetailPelanggaranSidang(
+            return DetailPelanggaran(
                 dataPelanggaran: dataPelanggaran,
                 idPelanggaran: idPelanggaran,
                 status: status);
@@ -40,28 +44,27 @@ class _DetailPembayaranSidangState extends State<DetailPembayaranSidang> {
   }
 }
 
-class DetailPelanggaranSidang extends StatefulWidget {
+class DetailPelanggaran extends StatefulWidget {
   List<Pelanggaran> dataPelanggaran;
   int idPelanggaran;
   String status;
-  DetailPelanggaranSidang(
-      {this.dataPelanggaran, this.idPelanggaran, this.status});
+  DetailPelanggaran({this.dataPelanggaran, this.idPelanggaran, this.status});
 
   @override
-  _DetailPelanggaranSidangState createState() =>
-      _DetailPelanggaranSidangState(dataPelanggaran: dataPelanggaran);
+  _DetailPelanggaranState createState() =>
+      _DetailPelanggaranState(dataPelanggaran: dataPelanggaran);
 }
 
-class _DetailPelanggaranSidangState extends State<DetailPelanggaranSidang> {
+class _DetailPelanggaranState extends State<DetailPelanggaran> {
   List<Pelanggaran> dataPelanggaran;
-  _DetailPelanggaranSidangState({this.dataPelanggaran});
+  _DetailPelanggaranState({this.dataPelanggaran});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
-        title: Text("Detail Pembayaran Sidang",
-            style: TextStyle(color: Colors.black)),
+        title: Text("Konfirmasi Tilang", style: TextStyle(color: Colors.black)),
         backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       ),
       body: Container(
@@ -290,9 +293,9 @@ class _DetailPelanggaranSidangState extends State<DetailPelanggaranSidang> {
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      "Sesuai dengan hasil keputusan sidang",
+                                      pelanggaran.jumlahPembayaran,
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: 30,
                                       ),
                                     ),
                                   ],
@@ -317,39 +320,76 @@ class _DetailPelanggaranSidangState extends State<DetailPelanggaranSidang> {
                                   height: 300),
                             ),
                           ),
+                          Container(
+                              margin: EdgeInsets.only(top: 20, bottom: 16),
+                              child: Column(
+                                children: [
+                                  MaterialButton(
+                                    minWidth: double.infinity,
+                                    height: 60,
+                                    onPressed: () {
+                                      printidPelanggaran(
+                                          pelanggaran.idPelanggaran);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              //Nanti dipilih berdasarkan index
+                                              builder: (context) =>
+                                                  DetailInformasi(
+                                                      pelanggaran
+                                                          .jumlahPembayaran,
+                                                      pelanggaran.status,
+                                                      pelanggaran
+                                                          .idPelanggaran)));
+                                    },
+                                    color: Colors.blue,
+                                    elevation: 0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Text(
+                                      "Ya, saya sebagai pelanggar",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                  SizedBox(height: 20),
+                                  MaterialButton(
+                                    minWidth: double.infinity,
+                                    height: 60,
+                                    onPressed: () {
+                                      // Navigator.push(
+                                      //     context,
+                                      //     MaterialPageRoute(
+                                      //         //Nanti dipilih berdasarkan index
+                                      //         builder: (context) =>
+                                      //             AlasanBukan()));
+
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) => Komplain(
+                                                  pelanggaran.status,
+                                                  pelanggaran.idPelanggaran)));
+                                    },
+                                    color: Colors.red,
+                                    elevation: 0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Text(
+                                      "Saya bukan sebagai pelanggar",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
+                                  ),
+                                ],
+                              ))
                         ]))
                 .toList()),
-      ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(24),
-        child: MaterialButton(
-          minWidth: double.infinity,
-          height: 60,
-          onPressed: () {
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         //Nanti dipilih berdasarkan index
-            //         builder: (context) => MyHomePage()));
-
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    //Nanti dipilih berdasarkan index
-                    builder: (context) => Pembayaran(
-                        pelanggaran.status, pelanggaran.idPelanggaran)));
-          },
-          color: Colors.blue,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Text(
-            "Lanjut",
-            style: TextStyle(
-                fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
-          ),
-        ),
       ),
     );
   }

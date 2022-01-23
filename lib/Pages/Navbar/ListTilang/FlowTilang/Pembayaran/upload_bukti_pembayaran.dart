@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/sukses_melakukan_pembayaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Pembayaran/sukses_melakukan_pembayaran.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';

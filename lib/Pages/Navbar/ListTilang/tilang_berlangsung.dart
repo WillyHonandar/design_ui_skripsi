@@ -1,9 +1,8 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Sidang/detail_sidang.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/konfirmasi_tilang.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/pembayaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Sidang/detail_sidang.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/konfirmasi_tilang.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Pembayaran/detail_pembayaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/detail_status.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/stepper.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +85,7 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             //         builder: (context) =>
                             //             KonfirmasiPelanggaran()));
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => KonfirmasiPelanggaran(
+                                builder: (context) => KonfirmasiTilang(
                                     pelanggaran.status,
                                     pelanggaran.idPelanggaran)));
                           },

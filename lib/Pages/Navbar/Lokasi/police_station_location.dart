@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
 
-class MapLauncherDemo extends StatelessWidget {
+class LokasiPolsekPengadilan extends StatelessWidget {
   List dummyData = [
     {
       "namaPolice": "Pengadilan Negeri Jakarta Utara",

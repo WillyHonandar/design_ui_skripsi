@@ -1,7 +1,7 @@
-import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
 import 'package:flutter/material.dart';
 
-class SuksesBukanKendaraan extends StatelessWidget {
+class SuksesTambahKendaraan extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class SuksesBukanKendaraan extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 16),
                 child: Center(
                   child: Icon(
-                    Icons.timelapse,
+                    Icons.check,
                     size: 200,
                     color: Colors.blue,
                   ),
@@ -23,7 +23,7 @@ class SuksesBukanKendaraan extends StatelessWidget {
               SizedBox(height: 20),
               Center(
                 child: Text(
-                  "Terimakasih, silahkan cek kembali status tilang anda secara berkala dalam kurun waktu 2x24 jam",
+                  "Sukses menambahkan kendaraan!",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                 ),
@@ -31,7 +31,7 @@ class SuksesBukanKendaraan extends StatelessWidget {
               SizedBox(height: 20),
               Center(
                 child: Text(
-                  "Apabila alasan anda masih kurang mendukung, maka status anda akan secara otomatis berubah menjadi melanggar",
+                  "Anda dapat mengecek kendaraan anda di halaman List Kendaraan pada menu Settings.",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
                 ),

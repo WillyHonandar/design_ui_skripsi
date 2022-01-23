@@ -1,6 +1,6 @@
-import 'package:aplikasi_tilang_training/Kendaraan/vehicle_registration.dart';
 import 'package:aplikasi_tilang_training/Model/kendaraan.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/Kendaraan/vehicle_registration.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

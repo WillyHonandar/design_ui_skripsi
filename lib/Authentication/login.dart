@@ -1,6 +1,6 @@
 import 'package:aplikasi_tilang_training/Authentication/reset_password.dart';
-import 'package:aplikasi_tilang_training/pages/navbar/homepage.dart';
 import 'package:aplikasi_tilang_training/Authentication/registration.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/gestures.dart';

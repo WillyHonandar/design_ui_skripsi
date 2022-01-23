@@ -1,10 +1,10 @@
 import 'package:aplikasi_tilang_training/Model/notification.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Sidang/detail_sidang.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/konfirmasi_tilang.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/pembayaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Sidang/detail_sidang.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/konfirmasi_tilang.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Pembayaran/detail_pembayaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/tilang_berlangsung.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/list_tilang.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/list_tilang.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -145,7 +145,7 @@ class _NotificationsListState extends State<NotificationsList> {
                                                 MaterialPageRoute(
                                                     //Nanti dipilih berdasarkan index
                                                     builder: (context) =>
-                                                        KonfirmasiPelanggaran(
+                                                        KonfirmasiTilang(
                                                             notifikasi.status,
                                                             notifikasi
                                                                 .idPelanggaran)));

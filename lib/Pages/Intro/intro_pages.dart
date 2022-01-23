@@ -1,6 +1,6 @@
 import 'package:aplikasi_tilang_training/Authentication/login.dart';
 import 'package:aplikasi_tilang_training/Authentication/registration.dart';
-import 'package:aplikasi_tilang_training/Pages/navbar/homepage.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

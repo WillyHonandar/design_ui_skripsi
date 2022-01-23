@@ -1,11 +1,11 @@
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/sukses_melakukan_pembayaran.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/upload_bukti_pembayaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Pembayaran/sukses_melakukan_pembayaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Pembayaran/upload_bukti_pembayaran.dart';
 import 'package:flutter/material.dart';
 
-class Pembayaran extends StatelessWidget {
+class DetailPembayaran extends StatelessWidget {
   final int idPelanggaran;
   final String status;
-  Pembayaran(this.status, this.idPelanggaran);
+  DetailPembayaran(this.status, this.idPelanggaran);
   @override
   Widget build(BuildContext context) {
     return Scaffold(

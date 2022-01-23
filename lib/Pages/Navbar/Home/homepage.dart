@@ -1,17 +1,17 @@
 import 'dart:async';
 
 import 'package:aplikasi_tilang_training/Model/notification.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/police_station_location.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/Content/content.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/list_tilang.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/Notification/notifications_page.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/settings.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Home/Content/content.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Home/Content/news.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Home/Notification/notifications_page.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/list_tilang.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Lokasi/police_station_location.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/settings.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'Content/news.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -23,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> pages = [
     Home(),
     ListTilang(),
-    MapLauncherDemo(),
+    LokasiPolsekPengadilan(),
     Settings(),
   ];
 

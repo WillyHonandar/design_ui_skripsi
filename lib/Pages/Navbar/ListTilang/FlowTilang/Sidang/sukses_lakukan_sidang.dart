@@ -1,4 +1,4 @@
-import 'package:aplikasi_tilang_training/Pages/Navbar/homepage.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:flutter/material.dart';
 

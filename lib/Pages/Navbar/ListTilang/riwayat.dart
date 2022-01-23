@@ -1,6 +1,5 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/detail_status.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/stepper.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

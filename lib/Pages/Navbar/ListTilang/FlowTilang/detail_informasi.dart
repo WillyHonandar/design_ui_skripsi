@@ -1,6 +1,6 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/Sidang/lakukan_sidang.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/Pembayaran/pembayaran.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Sidang/lakukan_sidang.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Pembayaran/detail_pembayaran.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:flutter/material.dart';
 
@@ -105,7 +105,7 @@ class _DetailInformasiState extends State<DetailInformasi> {
                             MaterialPageRoute(
                                 //Nanti dipilih berdasarkan index
                                 builder: (context) =>
-                                    Pembayaran(status, idPelanggaran)));
+                                    DetailPembayaran(status, idPelanggaran)));
                       },
                       color: Colors.blue,
                       elevation: 0,
