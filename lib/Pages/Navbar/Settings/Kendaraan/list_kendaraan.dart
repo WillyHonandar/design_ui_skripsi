@@ -1,5 +1,5 @@
 import 'package:aplikasi_tilang_training/Model/kendaraan.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/Kendaraan/vehicle_registration.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/Kendaraan/registrasi_kendaraan.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class RegisteredVehicles extends StatefulWidget {
+class ListKendaraan extends StatefulWidget {
   @override
 
   // final String displayName = FirebaseAuth.instance.currentUser.displayName;
 
-  _RegisteredVehiclesState createState() => _RegisteredVehiclesState();
+  _ListKendaraanState createState() => _ListKendaraanState();
 }
 
-class _RegisteredVehiclesState extends State<RegisteredVehicles> {
+class _ListKendaraanState extends State<ListKendaraan> {
   List<int> list = [1, 2, 3, 4, 5];
   String user = FirebaseAuth.instance.currentUser.uid;
   int totalKendaraan = 0;
@@ -126,7 +126,7 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                                                       MaterialPageRoute(
                                                           //Nanti dipilih berdasarkan index
                                                           builder: (context) =>
-                                                              RegisteredVehicles()));
+                                                              ListKendaraan()));
                                                   // Fluttertoast.showToast(
                                                   //     msg:
                                                   //         "Sukses Menghapus Kendaraan!");
@@ -170,7 +170,7 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                                                       MaterialPageRoute(
                                                           //Nanti dipilih berdasarkan index
                                                           builder: (context) =>
-                                                              RegisteredVehicles()));
+                                                              ListKendaraan()));
                                                   // Fluttertoast.showToast(
                                                   //     msg:
                                                   //         "Sukses Menghapus Kendaraan!");
@@ -213,7 +213,7 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                 context,
                 MaterialPageRoute(
                     //Nanti dipilih berdasarkan index
-                    builder: (context) => RegisKendaraan()));
+                    builder: (context) => RegistrasiKendaraan()));
           },
           color: Colors.blue,
           elevation: 0,
@@ -316,7 +316,7 @@ class _KendaraanKosongState extends State<KendaraanKosong> {
                 context,
                 MaterialPageRoute(
                     //Nanti dipilih berdasarkan index
-                    builder: (context) => RegisKendaraan()));
+                    builder: (context) => RegistrasiKendaraan()));
           },
           color: Colors.blue,
           elevation: 0,

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/Kendaraan/vehicle_registration.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/Kendaraan/registrasi_kendaraan.dart';
 import 'package:aplikasi_tilang_training/net/firebase.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -82,7 +82,7 @@ class _OTPScreenState extends State<OTPScreen> {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RegisKendaraan()),
+                                builder: (context) => RegistrasiKendaraan()),
                             (route) => false);
                       });
                       //         //nanti disini untuk insert ke supabasenya (hanya data yg diperlukan)

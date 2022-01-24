@@ -9,12 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class RegisKendaraan extends StatefulWidget {
+class RegistrasiKendaraan extends StatefulWidget {
   @override
-  _RegisKendaraanState createState() => _RegisKendaraanState();
+  _RegistrasiKendaraanState createState() => _RegistrasiKendaraanState();
 }
 
-class _RegisKendaraanState extends State<RegisKendaraan> {
+class _RegistrasiKendaraanState extends State<RegistrasiKendaraan> {
   int _counter = 0;
 
   String _chosenValue;

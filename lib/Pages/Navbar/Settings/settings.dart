@@ -1,5 +1,5 @@
 import 'package:aplikasi_tilang_training/Pages/Intro/intro_pages.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/Kendaraan/vehicle_list.dart';
+import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/Kendaraan/list_kendaraan.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/Profile/my_profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +62,7 @@ class _SettingsState extends State<Settings> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => RegisteredVehicles()));
+                                  builder: (context) => ListKendaraan()));
                         },
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
