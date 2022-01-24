@@ -11,6 +11,7 @@ class Pelanggaran {
   String jenisKendaraan;
   String noPlat;
   String noMesin;
+  String noVirtualAccount;
 
   Pelanggaran(
       {this.idPelanggaran,
@@ -24,7 +25,8 @@ class Pelanggaran {
       this.alasanBukan,
       this.jenisKendaraan,
       this.noPlat,
-      this.noMesin});
+      this.noMesin,
+      this.noVirtualAccount});
 
   factory Pelanggaran.fromJson(Map<String, dynamic> map) {
     return Pelanggaran(
@@ -39,7 +41,8 @@ class Pelanggaran {
         alasanBukan: map['alasanBukan'],
         jenisKendaraan: map['jenisKendaraan'],
         noPlat: map['noPlat'],
-        noMesin: map['noMesin']);
+        noMesin: map['noMesin'],
+        noVirtualAccount: map['noVirtualAccount']);
   }
 }
 

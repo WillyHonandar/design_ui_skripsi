@@ -295,7 +295,26 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                     Text(
                                       pelanggaran.jumlahPembayaran,
                                       style: TextStyle(
-                                        fontSize: 30,
+                                        fontSize: 24,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: 10),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "No. Virtual Account BRI: ",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      pelanggaran.noVirtualAccount,
+                                      style: TextStyle(
+                                        fontSize: 24,
                                       ),
                                     ),
                                   ],
