@@ -1,3 +1,4 @@
+import 'package:aplikasi_tilang_training/Model/notification.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Komplain/sukses_komplain.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -73,6 +74,7 @@ class _KomplainState extends State<Komplain> {
             } else {
               addAlasanBukan(idPelanggaran, _alasanBukanController.text);
               updateStatus(idPelanggaran, 7);
+              updateIdStatusNotifikasi(idPelanggaran, 1);
               // updateStatus(idPelanggaran, idStatus)
               // Navigator.push(
               //     context,
@@ -127,4 +129,22 @@ updateStatus(int idPelanggaran, int idStatus) async {
       .eq('idPelanggaran', idPelanggaran)
       .execute();
   print(response);
+}
+
+updateIdStatusNotifikasi(int idPelanggaran, int idStatusNotifikasi) {
+  var response = client
+      .from("m_notifikasi")
+      .update({'idStatusNotifikasi': idStatusNotifikasi})
+      .eq('idPelanggaran', idPelanggaran)
+      .execute();
+  print(response);
+}
+
+Future<List<Notifikasi>> getNotifikasi(int currentIdPelanggaran) async {
+  final response = await client.rpc("getIdStatusPelanggaran",
+      params: {'currentIdPelanggaran': currentIdPelanggaran}).execute();
+
+  final dataList = response.data as List;
+  print(dataList);
+  return dataList.map((map) => Notifikasi.fromJson(map)).toList();
 }

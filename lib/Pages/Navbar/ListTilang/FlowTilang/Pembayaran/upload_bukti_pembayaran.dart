@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:aplikasi_tilang_training/Model/notification.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Pembayaran/sukses_melakukan_pembayaran.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -139,6 +140,7 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
                   : updateStatus(idPelanggaran, 4);
             uploadImageToFirebase(context).then((buktiPembayaran) => {
                   addBuktiPembayaran(idPelanggaran, buktiPembayaran),
+                  updateIdStatusNotifikasi(idPelanggaran, 1),
                   // Navigator.push(
                   //     context,
                   //     MaterialPageRoute(
@@ -177,6 +179,24 @@ updateStatus(int idPelanggaran, int idStatus) async {
       .eq('idPelanggaran', idPelanggaran)
       .execute();
   print(response);
+}
+
+updateIdStatusNotifikasi(int idPelanggaran, int idStatusNotifikasi) {
+  var response = client
+      .from("m_notifikasi")
+      .update({'idStatusNotifikasi': idStatusNotifikasi})
+      .eq('idPelanggaran', idPelanggaran)
+      .execute();
+  print(response);
+}
+
+Future<List<Notifikasi>> getNotifikasi(int currentIdPelanggaran) async {
+  final response = await client.rpc("getIdStatusPelanggaran",
+      params: {'currentIdPelanggaran': currentIdPelanggaran}).execute();
+
+  final dataList = response.data as List;
+  print(dataList);
+  return dataList.map((map) => Notifikasi.fromJson(map)).toList();
 }
 
 addBuktiPembayaran(int idPelanggaran, String buktiPembayaran) async {

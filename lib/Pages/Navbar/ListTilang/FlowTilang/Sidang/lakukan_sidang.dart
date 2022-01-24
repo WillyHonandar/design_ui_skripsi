@@ -1,3 +1,4 @@
+import 'package:aplikasi_tilang_training/Model/notification.dart';
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Sidang/sukses_lakukan_sidang.dart';
 import 'package:aplikasi_tilang_training/main.dart';
@@ -78,7 +79,7 @@ class _DetailSidangState extends State<DetailSidang> {
           onPressed: () {
             printidPelanggaran(idPelanggaran);
             updateStatus(idPelanggaran, 2);
-
+            updateIdStatusNotifikasi(idPelanggaran, 1);
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -115,4 +116,22 @@ updateStatus(int idPelanggaran, int idStatus) async {
 
 printidPelanggaran(int idPelanggaran) {
   print(idPelanggaran);
+}
+
+updateIdStatusNotifikasi(int idPelanggaran, int idStatusNotifikasi) {
+  var response = client
+      .from("m_notifikasi")
+      .update({'idStatusNotifikasi': idStatusNotifikasi})
+      .eq('idPelanggaran', idPelanggaran)
+      .execute();
+  print(response);
+}
+
+Future<List<Notifikasi>> getNotifikasi(int currentIdPelanggaran) async {
+  final response = await client.rpc("getIdStatusPelanggaran",
+      params: {'currentIdPelanggaran': currentIdPelanggaran}).execute();
+
+  final dataList = response.data as List;
+  print(dataList);
+  return dataList.map((map) => Notifikasi.fromJson(map)).toList();
 }
