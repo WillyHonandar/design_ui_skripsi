@@ -6,16 +6,19 @@ class Notifikasi {
   String status;
   String noTilang;
   String statusNotifikasi;
+  String waktuNotifikasi;
   int countNotif;
 
-  Notifikasi(
-      {this.idPelanggaran,
-      this.idNotifikasi,
-      this.jenisNotifikasi,
-      this.dekripsiNotifikasi,
-      this.status,
-      this.noTilang,
-      this.statusNotifikasi});
+  Notifikasi({
+    this.idPelanggaran,
+    this.idNotifikasi,
+    this.jenisNotifikasi,
+    this.dekripsiNotifikasi,
+    this.status,
+    this.noTilang,
+    this.statusNotifikasi,
+    this.waktuNotifikasi,
+  });
 
   factory Notifikasi.fromJson(Map<String, dynamic> map) {
     return Notifikasi(
@@ -26,6 +29,7 @@ class Notifikasi {
       status: map['status'],
       noTilang: map['noTilang'],
       statusNotifikasi: map['statusNotifikasi'],
+      waktuNotifikasi: map['waktuNotifikasi'],
     );
   }
 }

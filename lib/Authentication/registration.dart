@@ -35,7 +35,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 40),
-            height: MediaQuery.of(context).size.height - 50,
+            // height: MediaQuery.of(context).size.height - 50,
             width: double.infinity,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -80,8 +80,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           controller: _phoneNumberController)
                     ],
                   ),
+                  SizedBox(height: 20),
                   Container(
-                    padding: EdgeInsets.only(top: 3, left: 3),
+                    padding: EdgeInsets.only(top: 3, left: 3, bottom: 10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                     ),
@@ -152,26 +153,29 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("Sudah mempunyai akun?"),
-                      InkWell(
-                        child: Text(
-                          " Login",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Colors.blue),
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage()));
-                        },
-                      )
-                    ],
+                  Container(
+                    margin: EdgeInsets.only(bottom: 16),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text("Sudah mempunyai akun?"),
+                        InkWell(
+                          child: Text(
+                            " Login",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: Colors.blue),
+                          ),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()));
+                          },
+                        )
+                      ],
+                    ),
                   )
                 ]),
           ),

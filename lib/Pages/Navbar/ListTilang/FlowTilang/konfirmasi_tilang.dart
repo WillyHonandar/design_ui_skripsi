@@ -52,12 +52,13 @@ class DetailPelanggaran extends StatefulWidget {
 
   @override
   _DetailPelanggaranState createState() =>
-      _DetailPelanggaranState(dataPelanggaran: dataPelanggaran);
+      _DetailPelanggaranState(dataPelanggaran: dataPelanggaran, status: status);
 }
 
 class _DetailPelanggaranState extends State<DetailPelanggaran> {
   List<Pelanggaran> dataPelanggaran;
-  _DetailPelanggaranState({this.dataPelanggaran});
+  String status;
+  _DetailPelanggaranState({this.dataPelanggaran, this.status});
 
   @override
   Widget build(BuildContext context) {
@@ -349,6 +350,7 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                     onPressed: () {
                                       printidPelanggaran(
                                           pelanggaran.idPelanggaran);
+                                      print(status);
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -357,7 +359,7 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                                   DetailInformasi(
                                                       pelanggaran
                                                           .jumlahPembayaran,
-                                                      pelanggaran.status,
+                                                      status,
                                                       pelanggaran
                                                           .idPelanggaran)));
                                     },
@@ -379,6 +381,7 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                     minWidth: double.infinity,
                                     height: 60,
                                     onPressed: () {
+                                      print(status + "asdasd");
                                       // Navigator.push(
                                       //     context,
                                       //     MaterialPageRoute(

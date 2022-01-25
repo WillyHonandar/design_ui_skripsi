@@ -99,6 +99,7 @@ class _DetailInformasiState extends State<DetailInformasi> {
                       minWidth: double.infinity,
                       height: 60,
                       onPressed: () {
+                        print(status);
                         printidPelanggaran(idPelanggaran);
                         Navigator.push(
                             context,

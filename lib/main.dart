@@ -31,13 +31,13 @@ class MyApp extends StatelessWidget {
         ),
         // home: App(),
         home: AnimatedSplashScreen(
-            duration: 1500,
+            duration: 500,
             splash: Image.asset(
               'assets/etle-homeicon.png',
             ),
             nextScreen: App(),
             splashTransition: SplashTransition.fadeTransition,
-            pageTransitionType: PageTransitionType.bottomToTop,
+            pageTransitionType: PageTransitionType.fade,
             backgroundColor: Colors.white));
   }
 }

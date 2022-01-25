@@ -79,6 +79,8 @@ class DetailPembayaran extends StatelessWidget {
           minWidth: double.infinity,
           height: 60,
           onPressed: () {
+            print(status);
+            print(idPelanggaran);
             Navigator.push(
                 context,
                 MaterialPageRoute(

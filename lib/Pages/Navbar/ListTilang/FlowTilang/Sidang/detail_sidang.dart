@@ -14,11 +14,10 @@ class DetailPembayaranSidang extends StatefulWidget {
 }
 
 class _DetailPembayaranSidangState extends State<DetailPembayaranSidang> {
+  List<Pelanggaran> dataPelanggaran;
   int idPelanggaran;
   String status;
   _DetailPembayaranSidangState(this.status, this.idPelanggaran);
-
-  List<Pelanggaran> dataPelanggaran;
 
   @override
   Widget build(BuildContext context) {
@@ -48,13 +47,18 @@ class DetailPelanggaranSidang extends StatefulWidget {
       {this.dataPelanggaran, this.idPelanggaran, this.status});
 
   @override
-  _DetailPelanggaranSidangState createState() =>
-      _DetailPelanggaranSidangState(dataPelanggaran: dataPelanggaran);
+  _DetailPelanggaranSidangState createState() => _DetailPelanggaranSidangState(
+      dataPelanggaran: dataPelanggaran,
+      idPelanggaran: idPelanggaran,
+      status: status);
 }
 
 class _DetailPelanggaranSidangState extends State<DetailPelanggaranSidang> {
   List<Pelanggaran> dataPelanggaran;
-  _DetailPelanggaranSidangState({this.dataPelanggaran});
+  String status;
+  int idPelanggaran;
+  _DetailPelanggaranSidangState(
+      {this.dataPelanggaran, this.idPelanggaran, this.status});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -326,6 +330,8 @@ class _DetailPelanggaranSidangState extends State<DetailPelanggaranSidang> {
           minWidth: double.infinity,
           height: 60,
           onPressed: () {
+            print(status);
+            print(idPelanggaran);
             // Navigator.push(
             //     context,
             //     MaterialPageRoute(
@@ -336,8 +342,8 @@ class _DetailPelanggaranSidangState extends State<DetailPelanggaranSidang> {
                 context,
                 MaterialPageRoute(
                     //Nanti dipilih berdasarkan index
-                    builder: (context) => DetailPembayaran(
-                        pelanggaran.status, pelanggaran.idPelanggaran)));
+                    builder: (context) =>
+                        DetailPembayaran(status, idPelanggaran)));
           },
           color: Colors.blue,
           elevation: 0,

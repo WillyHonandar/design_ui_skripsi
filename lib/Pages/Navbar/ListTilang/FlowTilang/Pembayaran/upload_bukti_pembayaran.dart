@@ -130,31 +130,57 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
           minWidth: double.infinity,
           height: 60,
           onPressed: () {
+            print(status);
             if (image == null) {
               Fluttertoast.showToast(msg: "Anda belum mengupload gambar!");
-            } else
+            } else {
               //Function Update Status menjadi Menunggu Konfirmasi
+              if (status == "Pemberitahuan Informasi") {
+                _isLoading
+                    ? CircularProgressIndicator() // this will show when loading is true
+                    : updateStatus(idPelanggaran, 4);
+                uploadImageToFirebase(context).then((buktiPembayaran) => {
+                      addBuktiPembayaran(idPelanggaran, buktiPembayaran),
+                      updateIdStatusNotifikasi(idPelanggaran, 1),
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         //Nanti dipilih berdasarkan index
+                      //         builder: (context) => SuksesMelakukanPembayaran()));
 
-              _isLoading
-                  ? CircularProgressIndicator() // this will show when loading is true
-                  : updateStatus(idPelanggaran, 4);
-            uploadImageToFirebase(context).then((buktiPembayaran) => {
-                  addBuktiPembayaran(idPelanggaran, buktiPembayaran),
-                  updateIdStatusNotifikasi(idPelanggaran, 1),
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         //Nanti dipilih berdasarkan index
-                  //         builder: (context) => SuksesMelakukanPembayaran()));
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SuksesMelakukanPembayaran()),
+                          (route) => false),
+                      Fluttertoast.showToast(
+                          msg: "Sukses Upload Bukti Pembayaran!"),
+                    });
+              } else if (status == "Segera Lakukan Pembayaran") {
+                _isLoading
+                    ? CircularProgressIndicator() // this will show when loading is true
+                    : updateStatus(idPelanggaran, 9);
+                uploadImageToFirebase(context).then((buktiPembayaran) => {
+                      addBuktiPembayaran(idPelanggaran, buktiPembayaran),
+                      updateIdStatusNotifikasi(idPelanggaran, 1),
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         //Nanti dipilih berdasarkan index
+                      //         builder: (context) => SuksesMelakukanPembayaran()));
 
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SuksesMelakukanPembayaran()),
-                      (route) => false),
-                  Fluttertoast.showToast(
-                      msg: "Sukses Upload Bukti Pembayaran!"),
-                });
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SuksesMelakukanPembayaran()),
+                          (route) => false),
+                      Fluttertoast.showToast(
+                          msg: "Sukses Upload Bukti Pembayaran!"),
+                    });
+              }
+            }
           },
           color: Colors.blue,
           elevation: 0,

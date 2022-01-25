@@ -1,10 +1,6 @@
 import 'package:aplikasi_tilang_training/Model/notification.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Sidang/detail_sidang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/konfirmasi_tilang.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Pembayaran/detail_pembayaran.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/tilang_berlangsung.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/list_tilang.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -128,11 +124,18 @@ class _NotificationsListState extends State<NotificationsList> {
                                             ),
                                           ],
                                         ),
-                                        subtitle: Text(
-                                          notifikasi.dekripsiNotifikasi,
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                          ),
+                                        subtitle: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Waktu: " +
+                                                  notifikasi.waktuNotifikasi,
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         onTap: () {
                                           if (notifikasi.status ==
@@ -201,11 +204,18 @@ class _NotificationsListState extends State<NotificationsList> {
                                             ),
                                           ],
                                         ),
-                                        subtitle: Text(
-                                          notifikasi.dekripsiNotifikasi,
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                          ),
+                                        subtitle: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Waktu: " +
+                                                  notifikasi.waktuNotifikasi,
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         // onTap: () {},
                                       ),

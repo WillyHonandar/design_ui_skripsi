@@ -1,7 +1,6 @@
 import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Sidang/detail_sidang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/konfirmasi_tilang.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Pembayaran/detail_pembayaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/detail_status.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -72,6 +71,7 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: InkWell(
                           onTap: () {
+                            print(pelanggaran.status);
                             // Navigator.pushNamed(
                             //     context, "KonfirmasiPelanggaran", arguments: {
                             //   "idPelanggaran": pelanggaran.idPelanggaran,
@@ -194,6 +194,7 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: InkWell(
                           onTap: () {
+                            print(pelanggaran.status);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
