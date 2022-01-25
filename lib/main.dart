@@ -1,7 +1,9 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:aplikasi_tilang_training/pages/intro/intro_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:page_transition/page_transition.dart';
 
 // void main() => runApp(MyApp());
 
@@ -22,12 +24,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Aplikasi Tilang',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: App(),
-    );
+        title: 'Aplikasi Tilang',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        // home: App(),
+        home: AnimatedSplashScreen(
+            duration: 1500,
+            splash: Image.asset(
+              'assets/etle-homeicon.png',
+            ),
+            nextScreen: App(),
+            splashTransition: SplashTransition.fadeTransition,
+            pageTransitionType: PageTransitionType.bottomToTop,
+            backgroundColor: Colors.white));
   }
 }

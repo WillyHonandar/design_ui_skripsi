@@ -443,31 +443,32 @@ class LokasiPolsekPengadilan extends StatelessWidget {
                 onTap: () => openMapsSheet(context, element['namaPolice'],
                     element['latitude'], element['longtitude']),
                 child: Card(
-                  child: ListTile(
-                    title: Container(
-                        child: Text(
-                      element['namaPolice'],
-                      style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500),
-                    )),
-                    subtitle: Text(
-                      element['lokasiPolice'],
-                      style: TextStyle(fontSize: 12),
-                    ),
-                    leading: Container(
-                      margin: EdgeInsets.only(bottom: 10),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image(
-                          image: AssetImage("assets/" + element['image']),
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    child: ListTile(
+                      title: Text(
+                        element['namaPolice'],
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      subtitle: Text(
+                        element['lokasiPolice'],
+                        style: TextStyle(fontSize: 12),
+                      ),
+                      leading: Container(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image(
+                            image: AssetImage("assets/" + element['image']),
+                          ),
                         ),
                       ),
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.arrow_forward),
-                      onPressed: () {},
+                      trailing: IconButton(
+                        icon: Icon(Icons.arrow_forward),
+                        onPressed: () {},
+                      ),
                     ),
                   ),
                 ),
