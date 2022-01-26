@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
         key: _formKey,
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
             // height: MediaQuery.of(context).size.height - 50,
             width: double.infinity,
             child: Column(
@@ -58,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
+                  SizedBox(height: 60),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[

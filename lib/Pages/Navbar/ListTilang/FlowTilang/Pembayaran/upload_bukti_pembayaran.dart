@@ -49,22 +49,6 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
     }
   }
 
-  dataLoadFunction() async {
-    setState(() {
-      _isLoading = true; // your loader has started to load
-    });
-    // fetch you data over here
-    setState(() {
-      _isLoading = false; // your loder will stop to finish after the data fetch
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    dataLoadFunction(); // this function gets called
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -73,127 +57,147 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
             style: TextStyle(color: Colors.black)),
         backgroundColor: Color.fromRGBO(245, 245, 245, 1),
       ),
-      body: Container(
-          margin: EdgeInsets.all(24),
-          child: Center(
-            child: Column(
-              children: [
-                image != null
-                    ? Image.file(image,
-                        width: 320, height: 320, fit: BoxFit.cover)
-                    : FlutterLogo(size: 320),
-                SizedBox(height: 24),
-                MaterialButton(
-                  // minWidth: double.infinity,
-                  height: 30,
-                  onPressed: () {
-                    pickImage(ImageSource.gallery);
-                  },
-                  color: Colors.grey,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Text(
-                    "Upload Image From Gallery",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                        color: Colors.white),
-                  ),
+      body: _isLoading
+          ? Center(
+              child:
+                  CircularProgressIndicator()) // this will show when loading is true
+          : Container(
+              margin: EdgeInsets.all(24),
+              child: Center(
+                child: Column(
+                  children: [
+                    image != null
+                        ? Image.file(image,
+                            width: 320, height: 320, fit: BoxFit.cover)
+                        : FlutterLogo(size: 320),
+                    SizedBox(height: 24),
+                    MaterialButton(
+                      // minWidth: double.infinity,
+                      height: 30,
+                      onPressed: () {
+                        pickImage(ImageSource.gallery);
+                      },
+                      color: Colors.grey,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Text(
+                        "Upload Image From Gallery",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: Colors.white),
+                      ),
+                    ),
+                    MaterialButton(
+                      // minWidth: double.infinity,
+                      height: 30,
+                      onPressed: () {
+                        pickImage(ImageSource.camera);
+                      },
+                      color: Colors.grey,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Text(
+                        "Upload Image From Camera",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: Colors.white),
+                      ),
+                    ),
+                  ],
                 ),
-                MaterialButton(
-                  // minWidth: double.infinity,
-                  height: 30,
-                  onPressed: () {
-                    pickImage(ImageSource.camera);
-                  },
-                  color: Colors.grey,
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Text(
-                    "Upload Image From Camera",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                        color: Colors.white),
-                  ),
+              )),
+      bottomNavigationBar: _isLoading
+          ? null // this will show when loading is true
+          : Padding(
+              padding: EdgeInsets.all(24),
+              child: MaterialButton(
+                minWidth: double.infinity,
+                height: 60,
+                onPressed: () {
+                  print(status);
+                  if (image == null) {
+                    Fluttertoast.showToast(
+                        msg: "Anda belum mengupload gambar!");
+                  } else {
+                    //Function Update Status menjadi Menunggu Konfirmasi
+                    if (status == "Pemberitahuan Informasi") {
+                      // _isLoading
+                      //     ? CircularProgressIndicator() // this will show when loading is true
+                      setState(() {
+                        _isLoading = true;
+                      });
+                      uploadImageToFirebase(context).then((buktiPembayaran) => {
+                            addBuktiPembayaran(idPelanggaran, buktiPembayaran),
+                            updateIdStatusNotifikasi(idPelanggaran, 1),
+                            updateStatus(idPelanggaran, 4),
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         //Nanti dipilih berdasarkan index
+                            //         builder: (context) => SuksesMelakukanPembayaran()));
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        SuksesMelakukanPembayaran()),
+                                (route) => false),
+                            // setState(() {
+                            //   _isLoading =
+                            //       false; // your loader has started to load
+                            // }),
+                            Fluttertoast.showToast(
+                                msg: "Sukses Upload Bukti Pembayaran!"),
+                          });
+                    } else if (status == "Segera Lakukan Pembayaran") {
+                      setState(() {
+                        _isLoading = true;
+                      });
+                      uploadImageToFirebase(context).then((buktiPembayaran) => {
+                            addBuktiPembayaran(idPelanggaran, buktiPembayaran),
+                            updateIdStatusNotifikasi(idPelanggaran, 1),
+                            updateStatus(idPelanggaran, 9),
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         //Nanti dipilih berdasarkan index
+                            //         builder: (context) => SuksesMelakukanPembayaran()));
+
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        SuksesMelakukanPembayaran()),
+                                (route) => false),
+                            // setState(() {
+                            //   _isLoading =
+                            //       false; // your loader has started to load
+                            // }),
+                            Fluttertoast.showToast(
+                                msg: "Sukses Upload Bukti Pembayaran!"),
+                          });
+                    }
+                  }
+                },
+                color: Colors.blue,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              ],
+                child: Text(
+                  "Upload Bukti Pembayaran",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                      color: Colors.white),
+                ),
+              ),
             ),
-          )),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(24),
-        child: MaterialButton(
-          minWidth: double.infinity,
-          height: 60,
-          onPressed: () {
-            print(status);
-            if (image == null) {
-              Fluttertoast.showToast(msg: "Anda belum mengupload gambar!");
-            } else {
-              //Function Update Status menjadi Menunggu Konfirmasi
-              if (status == "Pemberitahuan Informasi") {
-                _isLoading
-                    ? CircularProgressIndicator() // this will show when loading is true
-                    : updateStatus(idPelanggaran, 4);
-                uploadImageToFirebase(context).then((buktiPembayaran) => {
-                      addBuktiPembayaran(idPelanggaran, buktiPembayaran),
-                      updateIdStatusNotifikasi(idPelanggaran, 1),
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         //Nanti dipilih berdasarkan index
-                      //         builder: (context) => SuksesMelakukanPembayaran()));
-
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  SuksesMelakukanPembayaran()),
-                          (route) => false),
-                      Fluttertoast.showToast(
-                          msg: "Sukses Upload Bukti Pembayaran!"),
-                    });
-              } else if (status == "Segera Lakukan Pembayaran") {
-                _isLoading
-                    ? CircularProgressIndicator() // this will show when loading is true
-                    : updateStatus(idPelanggaran, 9);
-                uploadImageToFirebase(context).then((buktiPembayaran) => {
-                      addBuktiPembayaran(idPelanggaran, buktiPembayaran),
-                      updateIdStatusNotifikasi(idPelanggaran, 1),
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         //Nanti dipilih berdasarkan index
-                      //         builder: (context) => SuksesMelakukanPembayaran()));
-
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  SuksesMelakukanPembayaran()),
-                          (route) => false),
-                      Fluttertoast.showToast(
-                          msg: "Sukses Upload Bukti Pembayaran!"),
-                    });
-              }
-            }
-          },
-          color: Colors.blue,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Text(
-            "Upload Bukti Pembayaran",
-            style: TextStyle(
-                fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
-          ),
-        ),
-      ),
     );
   }
 }

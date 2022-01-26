@@ -34,7 +34,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         key: _formKey,
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
             // height: MediaQuery.of(context).size.height - 50,
             width: double.infinity,
             child: Column(
