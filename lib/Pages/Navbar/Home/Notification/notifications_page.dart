@@ -33,56 +33,49 @@ class _NotificationsListState extends State<NotificationsList> {
             totalNotifikasi = snapshot.data.length;
             if (totalNotifikasi == 0) {
               return Container(
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  width: double.infinity,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        Center(
-                          child: ListView(
-                              shrinkWrap: true,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 36, vertical: 24),
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.only(bottom: 16),
-                                  child: Center(
-                                    child: Image(
-                                      image: AssetImage(
-                                          "assets/icon/list_notifikasi_kosong.png"),
-                                      height: 300,
-                                      width: 300,
-                                    ),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Center(
+                        child: Column(children: [
+                          Container(
+                            child: Image(
+                              image: AssetImage(
+                                  "assets/icon/list_notifikasi_kosong.png"),
+                              height: 300,
+                              width: 300,
+                            ),
+                          ),
+                          Center(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 36),
+                              margin: EdgeInsets.only(bottom: 150),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Belum ada notifikasi yang masuk!",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500),
                                   ),
-                                ),
-                                Center(
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                        "Belum ada notifikasi yang masuk!",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                      SizedBox(height: 20),
-                                      Text(
-                                        "Tetap patuhi peraturan lalu lintas saat mengemudi/berkendara",
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.grey),
-                                      ),
-                                    ],
+                                  SizedBox(height: 20),
+                                  Text(
+                                    "Tetap patuhi peraturan lalu lintas saat mengemudi/berkendara",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.grey),
                                   ),
-                                ),
-                              ]),
-                        ),
-                      ]),
-                ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ]),
+                      ),
+                    ]),
               );
             }
             return Builder(builder: (context) {

@@ -100,7 +100,7 @@ class _HomeState extends State<Home> {
               appBar: AppBar(
                 automaticallyImplyLeading: false,
                 elevation: 0,
-                backgroundColor: Colors.white,
+                backgroundColor: Colors.white12,
                 centerTitle: true,
                 title: Image.asset(
                   'assets/etle-homeicon.png',
@@ -119,7 +119,7 @@ class _HomeState extends State<Home> {
                                       NotificationsList())).then((onGoBack));
                           setState(() {});
                         },
-                        padding: EdgeInsets.only(top: 8),
+                        padding: EdgeInsets.only(top: 8, right: 20),
                         icon: Icon(Icons.notifications),
                         color: Colors.blue,
                         iconSize: 32,
@@ -206,23 +206,23 @@ class CekPengetahuan extends StatelessWidget {
             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 24),
             child: Row(
               children: [
-                Icon(Icons.lightbulb_rounded),
+                Icon(
+                  Icons.lightbulb_rounded,
+                  color: Colors.red,
+                ),
                 Text(
                   "  Cek Pengetahuan",
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontSize: 21.0,
                       fontFamily: 'Lato',
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w800,
                       color: Colors.black87),
                 ),
               ],
             ),
           ),
-
-          /// disini tambah nya
           Container(
-            color: Colors.yellow,
             margin: EdgeInsets.symmetric(horizontal: 16),
             height: 150,
             child: Carousel(
@@ -233,6 +233,8 @@ class CekPengetahuan extends StatelessWidget {
               autoplayDuration: Duration(seconds: 5),
               animationDuration: Duration(seconds: 1),
               showIndicator: true,
+              dotBgColor: Colors.black26,
+              dotColor: Colors.white,
               indicatorBgPadding: 5,
               dotSize: 10.0,
               images: [
@@ -245,10 +247,13 @@ class CekPengetahuan extends StatelessWidget {
                                   ind: 0,
                                 )));
                   },
-                  child: Image(
-                    fit: BoxFit.fitHeight,
-                    image: AssetImage(
-                        "assets/cek_pengetahuan/CekPengetahuan-01.jpg"),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image(
+                      fit: BoxFit.fitHeight,
+                      image: AssetImage(
+                          "assets/cek_pengetahuan/CekPengetahuan-01.jpg"),
+                    ),
                   ),
                 ),
                 InkWell(
@@ -260,10 +265,13 @@ class CekPengetahuan extends StatelessWidget {
                                   ind: 1,
                                 )));
                   },
-                  child: Image(
-                    fit: BoxFit.fitHeight,
-                    image: AssetImage(
-                        "assets/cek_pengetahuan/CekPengetahuan-02.jpg"),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image(
+                      fit: BoxFit.fitHeight,
+                      image: AssetImage(
+                          "assets/cek_pengetahuan/CekPengetahuan-02.jpg"),
+                    ),
                   ),
                 ),
                 InkWell(
@@ -275,10 +283,13 @@ class CekPengetahuan extends StatelessWidget {
                                   ind: 2,
                                 )));
                   },
-                  child: Image(
-                    fit: BoxFit.fitHeight,
-                    image: AssetImage(
-                        "assets/cek_pengetahuan/CekPengetahuan-03.jpg"),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image(
+                      fit: BoxFit.fitHeight,
+                      image: AssetImage(
+                          "assets/cek_pengetahuan/CekPengetahuan-03.jpg"),
+                    ),
                   ),
                 ),
                 InkWell(
@@ -290,10 +301,13 @@ class CekPengetahuan extends StatelessWidget {
                                   ind: 3,
                                 )));
                   },
-                  child: Image(
-                    fit: BoxFit.fitHeight,
-                    image: AssetImage(
-                        "assets/cek_pengetahuan/CekPengetahuan-04.jpg"),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image(
+                      fit: BoxFit.fitHeight,
+                      image: AssetImage(
+                          "assets/cek_pengetahuan/CekPengetahuan-04.jpg"),
+                    ),
                   ),
                 ),
               ],
@@ -522,14 +536,14 @@ class _NewsHomeState extends State<NewsHome> {
             padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
             child: Row(
               children: [
-                Icon(Icons.notes),
+                Icon(Icons.notes, color: Colors.red),
                 Text(
                   "  Berita Terkini",
                   textAlign: TextAlign.left,
                   style: TextStyle(
                       fontSize: 21.0,
                       fontFamily: 'Lato',
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w800,
                       color: Colors.black87),
                 ),
               ],
@@ -568,13 +582,12 @@ class _NewsHomeState extends State<NewsHome> {
                                       decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius:
-                                              BorderRadius.circular(15),
+                                              BorderRadius.circular(5),
                                           boxShadow: [
                                             BoxShadow(
-                                                color: Colors.grey,
-                                                blurRadius: 10,
-                                                spreadRadius: 1,
-                                                offset: Offset(8.0, 8.0))
+                                              color: Colors.grey,
+                                              blurRadius: 5,
+                                            )
                                           ]),
                                       child: ListTile(
                                           leading: Image.network(beritaTerkini

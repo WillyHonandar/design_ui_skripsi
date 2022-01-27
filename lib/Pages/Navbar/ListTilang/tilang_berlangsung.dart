@@ -471,54 +471,45 @@ class _ListPelanggaranKosongState extends State<ListPelanggaranKosong> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        width: double.infinity,
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Column(children: [
+              Container(
+                child: Center(
+                  child: Image(
+                    image: AssetImage("assets/icon/list_tilang_kosong.png"),
+                    height: 300,
+                    width: 300,
+                  ),
+                ),
+              ),
               Center(
-                child: ListView(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.symmetric(horizontal: 36, vertical: 24),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 36, vertical: 24),
+                  child: Column(
                     children: [
-                      Container(
-                        margin: EdgeInsets.only(bottom: 16),
-                        child: Center(
-                          child: Image(
-                            image: AssetImage(
-                                "assets/icon/list_tilang_kosong.png"),
-                            height: 300,
-                            width: 300,
-                          ),
-                        ),
+                      Text(
+                        "Anda belum pernah terindikasi dalam melakukan pelanggaran!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
                       ),
-                      Center(
-                        child: Column(
-                          children: [
-                            Text(
-                              "Anda belum pernah terindikasi dalam melakukan pelanggaran!",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(height: 20),
-                            Text(
-                              "Tetap patuhi peraturan lalu lintas saat mengemudi/berkendara",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.grey),
-                            ),
-                          ],
-                        ),
+                      SizedBox(height: 20),
+                      Text(
+                        "Tetap patuhi peraturan lalu lintas saat mengemudi/berkendara",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey),
                       ),
-                    ]),
+                    ],
+                  ),
+                ),
               ),
             ]),
-      ),
+          ]),
     );
   }
 }

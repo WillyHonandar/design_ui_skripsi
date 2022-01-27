@@ -221,7 +221,7 @@ class _KendaraanAdaState extends State<KendaraanAda> {
             borderRadius: BorderRadius.circular(10),
           ),
           child: Text(
-            "Tambah Kendaraan +",
+            "Tambah Kendaraan",
             style: TextStyle(
                 fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
           ),
@@ -266,68 +266,69 @@ class _KendaraanKosongState extends State<KendaraanKosong> {
                         fontWeight: FontWeight.w800,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Text(
-                        "Anda Memiliki total 0 kendaraan!",
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w500),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 60),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Text(
+                          "Anda Memiliki total 0 kendaraan!",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w500),
+                        ),
                       ),
                     ),
                   ],
                 ),
                 Center(
-                  child: ListView(
-                      shrinkWrap: true,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 36, vertical: 24),
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(bottom: 16),
-                          child: Center(
-                            child: Image(
-                              image: AssetImage(
-                                  "assets/icon/list_kendaraan_kosong.png"),
-                              height: 300,
-                              width: 300,
-                            ),
-                          ),
+                  child: Column(children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 16),
+                      child: Center(
+                        child: Image(
+                          image: AssetImage(
+                              "assets/icon/list_kendaraan_kosong.png"),
+                          height: 300,
+                          width: 300,
                         ),
-                        Center(
-                          child: Text(
-                            "Anda belum mendaftarkan kendaraan, segera daftar sekarang juga!",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                      ]),
+                      ),
+                    ),
+                    Center(
+                      child: Text(
+                        "Anda belum mendaftarkan kendaraan pribadi anda, ketuk tombol dibawah untuk menuju halaman pendaftaran",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ]),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 80),
+                  child: MaterialButton(
+                    minWidth: double.infinity,
+                    height: 60,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              //Nanti dipilih berdasarkan index
+                              builder: (context) => RegistrasiKendaraan()));
+                    },
+                    color: Colors.blue,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      "Tambah Kendaraan +",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Colors.white),
+                    ),
+                  ),
                 ),
               ]),
-        ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(24.0),
-        child: MaterialButton(
-          minWidth: double.infinity,
-          height: 60,
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    //Nanti dipilih berdasarkan index
-                    builder: (context) => RegistrasiKendaraan()));
-          },
-          color: Colors.blue,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Text(
-            "Tambah Kendaraan +",
-            style: TextStyle(
-                fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
-          ),
         ),
       ),
     );
