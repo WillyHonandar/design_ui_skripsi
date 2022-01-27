@@ -1,6 +1,5 @@
 import 'package:aplikasi_tilang_training/Model/Kendaraan.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/Kendaraan/registrasi_kendaraan.dart';
-import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -302,33 +301,31 @@ class _KendaraanKosongState extends State<KendaraanKosong> {
                     ),
                   ]),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 80),
-                  child: MaterialButton(
-                    minWidth: double.infinity,
-                    height: 60,
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              //Nanti dipilih berdasarkan index
-                              builder: (context) => RegistrasiKendaraan()));
-                    },
-                    color: Colors.blue,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      "Tambah Kendaraan +",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                          color: Colors.white),
-                    ),
-                  ),
-                ),
               ]),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(24.0),
+        child: MaterialButton(
+          minWidth: double.infinity,
+          height: 60,
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    //Nanti dipilih berdasarkan index
+                    builder: (context) => RegistrasiKendaraan()));
+          },
+          color: Colors.blue,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(
+            "Tambah Kendaraan",
+            style: TextStyle(
+                fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
+          ),
         ),
       ),
     );
