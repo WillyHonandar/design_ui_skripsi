@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:string_validator/string_validator.dart';
 
 class RegistrasiKendaraan extends StatefulWidget {
   @override
@@ -226,6 +227,15 @@ class _RegistrasiKendaraanState extends State<RegistrasiKendaraan> {
                             textEditingController.text == "") {
                           Fluttertoast.showToast(
                               msg: "Harap isi semua data kendaraan!");
+                        } else if (!isAlphanumeric(
+                            _nomorMesinKendaraanController.text)) {
+                          Fluttertoast.showToast(
+                              msg:
+                                  "Nomor mesin hanya mengandung kombinasi huruf dan angka!");
+                        } else if (!isLength(
+                            _nomorMesinKendaraanController.text, 17, 17)) {
+                          Fluttertoast.showToast(
+                              msg: "Nomor mesin harus 17 digit!");
                         } else {
                           addKendaraanSupabase(
                               FirebaseAuth.instance.currentUser.uid,

@@ -1,5 +1,5 @@
-import 'package:aplikasi_tilang_training/Model/notification.dart';
-import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
+import 'package:aplikasi_tilang_training/Model/Notification.dart';
+import 'package:aplikasi_tilang_training/Model/Pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Sidang/sukses_lakukan_sidang.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:flutter/material.dart';

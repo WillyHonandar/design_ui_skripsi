@@ -1,4 +1,4 @@
-import 'package:aplikasi_tilang_training/Model/kendaraan.dart';
+import 'package:aplikasi_tilang_training/Model/Kendaraan.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Settings/Kendaraan/registrasi_kendaraan.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
 import 'package:aplikasi_tilang_training/main.dart';

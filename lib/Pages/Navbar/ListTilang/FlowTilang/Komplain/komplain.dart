@@ -1,4 +1,4 @@
-import 'package:aplikasi_tilang_training/Model/notification.dart';
+import 'package:aplikasi_tilang_training/Model/Notification.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Komplain/sukses_komplain.dart';
 import 'package:aplikasi_tilang_training/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';

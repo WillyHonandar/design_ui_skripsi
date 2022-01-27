@@ -1,4 +1,4 @@
-import 'package:aplikasi_tilang_training/Model/user.dart';
+import 'package:aplikasi_tilang_training/Model/MyUser.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/Home/homepage.dart';
 import 'package:aplikasi_tilang_training/net/firebase.dart';
 import 'package:aplikasi_tilang_training/Authentication/login.dart';
@@ -8,6 +8,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:string_validator/string_validator.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key key}) : super(key: key);
@@ -94,6 +95,35 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           if (_passwordController.text.trim() ==
                               _confirmPasswordController.text.trim()) {
                             try {
+                              final user = await FirebaseAuth.instance
+                                  .fetchSignInMethodsForEmail(
+                                      _emailController.text);
+                              if (!isEmail(_emailController.text)) {
+                                Fluttertoast.showToast(
+                                    msg: "Harap mengisi email dengan benar!");
+                              } else if (user.isNotEmpty) {
+                                Fluttertoast.showToast(
+                                    msg: "Email sudah terdaftar!");
+                              } else {
+                                setState(() {
+                                  Fluttertoast.showToast(
+                                      msg: "succesffuly signed up!");
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => OTPScreen(
+                                            _usernameController.text,
+                                            _emailController.text,
+                                            _phoneNumberController.text,
+                                            _passwordController.text)),
+                                  );
+                                  // Navigator.pushReplacement(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //       builder: (context) => MyHomePage()),
+                                  // );
+                                });
+                              }
                               // UserCredential user = await FirebaseAuth.instance
                               //     .createUserWithEmailAndPassword(
                               //         email: _emailController.text,
@@ -112,24 +142,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
                               // userSetup(_usernameController.text);
                               //nanti disini untuk insert ke supabasenya (hanya data yg diperlukan)
-                              setState(() {
-                                Fluttertoast.showToast(
-                                    msg: "succesffuly signed up!");
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => OTPScreen(
-                                          _usernameController.text,
-                                          _emailController.text,
-                                          _phoneNumberController.text,
-                                          _passwordController.text)),
-                                );
-                                // Navigator.pushReplacement(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) => MyHomePage()),
-                                // );
-                              });
+
                             } catch (e) {
                               Fluttertoast.showToast(msg: "Error! $e");
                             }
@@ -257,4 +270,11 @@ addUserSupabase(
     'noTelpUser': noTelpUser
   }).execute();
   print(response);
+}
+
+Future<List<MyUser>> getKendaraan(String user) async {
+  final response = await client.from("m_user").select("*").execute();
+
+  final dataList = response.data as List;
+  return dataList.map((map) => MyUser.fromJson(map)).toList();
 }

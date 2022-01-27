@@ -1,4 +1,4 @@
-import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
+import 'package:aplikasi_tilang_training/Model/Pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Sidang/detail_sidang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/konfirmasi_tilang.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/detail_status.dart';

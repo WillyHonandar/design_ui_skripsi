@@ -1,4 +1,4 @@
-import 'package:aplikasi_tilang_training/Model/pelanggaran.dart';
+import 'package:aplikasi_tilang_training/Model/Pelanggaran.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/Komplain/komplain.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/FlowTilang/detail_informasi.dart';
 import 'package:aplikasi_tilang_training/Pages/Navbar/ListTilang/tilang_berlangsung.dart';
