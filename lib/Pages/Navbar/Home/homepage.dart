@@ -126,7 +126,7 @@ class _HomeState extends State<Home> {
                       ),
                       counter != 0
                           ? Positioned(
-                              right: 28,
+                              right: 20,
                               top: 12,
                               child: Container(
                                 padding: EdgeInsets.all(2),
