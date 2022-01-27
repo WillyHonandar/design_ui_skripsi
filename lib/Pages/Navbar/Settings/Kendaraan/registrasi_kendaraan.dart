@@ -232,10 +232,22 @@ class _RegistrasiKendaraanState extends State<RegistrasiKendaraan> {
                           Fluttertoast.showToast(
                               msg: "Harap isi semua data kendaraan!");
                         } else if (!isAlphanumeric(
+                            textEditingController.text)) {
+                          Fluttertoast.showToast(
+                              msg:
+                                  "Nomor plat hanya mengandung kombinasi huruf dan angka!");
+                        } else if (!isUppercase(textEditingController.text)) {
+                          Fluttertoast.showToast(
+                              msg: "Nomor plat harus uppercase!");
+                        } else if (!isAlphanumeric(
                             _nomorMesinKendaraanController.text)) {
                           Fluttertoast.showToast(
                               msg:
                                   "Nomor mesin hanya mengandung kombinasi huruf dan angka!");
+                        } else if (!isUppercase(
+                            _nomorMesinKendaraanController.text)) {
+                          Fluttertoast.showToast(
+                              msg: "Nomor mesin harus uppercase!");
                         } else if (!isLength(
                             _nomorMesinKendaraanController.text, 17, 17)) {
                           Fluttertoast.showToast(
