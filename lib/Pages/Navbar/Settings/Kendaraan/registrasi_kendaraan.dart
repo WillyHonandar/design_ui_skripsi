@@ -126,6 +126,8 @@ class _RegistrasiKendaraanState extends State<RegistrasiKendaraan> {
                                     child: Padding(
                                         padding: const EdgeInsets.only(top: 12),
                                         child: PinCodeTextField(
+                                          textCapitalization:
+                                              TextCapitalization.characters,
                                           appContext: context,
                                           pastedTextStyle: TextStyle(
                                             color: Colors.blue.shade300,
@@ -194,6 +196,8 @@ class _RegistrasiKendaraanState extends State<RegistrasiKendaraan> {
                                   Text("Nomor mesin kendaraan"),
                                   Form(
                                       child: TextFormField(
+                                    textCapitalization:
+                                        TextCapitalization.characters,
                                     controller: _nomorMesinKendaraanController,
                                     // onChanged: (value) {
                                     //   print(value);
