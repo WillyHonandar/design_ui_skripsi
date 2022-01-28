@@ -51,6 +51,7 @@ class _OTPScreenState extends State<OTPScreen> {
           Padding(
             padding: const EdgeInsets.all(30.0),
             child: PinPut(
+              keyboardType: TextInputType.number,
               fieldsCount: 6,
               withCursor: true,
               textStyle: const TextStyle(fontSize: 25.0, color: Colors.white),
@@ -93,9 +94,8 @@ class _OTPScreenState extends State<OTPScreen> {
                     }
                   });
                 } catch (e) {
-                  FocusScope.of(context).unfocus();
-                  print(e);
-                  Fluttertoast.showToast(msg: "Failed because of $e");
+                  Fluttertoast.showToast(
+                      msg: "Failed because of $e", timeInSecForIosWeb: 10);
                 }
               },
             ),

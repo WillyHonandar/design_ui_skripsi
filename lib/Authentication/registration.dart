@@ -62,24 +62,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ],
                     ),
                   ),
-                  Column(
-                    children: <Widget>[
-                      inputFile(
-                          label: "Nama Lengkap",
-                          controller: _usernameController),
-                      inputFile(label: "Email", controller: _emailController),
-                      inputFile(
-                          label: "Password",
-                          controller: _passwordController,
-                          obscureText: true),
-                      inputFile(
-                          label: "Konfirmasi Password",
-                          controller: _confirmPasswordController,
-                          obscureText: true),
-                      inputPhoneNum(
-                          label: "Nomor Handphone",
-                          controller: _phoneNumberController)
-                    ],
+                  Container(
+                    margin: EdgeInsets.only(top: 40),
+                    child: Column(
+                      children: <Widget>[
+                        inputFile(
+                            label: "Nama Lengkap",
+                            controller: _usernameController),
+                        inputFile(label: "Email", controller: _emailController),
+                        inputFile(
+                            label: "Password",
+                            controller: _passwordController,
+                            obscureText: true),
+                        inputFile(
+                            label: "Konfirmasi Password",
+                            controller: _confirmPasswordController,
+                            obscureText: true),
+                        inputPhoneNum(
+                            label: "Nomor Handphone",
+                            controller: _phoneNumberController)
+                      ],
+                    ),
                   ),
                   SizedBox(height: 20),
                   Container(
