@@ -45,6 +45,7 @@ class _KomplainState extends State<Komplain> {
                 ),
                 SizedBox(height: 20),
                 TextField(
+                  textInputAction: TextInputAction.done,
                   controller: _alasanBukanController,
                   maxLines: 16,
                   decoration: InputDecoration(
