@@ -96,18 +96,12 @@ class _DetailStatusState extends State<DetailStatus> {
                                     child: Column(
                                       children: [
                                         ListTile(
-                                          leading: Icon(MaterialCommunityIcons
-                                              .information),
-                                          title:
-                                              Text("Pemberitahuan Informasi\n"),
-                                        ),
-                                        ListTile(
                                             leading: Icon(MaterialCommunityIcons
                                                 .information),
                                             title:
                                                 Text("Segera Lakukan Sidang\n"),
                                             subtitle: Text(
-                                                'Anda diharuskan datang ke pengadilan untuk mengurus penilangan, Silahkan menekan tombol "Lakukan Sidang" untuk dilanjutkan ke sidang',
+                                                'Anda diharuskan datang ke pengadilan untuk mengurus penilangan, segara pergi ke pengadilan terdekat untuk menyelesaikan proses sidang!',
                                                 textAlign: TextAlign.justify)),
                                       ],
                                     ),
@@ -144,18 +138,6 @@ class _DetailStatusState extends State<DetailStatus> {
                                         horizontal: 20, vertical: 20),
                                     child: Column(
                                       children: [
-                                        ListTile(
-                                          leading: Icon(MaterialCommunityIcons
-                                              .information),
-                                          title:
-                                              Text("Pemberitahuan Informasi\n"),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(MaterialCommunityIcons
-                                              .information),
-                                          title:
-                                              Text("Segera Lakukan Sidang\n"),
-                                        ),
                                         ListTile(
                                             leading: Icon(
                                                 MaterialCommunityIcons.paypal),
@@ -200,12 +182,6 @@ class _DetailStatusState extends State<DetailStatus> {
                                     child: Column(
                                       children: [
                                         ListTile(
-                                          leading: Icon(MaterialCommunityIcons
-                                              .information),
-                                          title:
-                                              Text("Pemberitahuan Informasi\n"),
-                                        ),
-                                        ListTile(
                                             leading: Icon(MaterialCommunityIcons
                                                 .timelapse),
                                             title: Text(
@@ -249,18 +225,6 @@ class _DetailStatusState extends State<DetailStatus> {
                                     child: Column(
                                       children: [
                                         ListTile(
-                                          leading: Icon(MaterialCommunityIcons
-                                              .information),
-                                          title:
-                                              Text("Pemberitahuan Informasi\n"),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(
-                                              MaterialCommunityIcons.timelapse),
-                                          title: Text(
-                                              "Menunggu Konfirmasi Pembayaran\n"),
-                                        ),
-                                        ListTile(
                                             leading: Icon(
                                                 MaterialCommunityIcons.check),
                                             title: Text("Selesai\n"),
@@ -302,18 +266,6 @@ class _DetailStatusState extends State<DetailStatus> {
                                         horizontal: 20, vertical: 20),
                                     child: Column(
                                       children: [
-                                        ListTile(
-                                          leading: Icon(MaterialCommunityIcons
-                                              .information),
-                                          title:
-                                              Text("Pemberitahuan Informasi\n"),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(
-                                              MaterialCommunityIcons.timelapse),
-                                          title: Text(
-                                              "Menunggu Konfirmasi Pembayaran\n"),
-                                        ),
                                         ListTile(
                                             leading: Icon(MaterialCommunityIcons
                                                 .close_box),
@@ -357,12 +309,6 @@ class _DetailStatusState extends State<DetailStatus> {
                                     child: Column(
                                       children: [
                                         ListTile(
-                                          leading: Icon(MaterialCommunityIcons
-                                              .information),
-                                          title:
-                                              Text("Pemberitahuan Informasi\n"),
-                                        ),
-                                        ListTile(
                                             leading: Icon(MaterialCommunityIcons
                                                 .email_alert),
                                             title: Text("Tunggu Email\n"),
@@ -405,22 +351,54 @@ class _DetailStatusState extends State<DetailStatus> {
                                     child: Column(
                                       children: [
                                         ListTile(
-                                          leading: Icon(MaterialCommunityIcons
-                                              .information),
-                                          title:
-                                              Text("Pemberitahuan Informasi\n"),
-                                        ),
-                                        ListTile(
-                                          leading: Icon(MaterialCommunityIcons
-                                              .email_alert),
-                                          title: Text("Tunggu Email\n"),
-                                        ),
-                                        ListTile(
                                             leading: Icon(MaterialCommunityIcons
                                                 .email_check),
                                             title: Text("Email Terkirim\n"),
                                             subtitle: Text(
                                                 'Silahkan periksa email yang terdaftar pada aplikasi anda untuk informasi lebih lanjut seputar komplain!',
+                                                textAlign: TextAlign.justify)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (status == "Menunggu Konfirmasi Pembayaran Sidang") {
+                  return Container(
+                    margin: EdgeInsets.all(24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Detail Status: Menunggu Konfirmasi Pembayaran Sidang",
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          child: Card(
+                            child: InkWell(
+                              splashColor: Colors.blue.withAlpha(30),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 20),
+                                    child: Column(
+                                      children: [
+                                        ListTile(
+                                            leading: Icon(MaterialCommunityIcons
+                                                .timelapse),
+                                            title: Text(
+                                                "Menunggu Konfirmasi Pembayaran Sidang\n"),
+                                            subtitle: Text(
+                                                'Silahkan menunggu konfirmasi pembayaran sidang hingga status berubah!',
                                                 textAlign: TextAlign.justify)),
                                       ],
                                     ),
