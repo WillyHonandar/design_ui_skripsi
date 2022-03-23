@@ -72,7 +72,6 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
                         : FlutterLogo(size: 320),
                     SizedBox(height: 24),
                     MaterialButton(
-                      // minWidth: double.infinity,
                       height: 30,
                       onPressed: () {
                         pickImage(ImageSource.gallery);
@@ -91,7 +90,6 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
                       ),
                     ),
                     MaterialButton(
-                      // minWidth: double.infinity,
                       height: 30,
                       onPressed: () {
                         pickImage(ImageSource.camera);
@@ -127,8 +125,6 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
                   } else {
                     //Function Update Status menjadi Menunggu Konfirmasi
                     if (status == "Pemberitahuan Informasi") {
-                      // _isLoading
-                      //     ? CircularProgressIndicator() // this will show when loading is true
                       setState(() {
                         _isLoading = true;
                       });
@@ -136,21 +132,12 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
                             addBuktiPembayaran(idPelanggaran, buktiPembayaran),
                             updateIdStatusNotifikasi(idPelanggaran, 1),
                             updateStatus(idPelanggaran, 4),
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         //Nanti dipilih berdasarkan index
-                            //         builder: (context) => SuksesMelakukanPembayaran()));
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         SuksesMelakukanPembayaran()),
                                 (route) => false),
-                            // setState(() {
-                            //   _isLoading =
-                            //       false; // your loader has started to load
-                            // }),
                             Fluttertoast.showToast(
                                 msg: "Sukses Upload Bukti Pembayaran!"),
                           });
@@ -162,22 +149,12 @@ class _UploadBuktiPembayaranState extends State<UploadBuktiPembayaran> {
                             addBuktiPembayaran(idPelanggaran, buktiPembayaran),
                             updateIdStatusNotifikasi(idPelanggaran, 1),
                             updateStatus(idPelanggaran, 9),
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         //Nanti dipilih berdasarkan index
-                            //         builder: (context) => SuksesMelakukanPembayaran()));
-
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                         SuksesMelakukanPembayaran()),
                                 (route) => false),
-                            // setState(() {
-                            //   _isLoading =
-                            //       false; // your loader has started to load
-                            // }),
                             Fluttertoast.showToast(
                                 msg: "Sukses Upload Bukti Pembayaran!"),
                           });

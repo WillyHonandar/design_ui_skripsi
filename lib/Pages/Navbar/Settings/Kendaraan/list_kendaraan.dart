@@ -8,9 +8,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class ListKendaraan extends StatefulWidget {
   @override
-
-  // final String displayName = FirebaseAuth.instance.currentUser.displayName;
-
   _ListKendaraanState createState() => _ListKendaraanState();
 }
 
@@ -126,21 +123,8 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                                                           //Nanti dipilih berdasarkan index
                                                           builder: (context) =>
                                                               ListKendaraan()));
-                                                  // Fluttertoast.showToast(
-                                                  //     msg:
-                                                  //         "Sukses Menghapus Kendaraan!");
-                                                  // setState(() {});
                                                 });
-
-                                                // setState(() {});
                                               },
-                                              // onTap: () => deleteKendaraan(
-                                              //     kendaraan.idKendaraan),
-                                              // Fluttertoast.showToast(
-                                              //     msg: "Sukses Hapus Kendaraan!");
-
-                                              // onTap: () => deleteKendaraan(
-                                              //     kendaraan.idKendaraan),
                                               child: Icon(
                                                 Icons.delete,
                                                 color: Colors.red,
@@ -170,21 +154,8 @@ class _KendaraanAdaState extends State<KendaraanAda> {
                                                           //Nanti dipilih berdasarkan index
                                                           builder: (context) =>
                                                               ListKendaraan()));
-                                                  // Fluttertoast.showToast(
-                                                  //     msg:
-                                                  //         "Sukses Menghapus Kendaraan!");
-                                                  // setState(() {});
                                                 });
-
-                                                // setState(() {});
                                               },
-                                              // onTap: () => deleteKendaraan(
-                                              //     kendaraan.idKendaraan),
-                                              // Fluttertoast.showToast(
-                                              //     msg: "Sukses Hapus Kendaraan!");
-
-                                              // onTap: () => deleteKendaraan(
-                                              //     kendaraan.idKendaraan),
                                               child: Icon(
                                                 Icons.delete,
                                                 color: Colors.red,
@@ -331,17 +302,6 @@ class _KendaraanKosongState extends State<KendaraanKosong> {
     );
   }
 }
-
-// Future<List<Kendaraan>> getKendaraan() async {
-//   final response = await client
-//       .from('m_kendaraan')
-//       .select('noPlat, noMesin')
-//       // .order('nameUser', ascending: true)
-//       .execute();
-
-//   final dataList = response.data as List;
-//   return dataList.map((map) => Kendaraan.fromJson(map)).toList();
-// }
 
 Future<List<Kendaraan>> getKendaraan(String user) async {
   final response =

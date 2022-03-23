@@ -223,14 +223,6 @@ class _NotificationsListState extends State<NotificationsList> {
             });
           }),
     );
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     iconTheme: IconThemeData(color: Colors.black),
-    //     title: Text("Notifications", style: TextStyle(color: Colors.black)),
-    //     backgroundColor: Color.fromRGBO(245, 245, 245, 1),
-    //   ),
-    //   body:
-    // );
   }
 }
 

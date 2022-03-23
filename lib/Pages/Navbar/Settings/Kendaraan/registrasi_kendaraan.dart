@@ -178,8 +178,6 @@ class _RegistrasiKendaraanState extends State<RegistrasiKendaraan> {
                                           },
                                           beforeTextPaste: (text) {
                                             print("Allowing to paste $text");
-                                            //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
-                                            //but you can show anything you want here, like your pop up saying wrong paste format or etc
                                             return true;
                                           },
                                         )),
@@ -199,14 +197,6 @@ class _RegistrasiKendaraanState extends State<RegistrasiKendaraan> {
                                     textCapitalization:
                                         TextCapitalization.characters,
                                     controller: _nomorMesinKendaraanController,
-                                    // onChanged: (value) {
-                                    //   print(value);
-                                    //   setState(() {
-                                    //     currentText = value;
-                                    //   });
-                                    //   currentText =
-                                    //       _nomorMesinKendaraanController.text;
-                                    // },
                                   ))
                                 ],
                               ),
@@ -259,14 +249,7 @@ class _RegistrasiKendaraanState extends State<RegistrasiKendaraan> {
                               _nomorMesinKendaraanController.text,
                               textEditingController.text);
                           _incrementCounter();
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => SuksesTambahKendaraan()));
                           setState(() {
-                            // User updateUser = FirebaseAuth.instance.currentUser;
-                            // updateUser.uid;
-
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
@@ -275,16 +258,6 @@ class _RegistrasiKendaraanState extends State<RegistrasiKendaraan> {
                                 (route) => false);
                             Fluttertoast.showToast(
                                 msg: "Sukses Menambahkan Kendaraan");
-                            // Navigator.pushReplacement(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) =>
-                            //             SuksesTambahKendaraan()));
-
-                            //add Supabase
-
-                            // vechicleSetup(_chosenValue, textEditingController.text,
-                            //     _nomorMesinKendaraanController.text);
                           });
                         }
                       },

@@ -51,18 +51,7 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
       child: ListView(
         padding: EdgeInsets.all(16),
         children: dataPelanggaran
-            .map((pelanggaran) => Container(
-
-                    // child: InkWell(
-                    //   onTap: () {
-                    //     Navigator.push(
-                    //         context,
-                    //         MaterialPageRoute(
-                    //             //Nanti dipilih berdasarkan index
-                    //             builder: (context) => KonfirmasiTilang()));
-                    //   },
-                    child: Builder(builder: (context) {
-                  /// some operation here ...
+            .map((pelanggaran) => Container(child: Builder(builder: (context) {
                   if (pelanggaran.status == "Pemberitahuan Informasi") {
                     return Card(
                       elevation: 5,
@@ -72,18 +61,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                         child: InkWell(
                           onTap: () {
                             print(pelanggaran.status);
-                            // Navigator.pushNamed(
-                            //     context, "KonfirmasiPelanggaran", arguments: {
-                            //   "idPelanggaran": pelanggaran.idPelanggaran,
-                            //   "status": pelanggaran.status
-                            // });
-
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         //Nanti dipilih berdasarkan index
-                            //         builder: (context) =>
-                            //             KonfirmasiPelanggaran()));
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => KonfirmasiTilang(
                                     pelanggaran.status,
@@ -114,10 +91,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             ),
                             trailing: InkWell(
                               onTap: () {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //     builder: (context) => StepperPage(
-                                //         pelanggaran.status,
-                                //         pelanggaran.idPelanggaran)));
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => DetailStatus(
                                         pelanggaran.status,
@@ -137,13 +110,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                         margin:
                             EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: InkWell(
-                          // onTap: () {
-                          //   Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           //Nanti dipilih berdasarkan index
-                          //           builder: (context) => KonfirmasiTilang()));
-                          // },
                           child: ListTile(
                             leading: Icon(
                               MaterialCommunityIcons.clock,
@@ -169,10 +135,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             ),
                             trailing: InkWell(
                               onTap: () {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //     builder: (context) => StepperPage(
-                                //         pelanggaran.status,
-                                //         pelanggaran.idPelanggaran)));
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => DetailStatus(
                                         pelanggaran.status,
@@ -229,10 +191,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             ),
                             trailing: InkWell(
                               onTap: () {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //     builder: (context) => StepperPage(
-                                //         pelanggaran.status,
-                                //         pelanggaran.idPelanggaran)));
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => DetailStatus(
                                         pelanggaran.status,
@@ -253,13 +211,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                         margin:
                             EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: InkWell(
-                          // onTap: () {
-                          //   Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           //Nanti dipilih berdasarkan index
-                          //           builder: (context) => Pembayaran()));
-                          // },
                           child: ListTile(
                             leading: Icon(
                               MaterialCommunityIcons.clock,
@@ -285,10 +236,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             ),
                             trailing: InkWell(
                               onTap: () {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //     builder: (context) => StepperPage(
-                                //         pelanggaran.status,
-                                //         pelanggaran.idPelanggaran)));
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => DetailStatus(
                                         pelanggaran.status,
@@ -308,13 +255,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                         margin:
                             EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: InkWell(
-                          // onTap: () {
-                          //   Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           //Nanti dipilih berdasarkan index
-                          //           builder: (context) => Pembayaran()));
-                          // },
                           child: ListTile(
                             leading: Icon(
                               MaterialCommunityIcons.email_alert,
@@ -340,10 +280,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             ),
                             trailing: InkWell(
                               onTap: () {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //     builder: (context) => StepperPage(
-                                //         pelanggaran.status,
-                                //         pelanggaran.idPelanggaran)));
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => DetailStatus(
                                         pelanggaran.status,
@@ -364,13 +300,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                         margin:
                             EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                         child: InkWell(
-                          // onTap: () {
-                          //   Navigator.push(
-                          //       context,
-                          //       MaterialPageRoute(
-                          //           //Nanti dipilih berdasarkan index
-                          //           builder: (context) => Pembayaran()));
-                          // },
                           child: ListTile(
                             leading: Icon(
                               MaterialCommunityIcons.clock,
@@ -396,10 +325,6 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                             ),
                             trailing: InkWell(
                               onTap: () {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //     builder: (context) => StepperPage(
-                                //         pelanggaran.status,
-                                //         pelanggaran.idPelanggaran)));
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => DetailStatus(
                                         pelanggaran.status,
@@ -415,47 +340,7 @@ class _ListPelanggaranAdaState extends State<ListPelanggaranAda> {
                   } else {
                     return null;
                   }
-                })
-
-                    // child: Card(
-                    //   elevation: 5,
-                    //   child: Container(
-                    //     margin:
-                    //         EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                    //     child: InkWell(
-                    //       onTap: () {
-                    //         Navigator.push(
-                    //             context,
-                    //             MaterialPageRoute(
-                    //                 //Nanti dipilih berdasarkan index
-                    //                 builder: (context) => KonfirmasiTilang()));
-                    //       },
-                    //       child: ListTile(
-                    //           leading: Icon(
-                    //             Icons.car_rental,
-                    //             size: 50,
-                    //           ),
-                    //           title: Text(
-                    //             pelanggaran.noTilang,
-                    //             style: TextStyle(fontSize: 16),
-                    //           ),
-                    //           subtitle: Container(
-                    //             decoration: new BoxDecoration(
-                    //               borderRadius: new BorderRadius.circular(16.0),
-                    //               color: Colors.yellow,
-                    //             ),
-                    //             margin: EdgeInsets.only(right: 60, top: 10),
-                    //             padding: EdgeInsets.symmetric(vertical: 5),
-                    //             child: Center(
-                    //               //Status di ambil dari database
-                    //               child: Text(pelanggaran.status,
-                    //                   style: TextStyle(fontSize: 12)),
-                    //             ),
-                    //           )),
-                    //     ),
-                    //   ),
-                    // ),
-                    ))
+                })))
             .toList(),
       ),
     );

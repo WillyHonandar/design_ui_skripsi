@@ -32,7 +32,6 @@ class _LoginPageState extends State<LoginPage> {
         child: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-            // height: MediaQuery.of(context).size.height - 50,
             width: double.infinity,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -105,13 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                                     password: _passwordController.text);
                             setState(() {
                               Fluttertoast.showToast(
-                                  msg:
-                                      "Signed in sucessfully!"); //kasih tau nama sign in
-                              // Navigator.pushReplacement(
-                              //   context,
-                              //   MaterialPageRoute(
-                              //       builder: (context) => MyHomePage()),
-                              // );
+                                  msg: "Signed in sucessfully!");
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(

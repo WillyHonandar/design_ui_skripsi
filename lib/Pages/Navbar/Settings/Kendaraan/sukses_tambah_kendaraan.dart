@@ -44,11 +44,6 @@ class SuksesTambahKendaraan extends StatelessWidget {
           minWidth: double.infinity,
           height: 60,
           onPressed: () {
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         //Nanti dipilih berdasarkan index
-            //         builder: (context) => MyHomePage()));
             Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => MyHomePage()),

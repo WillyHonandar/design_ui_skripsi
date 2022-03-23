@@ -76,12 +76,6 @@ class _KomplainState extends State<Komplain> {
               addAlasanBukan(idPelanggaran, _alasanBukanController.text);
               updateStatus(idPelanggaran, 7);
               updateIdStatusNotifikasi(idPelanggaran, 1);
-              // updateStatus(idPelanggaran, idStatus)
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         //Nanti dipilih berdasarkan index
-              //         builder: (context) => SuksesBukanKendaraan()));
 
               Navigator.pushAndRemoveUntil(
                   context,

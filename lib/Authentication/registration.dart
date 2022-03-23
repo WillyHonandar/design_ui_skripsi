@@ -120,32 +120,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                             _phoneNumberController.text,
                                             _passwordController.text)),
                                   );
-                                  // Navigator.pushReplacement(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //       builder: (context) => MyHomePage()),
-                                  // );
                                 });
                               }
-                              // UserCredential user = await FirebaseAuth.instance
-                              //     .createUserWithEmailAndPassword(
-                              //         email: _emailController.text,
-                              //         password: _passwordController.text);
-
-                              //ini ambil data dri firebase setelah regist
-                              // addUserSupabase(
-                              //     user.user.uid,
-                              //     _usernameController.text,
-                              //     _emailController.text,
-                              //     _phoneNumberController.text);
-                              // User updateUser =
-                              //     FirebaseAuth.instance.currentUser;
-                              // updateUser
-                              //     .updateDisplayName(_usernameController.text);
-
-                              // userSetup(_usernameController.text);
-                              //nanti disini untuk insert ke supabasenya (hanya data yg diperlukan)
-
                             } catch (e) {
                               Fluttertoast.showToast(msg: "Error! $e");
                             }

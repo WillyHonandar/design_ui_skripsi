@@ -382,12 +382,6 @@ class _DetailPelanggaranState extends State<DetailPelanggaran> {
                                     height: 60,
                                     onPressed: () {
                                       print(status + "asdasd");
-                                      // Navigator.push(
-                                      //     context,
-                                      //     MaterialPageRoute(
-                                      //         //Nanti dipilih berdasarkan index
-                                      //         builder: (context) =>
-                                      //             AlasanBukan()));
 
                                       Navigator.of(context).push(
                                           MaterialPageRoute(

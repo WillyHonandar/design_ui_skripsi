@@ -52,12 +52,6 @@ class OnBoardingPage extends StatefulWidget {
 class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
-  // void _onIntroEnd(context) {
-  //   Navigator.of(context).push(
-  //     MaterialPageRoute(builder: (_) => MyHomePage()),
-  //   );
-  // }
-
   Widget _buildImage(String assetName, [double width = 350]) {
     return Image.asset('assets/$assetName', width: width);
   }

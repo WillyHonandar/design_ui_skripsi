@@ -332,11 +332,6 @@ class _DetailPelanggaranSidangState extends State<DetailPelanggaranSidang> {
           onPressed: () {
             print(status);
             print(idPelanggaran);
-            // Navigator.push(
-            //     context,
-            //     MaterialPageRoute(
-            //         //Nanti dipilih berdasarkan index
-            //         builder: (context) => MyHomePage()));
 
             Navigator.push(
                 context,

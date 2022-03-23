@@ -127,13 +127,6 @@ class _DetailInformasiState extends State<DetailInformasi> {
                       height: 60,
                       onPressed: () {
                         printidPelanggaran(idPelanggaran);
-                        // updateStatus(idPelanggaran, 2);
-                        // Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         //Nanti dipilih berdasarkan index
-                        //         builder: (context) =>
-                        //             AlasanBukan()));
 
                         Navigator.push(
                             context,
@@ -160,31 +153,6 @@ class _DetailInformasiState extends State<DetailInformasi> {
           ]),
         ),
       ),
-
-      // bottomNavigationBar: Padding(
-      //   padding: EdgeInsets.all(24.0),
-      //   child: MaterialButton(
-      //     minWidth: double.infinity,
-      //     height: 60,
-      //     onPressed: () {
-      //       Navigator.push(
-      //           context,
-      //           MaterialPageRoute(
-      //               //Nanti dipilih berdasarkan index
-      //               builder: (context) => Pembayaran()));
-      //     },
-      //     color: Colors.blue,
-      //     elevation: 0,
-      //     shape: RoundedRectangleBorder(
-      //       borderRadius: BorderRadius.circular(10),
-      //     ),
-      //     child: Text(
-      //       "Selanjutnya",
-      //       style: TextStyle(
-      //           fontWeight: FontWeight.w600, fontSize: 18, color: Colors.white),
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

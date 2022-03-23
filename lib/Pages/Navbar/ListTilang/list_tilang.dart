@@ -48,28 +48,3 @@ class _ListTilangState extends State<ListTilang> {
             body: Center(child: pages.elementAt(_selectedIndexForTabBar))));
   }
 }
-
-// @override
-// Widget build(BuildContext context) {
-//   return Scaffold(
-//     body: FutureBuilder<List<Kendaraan>>(
-//         future: getKendaraan(),
-//         builder: (context, AsyncSnapshot<List<Kendaraan>> snapshot) {
-//           if (snapshot.hasData == false) {
-//             return Center(child: CircularProgressIndicator());
-//           }
-//           return ListView(
-//             children: snapshot.data
-//                 .map((kendaraan) => Column(
-//                       children: [
-//                         Text(kendaraan.noPlat),
-//                         Text(kendaraan.noMesin),
-//                         // Text(user.passwordUser),
-//                         Text(kendaraan.statusTilang.toString())
-//                       ],
-//                     ))
-//                 .toList(),
-//           );
-//         }),
-//   );
-// }

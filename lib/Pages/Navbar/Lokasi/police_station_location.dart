@@ -407,11 +407,6 @@ class LokasiPolsekPengadilan extends StatelessWidget {
             return SafeArea(
               child: Container(
                 decoration: BoxDecoration(
-                  // border: Border(
-                  //     top: BorderSide(width: 1.0, color: Colors.black),
-                  //     left: BorderSide(width: 1.0, color: Colors.black),
-                  //     right: BorderSide(width: 1.0, color: Colors.black),
-                  //     bottom: BorderSide(width: 1.0, color: Colors.black)),
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(

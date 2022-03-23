@@ -47,14 +47,6 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
         padding: EdgeInsets.all(16),
         children: dataPelanggaran
             .map((pelanggaran) => Container(
-                  // child: InkWell(
-                  //   onTap: () {
-                  //     Navigator.push(
-                  //         context,
-                  //         MaterialPageRoute(
-                  //             //Nanti dipilih berdasarkan index
-                  //             builder: (context) => KonfirmasiTilang()));
-                  //   },
                   child: Builder(builder: (context) {
                     if (pelanggaran.status == "Email telah dikirim") {
                       return Card(
@@ -63,13 +55,6 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                           margin: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 20),
                           child: InkWell(
-                            // onTap: () {
-                            //   // Navigator.push(
-                            //   //     context,
-                            //   //     MaterialPageRoute(
-                            //   //         //Nanti dipilih berdasarkan index
-                            //   //         builder: (context) => KonfirmasiTilang()));
-                            // },
                             child: ListTile(
                               leading: Icon(MaterialCommunityIcons.email_check,
                                   size: 60, color: Colors.green),
@@ -92,10 +77,6 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                               ),
                               trailing: InkWell(
                                 onTap: () {
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //     builder: (context) => StepperPage(
-                                  //         pelanggaran.status,
-                                  //         pelanggaran.idPelanggaran)));
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => DetailStatus(
                                           pelanggaran.status,
@@ -115,13 +96,6 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                           margin: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 20),
                           child: InkWell(
-                            // onTap: () {
-                            //   // Navigator.push(
-                            //   //     context,
-                            //   //     MaterialPageRoute(
-                            //   //         //Nanti dipilih berdasarkan index
-                            //   //         builder: (context) => KonfirmasiTilang()));
-                            // },
                             child: ListTile(
                               leading: Icon(MaterialCommunityIcons.close_box,
                                   size: 60, color: Colors.red),
@@ -144,10 +118,6 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                               ),
                               trailing: InkWell(
                                 onTap: () {
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //     builder: (context) => StepperPage(
-                                  //         pelanggaran.status,
-                                  //         pelanggaran.idPelanggaran)));
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => DetailStatus(
                                           pelanggaran.status,
@@ -167,13 +137,6 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                           margin: EdgeInsets.symmetric(
                               horizontal: 10, vertical: 20),
                           child: InkWell(
-                            // onTap: () {
-                            //   // Navigator.push(
-                            //   //     context,
-                            //   //     MaterialPageRoute(
-                            //   //         //Nanti dipilih berdasarkan index
-                            //   //         builder: (context) => KonfirmasiTilang()));
-                            // },
                             child: ListTile(
                               leading: Icon(MaterialCommunityIcons.check_bold,
                                   size: 60, color: Colors.green),
@@ -196,10 +159,6 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
                               ),
                               trailing: InkWell(
                                 onTap: () {
-                                  // Navigator.of(context).push(MaterialPageRoute(
-                                  //     builder: (context) => StepperPage(
-                                  //         pelanggaran.status,
-                                  //         pelanggaran.idPelanggaran)));
                                   Navigator.of(context).push(MaterialPageRoute(
                                       builder: (context) => DetailStatus(
                                           pelanggaran.status,
@@ -220,63 +179,6 @@ class _RiwayatTilangAdaState extends State<RiwayatTilangAda> {
             .toList(),
       ),
     );
-    // return Container(
-    //   child: Container(
-    //     margin: EdgeInsets.all(24),
-    //     child: ListView.builder(
-    //         scrollDirection: Axis.vertical,
-    //         itemCount: 5,
-    //         itemBuilder: (context, index) {
-    //           return Card(
-    //             elevation: 8,
-    //             child: InkWell(
-    //               onTap: () {
-    //                 // Navigator.push(
-    //                 //     context,
-    //                 //     MaterialPageRoute(
-    //                 //         builder: (context) => News(
-    //                 //               ind: index,
-    //                 //             )));
-    //               },
-    //               splashColor: Colors.blue.withAlpha(30),
-    //               child: Column(
-    //                 mainAxisSize: MainAxisSize.min,
-    //                 children: <Widget>[
-    //                   Container(
-    //                     margin:
-    //                         EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-    //                     child: ListTile(
-    //                       // leading: Text("Halo"),
-    //                       //No referensi di ambil dari db
-    //                       title: Text(
-    //                         "No Referensi: 123456",
-    //                         style: TextStyle(fontSize: 16),
-    //                         // textAlign: TextAlign.justify
-    //                       ),
-    //                       subtitle: Container(
-    //                           decoration: new BoxDecoration(
-    //                             borderRadius: new BorderRadius.circular(16.0),
-    //                             color: Colors.green,
-    //                           ),
-    //                           margin: EdgeInsets.only(right: 140, top: 10),
-    //                           padding: EdgeInsets.symmetric(vertical: 5),
-    //                           child: Center(
-    //                             //status di ambil dari db
-    //                             child: Text(
-    //                               "Status: Sudah Bayar",
-    //                             ),
-    //                           )),
-    //                     ),
-    //                     // subtitle: Text(newsDesc[index],
-    //                     //     textAlign: TextAlign.justify)),
-    //                   ),
-    //                 ],
-    //               ),
-    //             ),
-    //           );
-    //         }),
-    //   ),
-    // );
   }
 }
 
